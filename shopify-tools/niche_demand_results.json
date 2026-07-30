@@ -1,0 +1,274 @@
+{
+  "weighted blanket": {
+    "US": {
+      "volume": 135000,
+      "competition": "HIGH",
+      "cpc": 2.12,
+      "yoy_growth_pct": -6.081081081081082,
+      "peak_month": 12,
+      "months_to_peak": 5
+    },
+    "UK": {
+      "volume": 49500,
+      "competition": "HIGH",
+      "cpc": 0.98,
+      "yoy_growth_pct": -6.027060270602702,
+      "peak_month": 11,
+      "months_to_peak": 4
+    },
+    "DE": {
+      "volume": 2900,
+      "competition": "HIGH",
+      "cpc": 1.23,
+      "yoy_growth_pct": -4.838709677419344,
+      "peak_month": 12,
+      "months_to_peak": 5
+    },
+    "FR": {
+      "volume": 1000,
+      "competition": "HIGH",
+      "cpc": 1.37,
+      "yoy_growth_pct": -10.769230769230761,
+      "peak_month": 12,
+      "months_to_peak": 5
+    }
+  },
+  "humidifier": {
+    "US": {
+      "volume": 301000,
+      "competition": "HIGH",
+      "cpc": 1.02,
+      "yoy_growth_pct": -5.649717514124294,
+      "peak_month": 12,
+      "months_to_peak": 5
+    },
+    "UK": {
+      "volume": 49500,
+      "competition": "HIGH",
+      "cpc": 0.43,
+      "yoy_growth_pct": 0.0,
+      "peak_month": 11,
+      "months_to_peak": 4
+    },
+    "DE": {
+      "volume": 5400,
+      "competition": "HIGH",
+      "cpc": 0.36,
+      "yoy_growth_pct": 1.515151515151522,
+      "peak_month": 1,
+      "months_to_peak": 6
+    },
+    "FR": {
+      "volume": 1600,
+      "competition": "HIGH",
+      "cpc": 0.31,
+      "yoy_growth_pct": 7.6923076923076925,
+      "peak_month": 12,
+      "months_to_peak": 5
+    }
+  },
+  "space heater": {
+    "US": {
+      "volume": 135000,
+      "competition": "HIGH",
+      "cpc": 0.79,
+      "yoy_growth_pct": -18.22519083969466,
+      "peak_month": 1,
+      "months_to_peak": 6
+    },
+    "UK": {
+      "volume": 9900,
+      "competition": "HIGH",
+      "cpc": 0.68,
+      "yoy_growth_pct": -18.348623853211016,
+      "peak_month": 1,
+      "months_to_peak": 6
+    },
+    "DE": {
+      "volume": 590,
+      "competition": "MEDIUM",
+      "cpc": 0.22,
+      "yoy_growth_pct": -33.33333333333333,
+      "peak_month": 1,
+      "months_to_peak": 6
+    },
+    "FR": {
+      "volume": 320,
+      "competition": "HIGH",
+      "cpc": 0.22,
+      "yoy_growth_pct": -23.728813559322028,
+      "peak_month": 1,
+      "months_to_peak": 6
+    }
+  },
+  "desk organizer": {
+    "US": {
+      "volume": 40500,
+      "competition": "HIGH",
+      "cpc": 0.84,
+      "yoy_growth_pct": -23.805060918462974,
+      "peak_month": 8,
+      "months_to_peak": 1
+    },
+    "UK": {
+      "volume": 2900,
+      "competition": "HIGH",
+      "cpc": 0.52,
+      "yoy_growth_pct": 0.0,
+      "peak_month": 12,
+      "months_to_peak": 5
+    },
+    "DE": {
+      "volume": 1000,
+      "competition": "HIGH",
+      "cpc": 0.54,
+      "yoy_growth_pct": -9.722222222222227,
+      "peak_month": 12,
+      "months_to_peak": 5
+    },
+    "FR": {
+      "volume": 260,
+      "competition": "HIGH",
+      "cpc": 0.57,
+      "yoy_growth_pct": -5.454545454545454,
+      "peak_month": 8,
+      "months_to_peak": 1
+    }
+  },
+  "led desk lamp": {
+    "US": {
+      "volume": 14800,
+      "competition": "HIGH",
+      "cpc": 0.92,
+      "yoy_growth_pct": 86.61971830985918,
+      "peak_month": 8,
+      "months_to_peak": 1
+    },
+    "UK": {
+      "volume": 1300,
+      "competition": "HIGH",
+      "cpc": 0.44,
+      "yoy_growth_pct": -26.666666666666668,
+      "peak_month": 11,
+      "months_to_peak": 4
+    },
+    "DE": {
+      "volume": 210,
+      "competition": "HIGH",
+      "cpc": 0.56,
+      "yoy_growth_pct": -7.547169811320745,
+      "peak_month": 12,
+      "months_to_peak": 5
+    },
+    "FR": {
+      "volume": 140,
+      "competition": "MEDIUM",
+      "cpc": 0.45,
+      "yoy_growth_pct": 10.810810810810807,
+      "peak_month": 12,
+      "months_to_peak": 5
+    }
+  },
+  "dog sweater": {
+    "US": {
+      "volume": 40500,
+      "competition": "HIGH",
+      "cpc": 0.96,
+      "yoy_growth_pct": -19.718309859154928,
+      "peak_month": 11,
+      "months_to_peak": 4
+    },
+    "UK": {
+      "volume": 590,
+      "competition": "HIGH",
+      "cpc": 0.98,
+      "yoy_growth_pct": -13.513513513513505,
+      "peak_month": 11,
+      "months_to_peak": 4
+    },
+    "DE": {
+      "volume": 140,
+      "competition": "HIGH",
+      "cpc": 0.74,
+      "yoy_growth_pct": -14.285714285714283,
+      "peak_month": 11,
+      "months_to_peak": 4
+    },
+    "FR": {
+      "volume": 70,
+      "competition": "HIGH",
+      "cpc": 1.86,
+      "yoy_growth_pct": 39.999999999999986,
+      "peak_month": 11,
+      "months_to_peak": 4
+    }
+  },
+  "gua sha tool": {
+    "US": {
+      "volume": 60500,
+      "competition": "HIGH",
+      "cpc": 1.12,
+      "yoy_growth_pct": -23.198198198198195,
+      "peak_month": 3,
+      "months_to_peak": 8
+    },
+    "UK": {
+      "volume": 9900,
+      "competition": "HIGH",
+      "cpc": 0.79,
+      "yoy_growth_pct": -7.30897009966778,
+      "peak_month": 1,
+      "months_to_peak": 6
+    },
+    "DE": {
+      "volume": 320,
+      "competition": "HIGH",
+      "cpc": 0.54,
+      "yoy_growth_pct": 23.287671232876708,
+      "peak_month": 1,
+      "months_to_peak": 6
+    },
+    "FR": {
+      "volume": 140,
+      "competition": "HIGH",
+      "cpc": 0.66,
+      "yoy_growth_pct": 52.941176470588246,
+      "peak_month": 12,
+      "months_to_peak": 5
+    }
+  },
+  "sleep mask": {
+    "US": {
+      "volume": 60500,
+      "competition": "HIGH",
+      "cpc": 2.43,
+      "yoy_growth_pct": -6.451612903225815,
+      "peak_month": 12,
+      "months_to_peak": 5
+    },
+    "UK": {
+      "volume": 14800,
+      "competition": "HIGH",
+      "cpc": 2.29,
+      "yoy_growth_pct": -12.941176470588237,
+      "peak_month": 12,
+      "months_to_peak": 5
+    },
+    "DE": {
+      "volume": 1900,
+      "competition": "HIGH",
+      "cpc": 1.23,
+      "yoy_growth_pct": -7.462686567164193,
+      "peak_month": 6,
+      "months_to_peak": 11
+    },
+    "FR": {
+      "volume": 1000,
+      "competition": "HIGH",
+      "cpc": 1.33,
+      "yoy_growth_pct": 10.769230769230774,
+      "peak_month": 3,
+      "months_to_peak": 8
+    }
+  }
+}

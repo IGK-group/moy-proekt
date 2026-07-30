@@ -23,6 +23,14 @@
   },
 
   "permissions": {
+    "allow": [
+      "Bash(unzip *)",
+      "Bash(7z *)",
+      "Bash(7za *)",
+      "Bash(unrar *)",
+      "Bash(mv *)",
+      "Bash(cp *)"
+    ],
     "deny": [
       "Bash(rm -rf *)",
       "Bash(rm -rf ~)",

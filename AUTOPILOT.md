@@ -1,5 +1,5 @@
 ---
-completed: false
+completed: true
 last_completed_step: 2
 started_at: 2026-06-27
 os: linux

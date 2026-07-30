@@ -10,6 +10,9 @@ business/
 ai-clone/
 .business/
 
+# Credentials соцаккаунтов контент-завода
+content-factory/accounts.md
+
 # Локальные настройки Claude Code
 .claude/settings.local.json
 
