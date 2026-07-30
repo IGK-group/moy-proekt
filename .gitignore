@@ -13,6 +13,14 @@ ai-clone/
 # Credentials соцаккаунтов контент-завода
 content-factory/accounts.md
 
+# Крупные бинарники - не в git-историю (3.3ГБ фото + 149МБ видео)
+taobao-tools/
+uploads/
+
+# Python bytecode
+__pycache__/
+*.pyc
+
 # Локальные настройки Claude Code
 .claude/settings.local.json
 
