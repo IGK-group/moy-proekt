@@ -17,6 +17,13 @@ content-factory/accounts.md
 taobao-tools/
 uploads/
 
+# Крупные бинарники товарки (219МБ: видео-уроки, сгенерированные ролики, фото карточек)
+shopify-tools/контент карточки товара/
+shopify-tools/настройка/
+
+# Сырые исходники курса (PDF/zip/webarchive) - справочный дамп, не для git-истории
+content-factory/материал/
+
 # Python bytecode
 __pycache__/
 *.pyc

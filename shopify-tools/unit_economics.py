@@ -10,7 +10,14 @@ PAYMENT_FEE_PCT = 0.029
 PAYMENT_FEE_FIXED = 0.30
 SUPPLIER_TRANSFER_FEE_PCT = 0.03
 US_DUTY_PCT = 0.30  # усреднённая оценка, требует проверки по реальному HTS-коду
-TARGET_ROAS = 3.0
+
+# Стратегия - органика (content-factory/GeeLark), НЕ платная реклама, см. business/marketing/channels.md
+# (все платные каналы там помечены "планируется, CAC не определено").
+# ORGANIC_CAC - плановая оценка из content-factory/architecture.md ("CAC (органика) ~$10"),
+# выведена под мебельный поток ($300 чек, живые видео с фабрик), НЕ подтверждена для
+# гаджет-потока и НЕ измерена фактически - контент-завод (GeeLark) ещё не подключён
+# (см. CLAUDE.md "Активные подключения"). Использовать как ориентир, не как факт.
+ORGANIC_CAC = 10.0
 
 # (ниша, цена продажи, % COGS от цены, фрахт на ед., 3PL сборка+хранение, доставка последней мили, категория-габарит)
 NICHES = [
@@ -37,9 +44,9 @@ def calc(name, price, cogs_pct, freight, threepl, last_mile, size):
     margin = price - total_costs
     margin_pct = margin / price * 100
 
-    cac = price / TARGET_ROAS
+    cac = ORGANIC_CAC
     profit = margin - cac
-    breakeven_roas = price / margin if margin > 0 else float("inf")
+    max_sustainable_cac = margin  # сколько можно потратить на привлечение и остаться в нуле
 
     return {
         "name": name, "price": price, "size": size,
@@ -47,7 +54,7 @@ def calc(name, price, cogs_pct, freight, threepl, last_mile, size):
         "3pl": threepl, "last_mile": last_mile,
         "payment_fee": payment_fee, "supplier_fee": supplier_fee,
         "total_costs": total_costs, "margin": margin, "margin_pct": margin_pct,
-        "cac": cac, "profit": profit, "breakeven_roas": breakeven_roas,
+        "cac": cac, "profit": profit, "max_sustainable_cac": max_sustainable_cac,
     }
 
 
@@ -55,11 +62,11 @@ def main():
     results = [calc(*n) for n in NICHES]
     results.sort(key=lambda r: -r["profit"])
 
-    print(f"{'Ниша':<28} {'Цена':>7} {'Маржа%':>8} {'CAC@ROAS3':>10} {'Прибыль/зак.':>13} {'Безубыт.ROAS':>13}")
+    print(f"{'Ниша':<28} {'Цена':>7} {'Маржа%':>8} {'CAC(орг.)':>10} {'Прибыль/зак.':>13} {'Запас на CAC':>13}")
     print("-" * 90)
     for r in results:
         print(f"{r['name']:<28} ${r['price']:>5.0f}  {r['margin_pct']:>6.1f}%  "
-              f"${r['cac']:>8.2f}  ${r['profit']:>11.2f}  {r['breakeven_roas']:>11.2f}x")
+              f"${r['cac']:>8.2f}  ${r['profit']:>11.2f}  ${r['max_sustainable_cac']:>11.2f}")
 
     print()
     print("=" * 90)
@@ -74,10 +81,10 @@ def main():
         print(f"  Комиссия оплаты клиента: -${r['payment_fee']:.2f}")
         print(f"  Комиссия перевода фабрике:-${r['supplier_fee']:.2f}")
         print(f"  ИТОГО расходов:          -${r['total_costs']:.2f}")
-        print(f"  Маржа до рекламы:         ${r['margin']:.2f} ({r['margin_pct']:.1f}%)")
-        print(f"  CAC при ROAS {TARGET_ROAS}:          -${r['cac']:.2f}")
+        print(f"  Маржа до привлечения:     ${r['margin']:.2f} ({r['margin_pct']:.1f}%)")
+        print(f"  CAC (органика, оценка):  -${r['cac']:.2f}")
         print(f"  ЧИСТАЯ ПРИБЫЛЬ/заказ:     ${r['profit']:.2f}")
-        print(f"  Точка безубыточности:    ROAS {r['breakeven_roas']:.2f}x")
+        print(f"  Запас на привлечение:     ${r['max_sustainable_cac']:.2f} (маржа до вычета CAC - сколько можно потратить и остаться в нуле)")
 
 
 if __name__ == "__main__":
