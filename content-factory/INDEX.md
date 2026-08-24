@@ -29,6 +29,8 @@
 ## Планы (историческая трассировка фаз, чек-листы прогресса)
 
 - **Активный:** [`../plans/2026-07-18-kontent-zavod-polny-zapusk.md`](../plans/2026-07-18-kontent-zavod-polny-zapusk.md) - фазы и чек-листы; всё содержательное "как" вынесено в файлы выше
+- **Активный (продукт/съёмка):** [`../plans/2026-08-09-gadget-dropshipping-zapusk.md`](../plans/2026-08-09-gadget-dropshipping-zapusk.md) - магазин/товары/инфраструктура запуска гаджет-потока
+- **Активный (методология роликов):** [`../plans/2026-08-17-video-kontent-strategii-prodazha-i-dropshipping-keys.md`](../plans/2026-08-17-video-kontent-strategii-prodazha-i-dropshipping-keys.md) - две стратегии видео (продающий контент EN + дропшиппинг-кейс RU), выведены из технического разбора конкурентного Reels-ролика, готовые CTA-наборы и активы
 - **Предыдущая версия (заменена):** [`../plans/2026-07-15-kontent-zavod-i-prodvizhenie.md`](../plans/2026-07-15-kontent-zavod-i-prodvizhenie.md)
 
 ## Как контент-завод связан с остальными системами

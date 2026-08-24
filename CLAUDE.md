@@ -16,11 +16,11 @@
 |---|---|---|
 | Shopify Admin API | **Подключено, токен рабочий** - Claude может читать/писать в магазин напрямую через `shopify-tools/*.py` | `shopify-tools/PLAYBOOK.md` |
 | Вход в Shopify Admin через браузер | **Только через AdsPower, профиль "store 1"** - магазин создан на этом прокси, реальный IP не использовать | `shopify-tools/PLAYBOOK.md` |
-| GeeLark (контент-завод, соцсети) | Не подключено, план готов | `content-factory/architecture.md` |
+| GeeLark (контент-завод, соцсети) | **ОТКАЗ 2026-08-16** - переход на физические телефоны | `content-factory/architecture.md` |
 | AdsPower (антидетект + прокси) | Подтверждено: создан для Shopify, магазин держится на этом прокси (не для контент-завода) | `shopify-tools/PLAYBOOK.md` |
 | Shopify Payments | **АКТИВЕН** - Канадская entity Ilya Myshalou (Edmonton AB), банковские реквизиты заполнены, приём оплаты работает | `shopify-tools/PLAYBOOK.md` секция "Платежи" |
 | CJdropshipping (закупка+логистика Поток 1) | **Установлено 2026-08-09** в ghnjxs-hh - полная замена ручной закупки на 1688/Taobao для потока гаджетов, осознанный пересмотр модели | `shopify-tools/PLAYBOOK.md` |
-| Higgsfield (видео) | Подключён к VS Code, реальные возможности не проверены | `ai-clone/reference/README.md` |
+| Higgsfield (фото/видео) | **Работает через локальный CLI** (`/home/claudeuser/bin/higgsfield`, токен авторизован независимо от MCP) - используется для карточек товаров (`gpt_image_2`) и видео (`seedance_2_0_mini`). MCP-инструмент в Claude Code может требовать повторной OAuth-авторизации по сессиям - если недоступен, сначала проверить `higgsfield auth token` через Bash, не считать сразу недоступным | `plans/2026-08-11-brending-i-oformlenie-magazina.md` секция "Higgsfield: MCP vs CLI" |
 | Обмен файлами с компьютером (Google Drive) | Подключено, работает в обе стороны: `gdown` скачивает с Диска на сервер, `rclone`+`upload_to_drive.sh` грузит обратно на Диск | `~/генерация-контент/README.md` |
 | DataForSEO (аналитика: спрос, конкуренция, чужие сайты) | **Подключено, оплачено, токен рабочий** - login `pervayacena5@gmail.com`, ключи в `shopify-tools/.env` | `shopify-tools/DATAFORSEO_PLAYBOOK.md` |
 
