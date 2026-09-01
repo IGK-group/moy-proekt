@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Первый слайд — все варианты</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:#0d1418;color:#eaf2f4}
+  .lead{padding:22px 24px;background:#12b1a6;color:#04201d;font-weight:600}
+  .v{border-bottom:8px solid #0d1418}
+  .tag{padding:16px 24px;font-size:1.15rem;font-weight:800;background:#16232a}
+  .stage{position:relative;height:min(70vh,560px);overflow:hidden;display:grid;align-items:center}
+  .bg{position:absolute;inset:0;background-size:cover;background-position:center}
+  .bg::after{content:"";position:absolute;inset:0}
+  .wrap{position:relative;max-width:1180px;margin:0 auto;padding:0 40px;width:100%}
+  .txt{color:#fff;max-width:600px}
+  .eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8fe6f0}
+  h1{font-size:clamp(1.8rem,3.4vw,3rem);line-height:1.14;margin:.7rem 0 1rem;letter-spacing:-.02em}
+  p{font-size:1.05rem;color:#dcebee;margin-bottom:1.4rem;max-width:40ch}
+  .btns{display:flex;gap:.7rem;flex-wrap:wrap}
+  .btn{display:inline-block;padding:.8rem 1.4rem;border-radius:999px;font-weight:600;font-size:.9rem}
+  .p1{background:#12b1a6;color:#fff}
+  .p2{border:1.5px solid #fff;color:#fff}
+  .right .txt{margin-left:auto}
+  .glyph{position:absolute;right:2%;top:50%;transform:translateY(-50%);width:min(34vw,340px);opacity:.9}
+  .scrim-l::after{background:linear-gradient(90deg,rgba(8,20,25,.74) 0%,rgba(8,20,25,.35) 46%,rgba(8,20,25,0) 76%)}
+  .scrim-r::after{background:linear-gradient(270deg,rgba(8,18,22,.8) 0%,rgba(8,18,22,.5) 42%,rgba(8,18,22,0) 100%)}
+</style>
+</head>
+<body>
+
+<div class="lead">Все варианты первого слайда, один под другим. Посмотри и напиши цифру — 1, 2, 3 или 4. Пока не выберешь, ничего не меняю.</div>
+
+<!-- 1 -->
+<div class="v">
+  <div class="tag">1 — оригинал: цветной градиент + иконка робота, без фото</div>
+  <div class="stage" style="background:radial-gradient(120% 120% at 80% 20%,#0e5d6b 0%,#0f2831 60%)">
+    <svg class="glyph" viewBox="0 0 200 200" fill="none" stroke="#7fe0ec" stroke-width="3"><rect x="45" y="45" width="110" height="110" rx="24"/><circle cx="100" cy="100" r="30"/><circle cx="100" cy="100" r="10" fill="#7fe0ec"/><path d="M100 45V25M100 175v-20M45 100H25M175 100h-20"/></svg>
+    <div class="wrap"><div class="txt">
+      <span class="eyebrow">GlideHome W17S</span>
+      <h1>Clean windows while you get on with your day</h1>
+      <p>The robot climbs the glass on its own and covers it corner to corner. No ladders, no streaks.</p>
+      <div class="btns"><span class="btn p1">Shop W17S — $129.99</span><span class="btn p2">How it works</span></div>
+    </div></div>
+  </div>
+</div>
+
+<!-- 2 -->
+<div class="v">
+  <div class="tag">2 — фото: W17S в солнечной гостиной, текст слева (это стоит в прототипе сейчас)</div>
+  <div class="stage">
+    <div class="bg scrim-l" style="background-image:url('slides/w17s.jpg')"></div>
+    <div class="wrap"><div class="txt">
+      <span class="eyebrow">GlideHome W17S</span>
+      <h1>Clean windows while you get on with your day</h1>
+      <p>The robot climbs the glass on its own and covers it corner to corner. No ladders, no streaks.</p>
+      <div class="btns"><span class="btn p1">Shop W17S — $129.99</span><span class="btn p2">How it works</span></div>
+    </div></div>
+  </div>
+</div>
+
+<!-- 3 -->
+<div class="v">
+  <div class="tag">3 — фото: W17S на фоне панорамы (фьорд), текст слева</div>
+  <div class="stage">
+    <div class="bg scrim-l" style="background-image:url('slides/_cmp_fjord.jpg')"></div>
+    <div class="wrap"><div class="txt">
+      <span class="eyebrow">GlideHome W17S</span>
+      <h1>Clean windows while you get on with your day</h1>
+      <p>The robot climbs the glass on its own and covers it corner to corner. No ladders, no streaks.</p>
+      <div class="btns"><span class="btn p1">Shop W17S — $129.99</span><span class="btn p2">How it works</span></div>
+    </div></div>
+  </div>
+</div>
+
+<!-- 4 -->
+<div class="v right">
+  <div class="tag">4 — студия: W17S на подиуме + световое кольцо, текст справа, один CTA</div>
+  <div class="stage">
+    <div class="bg scrim-r" style="background-image:url('slides/_cmp_studio.jpg')"></div>
+    <div class="wrap"><div class="txt">
+      <span class="eyebrow">GlideHome W17S</span>
+      <h1>A breakthrough in robotic window cleaning</h1>
+      <p>The robot climbs the glass on its own and covers it corner to corner — no ladders, no streaks.</p>
+      <div class="btns"><span class="btn p1">Shop W17S</span></div>
+    </div></div>
+  </div>
+</div>
+
+</body>
+</html>

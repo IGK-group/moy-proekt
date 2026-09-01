@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GlideHome — storefront prototype (product line)</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header id="hdr">
+  <div class="wrap nav">
+    <a class="logo" href="index.html">
+      <svg class="mark" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="9" height="9" rx="2"/><rect x="13" y="2" width="9" height="9" rx="2"/><rect x="2" y="13" width="9" height="9" rx="2"/><rect x="13" y="13" width="9" height="9" rx="2"/></svg>
+      GlideHome
+    </a>
+    <nav class="menu">
+      <div class="has-sub">
+        <a href="line.html">Window Cleaning Robot</a>
+        <div class="submenu">
+          <a href="#lineup">GlideHome W17S</a>
+          <a href="#lineup">GlideHome DYP</a>
+          <a href="#explore">Accessories</a>
+        </div>
+      </div>
+      <a href="line.html">Robot Vacuum</a>
+      <div class="has-sub">
+        <a href="support.html">Support</a>
+        <div class="submenu">
+          <a href="support.html#faq">FAQ</a>
+          <a href="support.html#setup">Setup guides</a>
+          <a href="support.html#warranty">Warranty &amp; returns</a>
+        </div>
+      </div>
+      <a href="about.html">About</a>
+    </nav>
+    <div class="icons">
+      <button aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+      <a href="#" aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3-6 7-6s7 2 7 6"/></svg></a>
+      <a href="#" aria-label="Cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-2 10H8L6 6Z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg></a>
+      <button class="menu-toggle" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ STATIC HERO (large render + line headline) ============ -->
+<section class="hero-static">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Window Cleaning Robot line</span>
+      <h1>Hands-free window cleaning — a breakthrough, not a gadget</h1>
+      <p class="lead">The robot holds the vertical glass on its own, plans a route and covers the window corner to corner. Two models — one for apartments, one for panoramic glass.</p>
+      <div class="slide-cta">
+        <a class="btn btn-primary btn-lg" href="#lineup">Choose a model</a>
+        <a class="btn btn-ghost btn-lg" href="#innovations">Technology</a>
+      </div>
+    </div>
+    <div class="shot">
+      <img src="slides/w17s.jpg" alt="GlideHome window cleaning robot on a window">
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODEL LINEUP (horizontal carousel) ============ -->
+<section id="lineup">
+  <div class="section-head">
+    <span class="eyebrow">The lineup</span>
+    <h2>Pick the model for your windows</h2>
+    <p>Scroll the lineup sideways.</p>
+  </div>
+  <div class="wrap"><div class="lineup">
+    <article class="model">
+      <div class="thumb"><svg viewBox="0 0 120 120" fill="none" stroke="#12b1a6" stroke-width="4"><rect x="28" y="24" width="64" height="72" rx="20"/><circle cx="60" cy="66" r="16"/><path d="M52 42h16"/></svg></div>
+      <div class="body">
+        <span class="tag">Bestseller</span>
+        <h3>GlideHome W17S</h3>
+        <div class="slogan">Compact robot for apartment windows. Auto-start, edge detection, safety rope.</div>
+        <div class="price">$129.99</div>
+        <a class="btn btn-primary" href="product.html">View</a>
+      </div>
+    </article>
+    <article class="model">
+      <div class="thumb"><svg viewBox="0 0 120 120" fill="none" stroke="#12b1a6" stroke-width="4"><rect x="30" y="18" width="60" height="84" rx="28"/><circle cx="60" cy="44" r="12"/><circle cx="60" cy="76" r="12"/></svg></div>
+      <div class="body">
+        <span class="tag">For big glass</span>
+        <h3>GlideHome DYP</h3>
+        <div class="slogan">Higher spray pressure, longer battery. Panoramic windows and storefronts.</div>
+        <div class="price">$269.99</div>
+        <a class="btn btn-primary" href="product.html">View</a>
+      </div>
+    </article>
+    <article class="model">
+      <div class="thumb"><svg viewBox="0 0 120 120" fill="none" stroke="#12b1a6" stroke-width="4"><circle cx="60" cy="60" r="34"/><circle cx="60" cy="60" r="12"/><path d="M40 40 32 32"/></svg></div>
+      <div class="body">
+        <span class="tag">Other line</span>
+        <h3>GlideHome Vac Slim</h3>
+        <div class="slogan">Robot vacuum with mopping and room mapping. Shown here as the second product line.</div>
+        <div class="price">$269.99</div>
+        <a class="btn btn-primary" href="product.html">View</a>
+      </div>
+    </article>
+  </div></div>
+  <div class="viewall"><a class="btn btn-ghost" href="#">View all models</a></div>
+</section>
+
+<!-- ============ INNOVATIONS (4 blocks, alternating + reveal) ============ -->
+<div id="innovations" style="background:var(--surface)">
+  <div class="section-head" style="padding-top:84px"><span class="eyebrow">GlideHome technology</span><h2>What's inside</h2></div>
+
+  <div class="feature reveal">
+    <div class="feature-media"><svg viewBox="0 0 120 120" fill="none" stroke="#12b1a6" stroke-width="4"><rect x="24" y="24" width="72" height="72" rx="16"/><path d="M60 40v40M40 60h40"/></svg></div>
+    <div class="feature-text">
+      <span class="eyebrow">Triple fall-safety</span>
+      <h3>Holds the glass even when the power is cut</h3>
+      <p>Vacuum turbine, backup battery and a safety rope. Pull the plug and the robot stays on the glass and lowers gently instead of falling.</p>
+    </div>
+  </div>
+
+  <div class="feature reveal">
+    <div class="feature-media"><svg viewBox="0 0 120 120" fill="none" stroke="#12b1a6" stroke-width="4"><rect x="20" y="20" width="80" height="80" rx="10"/><path d="M20 44h80M44 20v80" stroke-dasharray="6 6"/></svg></div>
+    <div class="feature-text">
+      <span class="eyebrow">Edge detection</span>
+      <h3>Cleans right up to the frame — within millimeters of the border</h3>
+      <p>Perimeter sensors map the window's edges. The robot doesn't miss the border and leaves no strip along the frame.</p>
+    </div>
+  </div>
+
+  <div class="feature reveal">
+    <div class="feature-media"><svg viewBox="0 0 120 120" fill="none" stroke="#12b1a6" stroke-width="4"><path d="M24 32h72M96 32c0 16-72 8-72 24s72 8 72 24M24 96h72"/></svg></div>
+    <div class="feature-text">
+      <span class="eyebrow">Smart path planning</span>
+      <h3>Zig-zag pass plus a check lap around the perimeter</h3>
+      <p>Multi-sensor route planning: solid N-shaped coverage and a finishing pass along the edges.</p>
+    </div>
+  </div>
+
+  <div class="feature reveal">
+    <div class="feature-media"><svg viewBox="0 0 120 120" fill="none" stroke="#12b1a6" stroke-width="4"><path d="M30 60c0-20 60-20 60 0s-60 20-60 0"/><path d="M20 60h10M90 60h10"/></svg></div>
+    <div class="feature-text">
+      <span class="eyebrow">Minimal and quiet</span>
+      <h3>Around 60 dB and a clean body in several colors</h3>
+      <p>Noise level like a conversation. The form factor is designed so the robot doesn't clash with the room.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ EXPLORE MORE ============ -->
+<section id="explore">
+  <div class="section-head"><span class="eyebrow">More</span><h2>What's next</h2></div>
+  <div class="wrap explore">
+    <div class="card">
+      <h3>Accessories</h3>
+      <p>Replacement microfiber pads, cleaning concentrate, spare safety rope and power adapter.</p>
+      <a class="btn btn-ghost" href="#">Shop accessories</a>
+    </div>
+    <div class="card">
+      <h3>Support</h3>
+      <p>Setup instructions, video guides, warranty and return terms, and how to reach support.</p>
+      <a class="btn btn-ghost" href="support.html">Support center</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ (accordion, «show all») ============ -->
+<section id="faq" style="background:var(--surface)">
+  <div class="section-head"><span class="eyebrow">FAQ</span><h2>Common questions</h2></div>
+  <div class="wrap faq">
+    <details class="qa" open><summary>Will the robot fall off the window?<span class="plus">+</span></summary><div class="a">No. The vacuum turbine holds the body to the glass, there's a backup battery in case the power is cut, and a safety rope that clips to the frame or handle.</div></details>
+    <details class="qa"><summary>What surfaces can I use it on?<span class="plus">+</span></summary><div class="a">Smooth glass, mirrors, tile, polished stone. Matte and textured surfaces won't work — the suction can't hold.</div></details>
+    <details class="qa"><summary>How long does one window take?<span class="plus">+</span></summary><div class="a">A standard apartment window is about 3–5 minutes depending on how dirty it is and the mode you pick.</div></details>
+    <details class="qa"><summary>Does it need a permanent power cable?<span class="plus">+</span></summary><div class="a">Yes, the robot runs from mains power via a long cable. The built-in battery is a safety backup for power loss, not the main mode.</div></details>
+    <details class="qa" data-extra><summary>Does it work without Wi-Fi?<span class="plus">+</span></summary><div class="a">Yes. Basic modes start from the button on the body or the remote. Wi-Fi is only for the app and updates.</div></details>
+    <details class="qa" data-extra><summary>Will it handle a large panoramic window?<span class="plus">+</span></summary><div class="a">Yes — that's what the DYP model is for: higher spray pressure and longer runtime, built for storefronts and floor-to-ceiling glass.</div></details>
+    <details class="qa" data-extra><summary>How loud is it?<span class="plus">+</span></summary><div class="a">Around 60 dB — comparable to normal conversation.</div></details>
+    <details class="qa" data-extra><summary>What's in the box?<span class="plus">+</span></summary><div class="a">Robot, power supply with cable, safety rope, a set of microfiber pads, a bottle of concentrate, remote.</div></details>
+  </div>
+  <div class="faq-toggle"><button class="btn btn-ghost" data-faq-toggle>Show all questions</button></div>
+</section>
+
+<!-- ============ NEWSLETTER ============ -->
+<section class="newsletter">
+  <div class="wrap">
+    <h2>Stay in the loop</h2>
+    <p>New models, reviews and offers — no spam.</p>
+    <form class="news-form" onsubmit="return false">
+      <input type="email" placeholder="Your email" aria-label="Email">
+      <button class="btn btn-primary" type="submit">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<!-- ============ SOCIAL ============ -->
+<div class="social">
+  <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V7c0-1 .5-2 2-2h2V1h-3c-3 0-5 2-5 5v4H7v4h3v8h3Z"/></svg></a>
+  <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1" fill="currentColor"/></svg></a>
+  <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12s0-3-.4-4.4a3 3 0 0 0-2.1-2.1C18 5 12 5 12 5s-6 0-7.5.5A3 3 0 0 0 2.4 7.6C2 9 2 12 2 12s0 3 .4 4.4a3 3 0 0 0 2.1 2.1C6 19 12 19 12 19s6 0 7.5-.5a3 3 0 0 0 2.1-2.1C22 15 22 12 22 12ZM10 15V9l5 3-5 3Z"/></svg></a>
+  <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 3c.5 3 2.5 4.5 5 5v3c-2 0-3.7-.6-5-1.6V16a6 6 0 1 1-6-6c.3 0 .7 0 1 .1v3.2A3 3 0 1 0 13 16V3h3Z"/></svg></a>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <h4>Products</h4>
+        <a href="line.html">Window Robot W17S</a>
+        <a href="line.html">Window Robot DYP</a>
+        <a href="product.html">Robot Vacuum</a>
+        <a href="#">Accessories</a>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <a href="support.html#contact">Contact us</a>
+        <a href="support.html#shipping">Shipping &amp; payment</a>
+        <a href="support.html#warranty">Returns &amp; warranty</a>
+        <a href="support.html#setup">Guides</a>
+      </div>
+      <div>
+        <h4>About</h4>
+        <a href="about.html">Company</a>
+        <a href="about.html#story">Our story</a>
+        <a href="#">Press</a>
+      </div>
+      <div>
+        <h4>App</h4>
+        <div class="qr"></div>
+        <a href="#" style="margin-top:.6rem">App Store</a>
+        <a href="#">Google Play</a>
+      </div>
+      <div>
+        <h4>Region</h4>
+        <a href="#">United States (USD $)</a>
+        <a href="#">Cookie settings</a>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 GlideHome. Layout prototype — not for publication.</span>
+      <span>Privacy · Terms · Accessibility</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ STICKY MOBILE BUY BAR ============ -->
+<div class="buybar" id="buybar">
+  <div>
+    <div class="bb-name">GlideHome W17S</div>
+    <div class="bb-price">$129.99</div>
+  </div>
+  <a class="btn btn-primary" href="product.html">Shop</a>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

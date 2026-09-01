@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GlideHome — storefront prototype (support)</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a class="logo" href="index.html">
+      <svg class="mark" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="9" height="9" rx="2"/><rect x="13" y="2" width="9" height="9" rx="2"/><rect x="2" y="13" width="9" height="9" rx="2"/><rect x="13" y="13" width="9" height="9" rx="2"/></svg>
+      GlideHome
+    </a>
+    <nav class="menu">
+      <a href="line.html">Window Cleaning Robot</a>
+      <a href="line.html">Robot Vacuum</a>
+      <a href="support.html">Support</a>
+      <a href="about.html">About</a>
+    </nav>
+    <div class="icons">
+      <button aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+      <a href="#" aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3-6 7-6s7 2 7 6"/></svg></a>
+      <a href="#" aria-label="Cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-2 10H8L6 6Z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg></a>
+      <button class="menu-toggle" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Support center</span>
+    <h1>Help with GlideHome robots</h1>
+    <p>Setup, care, warranty and returns. Can't find an answer — message us and we'll reply within one business day.</p>
+  </div>
+</div>
+
+<section id="explore">
+  <div class="wrap explore">
+    <div class="card" id="setup">
+      <h3>Setup &amp; first run</h3>
+      <p>Attaching the safety rope, the first run, connecting to the app, choosing a mode for your window type.</p>
+      <a class="btn btn-ghost" href="#">Open guides</a>
+    </div>
+    <div class="card">
+      <h3>Care &amp; consumables</h3>
+      <p>Washing and replacing microfiber pads, refilling concentrate, cleaning the nozzle and sensors.</p>
+      <a class="btn btn-ghost" href="#">How to care for it</a>
+    </div>
+    <div class="card" id="warranty">
+      <h3>Warranty &amp; returns</h3>
+      <p>Standard 12-month warranty, extended 2 years. Returns within 30 days, no questions asked.</p>
+      <a class="btn btn-ghost" href="#">Terms</a>
+    </div>
+    <div class="card" id="shipping">
+      <h3>Shipping &amp; payment</h3>
+      <p>Timelines, cost, tracking, available payment methods and currencies by region.</p>
+      <a class="btn btn-ghost" href="#">Details</a>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="background:var(--surface)">
+  <div class="section-head"><span class="eyebrow">FAQ</span><h2>Common questions</h2></div>
+  <div class="wrap faq">
+    <details class="qa" open><summary>Will the robot fall off the window?<span class="plus">+</span></summary><div class="a">No. The vacuum turbine holds the body to the glass, there's a backup battery in case the power is cut, and a safety rope that clips to the frame or handle.</div></details>
+    <details class="qa"><summary>What surfaces can I use it on?<span class="plus">+</span></summary><div class="a">Smooth glass, mirrors, tile, polished stone. Matte and textured surfaces won't work.</div></details>
+    <details class="qa"><summary>Does it work without Wi-Fi?<span class="plus">+</span></summary><div class="a">Yes. Basic modes start from the button on the body or the remote. Wi-Fi is only for the app and updates.</div></details>
+    <details class="qa"><summary>How long does one window take?<span class="plus">+</span></summary><div class="a">A standard apartment window is about 3–5 minutes depending on dirt and mode.</div></details>
+    <details class="qa" data-extra><summary>Does it need a permanent power cable?<span class="plus">+</span></summary><div class="a">Yes, it runs from mains power via a long cable. The built-in battery is a safety backup for power loss.</div></details>
+    <details class="qa" data-extra><summary>How loud is it?<span class="plus">+</span></summary><div class="a">Around 60 dB — comparable to normal conversation.</div></details>
+    <details class="qa" data-extra><summary>How do I start a return?<span class="plus">+</span></summary><div class="a">Message support with your order number within 30 days. We'll send a prepaid label and refund you once it arrives.</div></details>
+  </div>
+  <div class="faq-toggle"><button class="btn btn-ghost" data-faq-toggle>Show all questions</button></div>
+</section>
+
+<section id="contact">
+  <div class="section-head"><span class="eyebrow">Contact</span><h2>Message us</h2><p>Support replies within one business day.</p></div>
+  <div class="wrap" style="max-width:520px">
+    <form onsubmit="return false" style="display:grid;gap:12px">
+      <input type="text" placeholder="Name" style="padding:.9rem 1.1rem;border:1px solid var(--line);border-radius:12px">
+      <input type="email" placeholder="Email" style="padding:.9rem 1.1rem;border:1px solid var(--line);border-radius:12px">
+      <textarea placeholder="Your question" rows="4" style="padding:.9rem 1.1rem;border:1px solid var(--line);border-radius:12px"></textarea>
+      <button class="btn btn-primary" type="submit">Send</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div><h4>Products</h4><a href="line.html">Window Robot W17S</a><a href="line.html">Window Robot DYP</a><a href="product.html">Robot Vacuum</a><a href="#">Accessories</a></div>
+      <div><h4>Support</h4><a href="#contact">Contact us</a><a href="#shipping">Shipping &amp; payment</a><a href="#warranty">Returns &amp; warranty</a><a href="#setup">Guides</a></div>
+      <div><h4>About</h4><a href="about.html">Company</a><a href="about.html#story">Our story</a><a href="#">Press</a></div>
+      <div><h4>App</h4><div class="qr"></div><a href="#" style="margin-top:.6rem">App Store</a><a href="#">Google Play</a></div>
+      <div><h4>Region</h4><a href="#">United States (USD $)</a><a href="#">Cookie settings</a></div>
+    </div>
+    <div class="legal">
+      <span>© 2026 GlideHome. Layout prototype — not for publication.</span>
+      <span>Privacy · Terms · Accessibility</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
