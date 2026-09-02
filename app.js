@@ -70,23 +70,33 @@
     hero.addEventListener('mouseleave', reset);
 
     /* свайп по слайдам на тач-устройствах */
-    var tsX = 0, tsY = 0, swiping = false;
-    hero.addEventListener('touchstart', function (e) {
+    var swArea = hero.closest('.hero') || hero;
+    var tsX = 0, tsY = 0, lastX = 0, lastY = 0, swiping = false;
+    swArea.addEventListener('touchstart', function (e) {
       var t = e.changedTouches[0];
-      tsX = t.clientX; tsY = t.clientY; swiping = true;
+      tsX = lastX = t.clientX; tsY = lastY = t.clientY;
+      swiping = true;
       clearInterval(timer);
     }, { passive: true });
-    hero.addEventListener('touchend', function (e) {
+    swArea.addEventListener('touchmove', function (e) {
+      var t = e.changedTouches[0];
+      lastX = t.clientX; lastY = t.clientY;
+    }, { passive: true });
+    function endSwipe(e) {
       if (!swiping) return;
       swiping = false;
-      var t = e.changedTouches[0];
-      var dx = t.clientX - tsX, dy = t.clientY - tsY;
-      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.6) {
+      if (e && e.changedTouches && e.changedTouches[0]) {
+        lastX = e.changedTouches[0].clientX;
+        lastY = e.changedTouches[0].clientY;
+      }
+      var dx = lastX - tsX, dy = lastY - tsY;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
         go(dx < 0 ? idx + 1 : idx - 1);
       }
       reset();
-    }, { passive: true });
-    hero.addEventListener('touchcancel', function () { swiping = false; reset(); }, { passive: true });
+    }
+    swArea.addEventListener('touchend', endSwipe, { passive: true });
+    swArea.addEventListener('touchcancel', endSwipe, { passive: true });
 
     go(0);
     reset();
