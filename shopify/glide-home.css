@@ -117,27 +117,32 @@
    картинка сверху + тёмная панель снизу, свайп «за пальцем».
    ============================================================ */
 @media (max-width: 768px) {
-  .glide-hero { overflow: hidden; touch-action: pan-y; background: var(--g-ink); min-height: 0; }
+  .glide-hero { overflow: visible; background: var(--g-ink); min-height: 0; width: auto; margin: 0; }
+  /* нативный scroll-snap: свайп работает без JS, слайд всегда встаёт ровно */
   .glide-slides {
-    display: flex; align-items: flex-start; height: auto;
-    transition: transform 0.34s ease; will-change: transform;
+    display: flex; align-items: stretch; height: auto;
+    overflow-x: auto; overflow-y: hidden;
+    scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
-  .glide-slides.is-noanim { transition: none; }
+  .glide-slides::-webkit-scrollbar { display: none; }
   .glide-slide {
-    position: relative; inset: auto; display: block; opacity: 1;
-    pointer-events: auto; flex: 0 0 100%; width: 100%;
+    position: relative; inset: auto; opacity: 1; pointer-events: auto;
+    flex: 0 0 100%; width: 100%; scroll-snap-align: start; scroll-snap-stop: always;
+    display: flex; flex-direction: column;
   }
   .glide-slide::after { display: none; }        /* градиент только на десктопе */
   .glide-slide-img--d { display: none; }        /* мобильный: десктопную картинку прячем */
   .glide-slide-img--m {
     display: block; position: relative; inset: auto;
-    width: 100%; height: auto;                  /* реальный <img> 3:4 — высота из картинки, без aspect-ratio */
+    width: 100%; height: auto;                  /* реальный <img> — высота из картинки */
   }
 
   .glide-slide-inner {
-    width: auto; max-width: none; margin: 0; text-align: left;
+    width: auto; max-width: none; margin: 0; text-align: left; flex: 1 0 auto;
     background: var(--g-ink); color: #fff; padding: 22px 22px 26px;
   }
+  .glide-slide > .glide-wrap { padding: 0; max-width: none; }
   .glide-slide-inner .glide-eyebrow { color: #8fe6f0; font-size: 0.72rem; }
   .glide-slide-inner h2 { font-size: 1.5rem; line-height: 1.22; margin: 0.45rem 0 1rem; }
   .glide-slide-inner p { display: none; }

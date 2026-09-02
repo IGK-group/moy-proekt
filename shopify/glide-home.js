@@ -1,5 +1,7 @@
-/* GlideHome hero — кроссфейд на десктопе + тач-карусель «за пальцем» на мобильном.
-   Порт из store-redesign-prototype/app.js. Инициализация по [data-glide-hero]. */
+/* GlideHome hero.
+   Десктоп: кроссфейд слайдов (opacity) + автопрокрутка.
+   Мобильный (<=768px): нативный CSS scroll-snap — свайп работает без JS.
+   JS только доводит автопрокрутку и точки-индикатор. */
 (function () {
   'use strict';
 
@@ -11,127 +13,79 @@
     if (slides.length < 2) return;
 
     var SLIDE_MS = parseInt(root.getAttribute('data-autoplay-ms') || '6000', 10);
-    var idx = 0, timer;
+    var idx = 0, timer = null;
     var mq = window.matchMedia('(max-width: 768px)');
-    var isCarousel = function () { return mq.matches; };
+    var isMobile = function () { return mq.matches; };
 
+    // точки
     slides.forEach(function (_, i) {
       var b = document.createElement('button');
       b.type = 'button';
       b.setAttribute('aria-label', 'Slide ' + (i + 1));
-      b.addEventListener('click', function () { go(i); reset(); });
+      b.addEventListener('click', function () { go(i, true); restart(); });
       dotsBox.appendChild(b);
     });
     var dots = [].slice.call(dotsBox.children);
 
-    function setTrack(extraPx) {
-      if (isCarousel()) {
-        var w = track.offsetWidth || 0;
-        track.style.transform = 'translateX(' + (-idx * w + (extraPx || 0)) + 'px)';
-      } else {
-        track.style.transform = '';
-      }
-    }
-
-    function go(n) {
-      var prev = idx;
-      idx = (n + slides.length) % slides.length;
+    function paint() {
       slides.forEach(function (s, i) { s.classList.toggle('is-active', i === idx); });
       dots.forEach(function (d, i) { d.classList.toggle('is-on', i === idx); });
-      if (isCarousel()) {
-        var jump = Math.abs(idx - prev) > 1;
-        if (jump) track.classList.add('is-noanim');
-        setTrack(0);
-        if (jump) requestAnimationFrame(function () {
-          requestAnimationFrame(function () { track.classList.remove('is-noanim'); });
-        });
-      }
     }
-    function nextSlide() { go(idx + 1); }
-    function reset() { clearInterval(timer); timer = setInterval(nextSlide, SLIDE_MS); }
 
-    var nextBtn = root.querySelector('[data-glide-next]');
-    var prevBtn = root.querySelector('[data-glide-prev]');
-    if (nextBtn) nextBtn.addEventListener('click', function () { nextSlide(); reset(); });
-    if (prevBtn) prevBtn.addEventListener('click', function () { go(idx - 1); reset(); });
-
-    root.addEventListener('mouseenter', function () { clearInterval(timer); });
-    root.addEventListener('mouseleave', reset);
-    addEventListener('resize', function () {
-      track.classList.add('is-noanim'); setTrack(0);
-      requestAnimationFrame(function () { track.classList.remove('is-noanim'); });
-    });
-
-    /* тач-драг */
-    var sx = 0, sy = 0, cx = 0, cy = 0, tracking = false, dragging = false, pLock = false;
-    function dragStart(x, y) { sx = cx = x; sy = cy = y; tracking = true; dragging = false; clearInterval(timer); }
-    function dragMove(x, y) {
-      if (!tracking) return;
-      cx = x; cy = y;
-      var dx = cx - sx, dy = cy - sy;
-      if (!dragging && Math.abs(dx) > 6 && Math.abs(dx) > Math.abs(dy)) {
-        dragging = true; track.classList.add('is-noanim');
+    function go(n, smooth) {
+      idx = (n + slides.length) % slides.length;
+      if (isMobile()) {
+        track.scrollTo({ left: idx * track.clientWidth, behavior: smooth ? 'smooth' : 'auto' });
       }
-      if (dragging && isCarousel()) {
-        if ((idx === 0 && dx > 0) || (idx === slides.length - 1 && dx < 0)) dx *= 0.35;
-        setTrack(dx);
-      }
+      paint();
     }
-    function dragEnd() {
-      if (!tracking) return;
-      tracking = false;
-      var dx = cx - sx, dy = cy - sy;
-      track.classList.remove('is-noanim');
-      if (isCarousel()) {
-        if (dragging) {
-          dragging = false;
-          var w = track.offsetWidth || 1;
-          var far = Math.abs(dx) > w * 0.16 && Math.abs(dx) > Math.abs(dy);
-          if (far && dx < 0 && idx < slides.length - 1) go(idx + 1);
-          else if (far && dx > 0 && idx > 0) go(idx - 1);
-          else setTrack(0);
-        }
-      } else if (Math.abs(dx) > 38 && Math.abs(dx) > Math.abs(dy)) {
-        go(dx < 0 ? idx + 1 : idx - 1);
-      }
-      reset();
+    function next() { go(idx + 1, true); }
+    function restart() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(next, SLIDE_MS);
     }
-    if (window.PointerEvent) {
-      root.addEventListener('pointerdown', function (e) {
-        if (e.pointerType === 'mouse') return;
-        pLock = true; dragStart(e.clientX, e.clientY);
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+    // мобильный: следим за нативным скроллом, обновляем idx/точки
+    var scrollRaf = null;
+    track.addEventListener('scroll', function () {
+      if (!isMobile()) return;
+      if (scrollRaf) return;
+      scrollRaf = requestAnimationFrame(function () {
+        scrollRaf = null;
+        var w = track.clientWidth || 1;
+        var n = Math.round(track.scrollLeft / w);
+        if (n !== idx && n >= 0 && n < slides.length) { idx = n; paint(); }
       });
-      root.addEventListener('pointermove', function (e) { if (pLock) dragMove(e.clientX, e.clientY); }, { passive: true });
-      root.addEventListener('pointerup', function () { if (pLock) { pLock = false; dragEnd(); } });
-      root.addEventListener('pointercancel', function () { if (pLock) { pLock = false; dragEnd(); } });
-    }
-    root.addEventListener('touchstart', function (e) {
-      if (pLock) return;
-      var t = e.changedTouches[0]; dragStart(t.clientX, t.clientY);
     }, { passive: true });
-    root.addEventListener('touchmove', function (e) {
-      if (pLock) return;
-      var t = e.changedTouches[0]; dragMove(t.clientX, t.clientY);
-      if (dragging && e.cancelable) e.preventDefault();
-    }, { passive: false });
-    root.addEventListener('touchend', function (e) {
-      if (pLock) return;
-      if (e.changedTouches[0]) { cx = e.changedTouches[0].clientX; cy = e.changedTouches[0].clientY; }
-      dragEnd();
-    }, { passive: true });
-    root.addEventListener('touchcancel', function () { if (!pLock) dragEnd(); }, { passive: true });
 
-    go(0);
-    setTrack(0);
-    reset();
+    // пауза автопрокрутки, пока трогают/скроллят
+    var pauseT = null;
+    function bump() { stop(); if (pauseT) clearTimeout(pauseT); pauseT = setTimeout(restart, 2500); }
+    track.addEventListener('pointerdown', bump);
+    track.addEventListener('touchstart', bump, { passive: true });
+    track.addEventListener('wheel', bump, { passive: true });
+
+    var prev = root.querySelector('[data-glide-prev]');
+    var nextBtn = root.querySelector('[data-glide-next]');
+    if (prev) prev.addEventListener('click', function () { go(idx - 1, true); restart(); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { go(idx + 1, true); restart(); });
+
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', restart);
+
+    // при смене вида (десктоп<->мобайл) выставить позицию
+    var onMode = function () { go(idx, false); };
+    if (mq.addEventListener) mq.addEventListener('change', onMode);
+    addEventListener('resize', function () { if (isMobile()) track.scrollLeft = idx * track.clientWidth; });
+
+    go(0, false);
+    restart();
   }
 
-  function boot() {
-    document.querySelectorAll('[data-glide-hero]').forEach(initHero);
-  }
+  function boot() { document.querySelectorAll('[data-glide-hero]').forEach(initHero); }
   if (document.readyState !== 'loading') boot();
   else document.addEventListener('DOMContentLoaded', boot);
-  // повторная инициализация при добавлении секции в Theme Editor
   document.addEventListener('shopify:section:load', function (e) {
     e.target.querySelectorAll('[data-glide-hero]').forEach(initHero);
   });
