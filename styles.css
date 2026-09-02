@@ -300,13 +300,13 @@ footer{background:var(--surface-2);padding:60px 0 30px;font-size:.9rem}
   section{padding:60px 0}
 }
 
-/* ---------- HERO на мобильном: тач-карусель только из картинок ----------
-   Слайд = картинка 3:4, свайпается сам слайд (страница не двигается).
-   Точки-индикатор наложены на низ картинки, как на эталонных витринах.
-   Текстовой панели нет — сразу под слайдами идёт секция выбора категории. */
+/* ---------- HERO на мобильном: тач-карусель ----------
+   Слайд = картинка 3:4 + компактная тёмно-бирюзовая панель (eyebrow + заголовок
+   + одна кнопка). Свайпается сам слайд, страница не двигается.
+   Точки — на низ картинки, как на эталонных витринах. */
 @media(max-width:768px){
   body{overflow-x:clip}
-  .hero{overflow:hidden;touch-action:pan-y}
+  .hero{overflow:hidden;touch-action:pan-y;background:var(--ink)}
   .hero .slides{display:flex;align-items:flex-start;height:auto;
     transition:transform .34s ease;will-change:transform}
   .hero .slides.no-anim{transition:none}
@@ -317,12 +317,23 @@ footer{background:var(--surface-2);padding:60px 0 30px;font-size:.9rem}
   .hero .slide-bg{position:relative;inset:auto;width:100%;aspect-ratio:3/4;height:auto;
     background-image:var(--img-m,var(--img));background-size:cover;
     background-position:var(--pos-m,center)}
-  .hero .slide-bg::after{display:none}   /* никаких тёмных плашек/градиентов */
+  .hero .slide-bg::after{display:none}   /* никаких тёмных градиентов на картинке */
 
-  .hero .slide .wrap{display:none}   /* текстовая панель на мобильном не показывается */
+  .hero .slide .wrap{display:block;padding:0;max-width:none}
+  .hero .slide-inner,.hero .slide.text-right .slide-inner{
+    width:auto;max-width:none;margin:0;text-align:left;
+    background:var(--ink);color:#fff;padding:22px 22px 26px}
+  .hero .slide-inner .eyebrow{color:#8fe6f0;font-size:.72rem}
+  .hero .slide h1{font-size:1.5rem;line-height:1.22;margin:.45rem 0 1rem}
+  .hero .slide p{display:none}   /* длинный подзаголовок на мобильном не нужен */
+  .hero .slide.text-right p,.hero .slide.text-right .slide-cta{margin-left:0}
+  .hero .slide-cta{gap:.6rem}
+  .hero .slide-cta .btn{width:100%;justify-content:center}
+  .hero .slide-cta .btn-on-dark{display:none}   /* оставляем одну основную кнопку */
 
   .hero-arrow{display:none}
-  .hero-dots{position:absolute;bottom:13px;left:0;right:0;padding:0;background:none;z-index:3;
+  .hero-dots{position:absolute;left:0;right:0;padding:0;background:none;z-index:3;
+    bottom:calc(100% - (100vw * 4 / 3) + 13px);   /* низ КАРТИНКИ, не низ слайда */
     filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}
   .hero-dots button{width:34px;background:rgba(255,255,255,.55)}
   .hero-dots button.on{background:#fff}
