@@ -88,7 +88,7 @@ header.condensed .nav{height:60px}
 .slides{position:relative;height:clamp(560px,82vh,760px)}
 .slide{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;display:grid;align-items:center;pointer-events:none}
 .slide.active{opacity:1;pointer-events:auto}
-.slide-bg{position:absolute;inset:0;background-size:cover;background-position:center;background-color:#0b1418}
+.slide-bg{position:absolute;inset:0;background-image:var(--img);background-size:cover;background-position:center;background-color:#0b1418}
 /* мягкая растяжка тёмного к стороне текста — читаемость без «плашки» */
 .slide-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,18,22,.78) 0%,rgba(8,18,22,.5) 38%,rgba(8,18,22,.12) 62%,rgba(8,18,22,0) 100%)}
 .slide.text-right .slide-bg::after{background:linear-gradient(270deg,rgba(8,18,22,.8) 0%,rgba(8,18,22,.52) 38%,rgba(8,18,22,.12) 62%,rgba(8,18,22,0) 100%)}
@@ -298,4 +298,33 @@ footer{background:var(--surface-2);padding:60px 0 30px;font-size:.9rem}
   .cats{grid-template-columns:1fr}
   .spec-grid{grid-template-columns:1fr}
   section{padding:60px 0}
+}
+
+/* ---------- HERO на мобильном: вертикальный стек ----------
+   Картинка сверху (своя вертикальная версия --img-m), под ней тёмная
+   панель с текстом. Наложения текста на изображение нет. */
+@media(max-width:768px){
+  .hero .slides{height:auto}
+  .hero .slide{position:relative;inset:auto;display:none;opacity:1;pointer-events:auto}
+  .hero .slide.active{display:block}
+
+  .hero .slide-bg{position:relative;inset:auto;height:auto;aspect-ratio:3/4;max-height:62vh;
+    background-image:var(--img-m,var(--img));background-position:var(--pos-m,center)}
+  .hero .slide-bg::after{display:none}
+
+  .hero .slide .wrap{padding:0;max-width:none}
+  .hero .slide-inner,.hero .slide.text-right .slide-inner{
+    width:auto;max-width:none;margin:0;text-align:left;
+    background:var(--ink);color:#fff;padding:26px 22px 30px}
+  .hero .slide-inner .eyebrow{color:#8fe6f0;font-size:.72rem}
+  .hero .slide h1{font-size:1.55rem;line-height:1.2;margin:.5rem 0 .6rem}
+  .hero .slide p{font-size:1rem;color:#cfe0e2;max-width:none;margin-bottom:1.3rem}
+  .hero .slide.text-right p,.hero .slide.text-right .slide-cta{margin-left:0}
+  .hero .slide-cta{flex-direction:column;align-items:stretch;gap:.6rem}
+  .hero .slide-cta .btn{width:100%;justify-content:center}
+  .hero .slide-cta .btn-on-dark{border:1px solid rgba(255,255,255,.45)}
+
+  .hero-arrow{display:none}
+  .hero-dots{position:static;padding:14px 0 18px;background:var(--ink)}
+  .hero-dots button{width:36px}
 }
