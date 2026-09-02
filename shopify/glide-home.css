@@ -58,16 +58,18 @@
   display: grid; align-items: center; pointer-events: none;
 }
 .glide-slide.is-active { opacity: 1; pointer-events: auto; }
-/* реальный <img> — виден даже если CSS не догрузился */
+/* картинка — всегда реальный <img>, без зависимости от aspect-ratio / var() */
 .glide-slide-img {
   position: absolute; inset: 0; width: 100%; height: 100%;
   object-fit: cover; object-position: center; display: block; z-index: 0;
 }
-.glide-slide-bg {
-  position: absolute; inset: 0; background-image: var(--img);
-  background-size: cover; background-position: center; background-color: #0b1418; z-index: 0;
-}
+.glide-slide-img--m { display: none; }   /* десктоп: мобильную картинку не показываем */
 .glide-slide > .glide-wrap { position: relative; z-index: 1; width: 100%; }
+/* тёмный градиент для читаемости текста справа */
+.glide-slide::after {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: linear-gradient(270deg, rgba(8, 18, 22, 0.8) 0%, rgba(8, 18, 22, 0.5) 38%, rgba(8, 18, 22, 0.12) 62%, rgba(8, 18, 22, 0) 100%);
+}
 /* мягкая растяжка тёмного к стороне текста (текст справа) */
 .glide-slide-bg::after {
   content: ""; position: absolute; inset: 0;
@@ -115,7 +117,7 @@
    картинка сверху + тёмная панель снизу, свайп «за пальцем».
    ============================================================ */
 @media (max-width: 768px) {
-  .glide-hero { overflow: hidden; touch-action: pan-y; background: var(--g-ink); }
+  .glide-hero { overflow: hidden; touch-action: pan-y; background: var(--g-ink); min-height: 0; }
   .glide-slides {
     display: flex; align-items: flex-start; height: auto;
     transition: transform 0.34s ease; will-change: transform;
@@ -125,15 +127,12 @@
     position: relative; inset: auto; display: block; opacity: 1;
     pointer-events: auto; flex: 0 0 100%; width: 100%;
   }
-  /* бокс = пропорции картинки (3:4) — cover ничего не режет */
-  .glide-slide-bg {
-    position: relative; inset: auto; width: 100%; aspect-ratio: 3 / 4; height: auto;
-    background-image: var(--img-m, var(--img));
-    background-position: var(--pos-m, center);
+  .glide-slide::after { display: none; }        /* градиент только на десктопе */
+  .glide-slide-img--d { display: none; }        /* мобильный: десктопную картинку прячем */
+  .glide-slide-img--m {
+    display: block; position: relative; inset: auto;
+    width: 100%; height: auto;                  /* реальный <img> 3:4 — высота из картинки, без aspect-ratio */
   }
-  .glide-slide-bg::after { display: none; } /* никаких тёмных градиентов на картинке */
-  /* мобильный: показываем вертикальную картинку через background у .glide-slide-bg, <img> прячем */
-  .glide-slide-img { display: none; }
 
   .glide-slide-inner {
     width: auto; max-width: none; margin: 0; text-align: left;
@@ -148,11 +147,10 @@
 
   .glide-arrow { display: none; }
   .glide-dots {
-    position: absolute; left: 0; right: 0; z-index: 3; background: none;
-    bottom: calc(100% - (100vw * 4 / 3) + 13px);
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.45));
+    position: static; padding: 12px 0 16px; background: var(--g-ink);
+    filter: none;
   }
-  .glide-dots button { width: 34px; background: rgba(255, 255, 255, 0.55); }
+  .glide-dots button { width: 34px; background: rgba(255, 255, 255, 0.4); }
   .glide-dots button.is-on { background: #fff; }
 }
 
@@ -171,7 +169,8 @@
 }
 .glide-cat:hover { transform: translateY(-6px); box-shadow: var(--g-shadow-lg); }
 .glide-cat-art {
-  aspect-ratio: 4 / 3; background-size: cover; background-position: center;
+  aspect-ratio: 4 / 3; min-height: 190px;   /* фолбэк если aspect-ratio не поддержан */
+  background-size: cover; background-position: center;
   background-color: var(--g-surface-2);
 }
 .glide-cat-body { padding: 20px 22px 22px; display: flex; flex-direction: column; flex: 1; }

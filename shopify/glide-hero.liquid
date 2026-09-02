@@ -33,9 +33,11 @@
         "
       >
         {%- if img_d != blank -%}
-          <img class="glide-slide-img" src="{{ img_d }}" alt="{{ s.headline | escape }}" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" fetchpriority="{% if forloop.first %}high{% else %}auto{% endif %}">
+          <img class="glide-slide-img glide-slide-img--d" src="{{ img_d }}" alt="{{ s.headline | escape }}" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" fetchpriority="{% if forloop.first %}high{% else %}auto{% endif %}">
         {%- endif -%}
-        <div class="glide-slide-bg"></div>
+        {%- if img_m != blank -%}
+          <img class="glide-slide-img glide-slide-img--m" src="{{ img_m }}" alt="" loading="lazy">
+        {%- endif -%}
         <div class="glide-wrap">
           <div class="glide-slide-inner">
             {%- if s.eyebrow != blank -%}<span class="glide-eyebrow">{{ s.eyebrow }}</span>{%- endif -%}
