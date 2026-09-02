@@ -69,34 +69,56 @@
     hero.addEventListener('mouseenter', function () { clearInterval(timer); });
     hero.addEventListener('mouseleave', reset);
 
-    /* свайп по слайдам на тач-устройствах */
+    /* свайп по слайдам: pointer events (основное) + touch (запас) */
     var swArea = hero.closest('.hero') || hero;
-    var tsX = 0, tsY = 0, lastX = 0, lastY = 0, swiping = false;
-    swArea.addEventListener('touchstart', function (e) {
-      var t = e.changedTouches[0];
-      tsX = lastX = t.clientX; tsY = lastY = t.clientY;
-      swiping = true;
+    var startX = 0, startY = 0, curX = 0, curY = 0, tracking = false, swLock = false;
+
+    function swStart(x, y) {
+      startX = curX = x; startY = curY = y;
+      tracking = true;
       clearInterval(timer);
-    }, { passive: true });
-    swArea.addEventListener('touchmove', function (e) {
-      var t = e.changedTouches[0];
-      lastX = t.clientX; lastY = t.clientY;
-    }, { passive: true });
-    function endSwipe(e) {
-      if (!swiping) return;
-      swiping = false;
-      if (e && e.changedTouches && e.changedTouches[0]) {
-        lastX = e.changedTouches[0].clientX;
-        lastY = e.changedTouches[0].clientY;
-      }
-      var dx = lastX - tsX, dy = lastY - tsY;
-      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+    }
+    function swMove(x, y) {
+      if (!tracking) return;
+      curX = x; curY = y;
+    }
+    function swEnd() {
+      if (!tracking) return;
+      tracking = false;
+      var dx = curX - startX, dy = curY - startY;
+      if (Math.abs(dx) > 38 && Math.abs(dx) > Math.abs(dy)) {
         go(dx < 0 ? idx + 1 : idx - 1);
       }
       reset();
     }
-    swArea.addEventListener('touchend', endSwipe, { passive: true });
-    swArea.addEventListener('touchcancel', endSwipe, { passive: true });
+
+    // Pointer Events
+    if (window.PointerEvent) {
+      swArea.addEventListener('pointerdown', function (e) {
+        if (e.pointerType === 'mouse') return;
+        swLock = true;
+        swStart(e.clientX, e.clientY);
+      });
+      swArea.addEventListener('pointermove', function (e) { swMove(e.clientX, e.clientY); }, { passive: true });
+      swArea.addEventListener('pointerup', function () { if (swLock) { swLock = false; swEnd(); } });
+      swArea.addEventListener('pointercancel', function () { if (swLock) { swLock = false; swEnd(); } });
+      swArea.addEventListener('pointerleave', function () { if (swLock) { swLock = false; swEnd(); } });
+    }
+    // Touch Events (fallback / WebView без Pointer Events)
+    swArea.addEventListener('touchstart', function (e) {
+      if (swLock) return;
+      var t = e.changedTouches[0]; swStart(t.clientX, t.clientY);
+    }, { passive: true });
+    swArea.addEventListener('touchmove', function (e) {
+      if (swLock) return;
+      var t = e.changedTouches[0]; swMove(t.clientX, t.clientY);
+    }, { passive: true });
+    swArea.addEventListener('touchend', function (e) {
+      if (swLock) return;
+      if (e.changedTouches[0]) { var t = e.changedTouches[0]; curX = t.clientX; curY = t.clientY; }
+      swEnd();
+    }, { passive: true });
+    swArea.addEventListener('touchcancel', function () { if (!swLock) swEnd(); }, { passive: true });
 
     go(0);
     reset();
