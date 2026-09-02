@@ -1,0 +1,178 @@
+/* ============================================================
+   GlideHome — кастомные секции для темы Horizon
+   Порт из store-redesign-prototype/styles.css. Все классы с префиксом
+   .glide-* чтобы не конфликтовать со штатными классами темы.
+   Источник правды по решениям и граблям: store-redesign-prototype/SPEC.md
+   ============================================================ */
+
+.glide {
+  --g-bg: #f6f9fa;
+  --g-surface: #ffffff;
+  --g-surface-2: #eef3f4;
+  --g-ink: #0f2831;
+  --g-ink-soft: #4c626a;
+  --g-accent: #12b1a6;
+  --g-accent-deep: #0b8078;
+  --g-line: #e0e8ea;
+  --g-radius-lg: 22px;
+  --g-shadow-md: 0 10px 30px rgba(15, 40, 49, 0.12);
+  --g-shadow-lg: 0 24px 60px rgba(15, 40, 49, 0.18);
+  --g-maxw: 1180px;
+  --g-slide-ms: 6000ms;
+}
+.glide * { box-sizing: border-box; }
+.glide img { max-width: 100%; display: block; }
+
+.glide-wrap { max-width: var(--g-maxw); margin: 0 auto; padding: 0 24px; }
+.glide-eyebrow {
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--g-accent-deep);
+}
+
+/* ---------- КНОПКИ ---------- */
+.glide-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.85rem 1.5rem; border-radius: 999px; font-weight: 600;
+  font-size: 0.95rem; border: 1.5px solid transparent; cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
+  white-space: nowrap; text-decoration: none;
+}
+.glide-btn--primary { background: var(--g-accent); color: #fff; }
+.glide-btn--primary:hover { background: var(--g-accent-deep); transform: translateY(-2px); box-shadow: var(--g-shadow-md); }
+.glide-btn--on-dark { border: none; color: #fff; padding-left: 0.4rem; padding-right: 0.4rem; }
+.glide-btn--on-dark:hover { color: #8fe6f0; text-decoration: underline; }
+.glide-btn--lg { padding: 1rem 1.9rem; font-size: 1rem; }
+
+/* ============================================================
+   HERO — десктоп (кроссфейд слайдов)
+   ============================================================ */
+.glide-hero {
+  position: relative; overflow: hidden; background: #0b1418; padding: 0;
+  /* full-bleed на всю ширину вьюпорта независимо от обёртки темы (page_width) */
+  width: 100vw; max-width: 100vw; margin-left: calc(50% - 50vw);
+}
+.glide-slides { position: relative; height: clamp(560px, 82vh, 760px); }
+.glide-slide {
+  position: absolute; inset: 0; opacity: 0; transition: opacity 0.8s ease;
+  display: grid; align-items: center; pointer-events: none;
+}
+.glide-slide.is-active { opacity: 1; pointer-events: auto; }
+.glide-slide-bg {
+  position: absolute; inset: 0; background-image: var(--img);
+  background-size: cover; background-position: center; background-color: #0b1418;
+}
+/* мягкая растяжка тёмного к стороне текста (текст справа) */
+.glide-slide-bg::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(270deg, rgba(8, 18, 22, 0.8) 0%, rgba(8, 18, 22, 0.52) 38%, rgba(8, 18, 22, 0.12) 62%, rgba(8, 18, 22, 0) 100%);
+}
+.glide-slide-inner {
+  position: relative; color: #fff; width: min(46%, 560px);
+  margin-left: auto; text-align: left;
+}
+.glide-slide-inner .glide-eyebrow { color: #8fe6f0; letter-spacing: 0.16em; }
+.glide-slide-inner h2 {
+  margin: 1.1rem 0 1.3rem; font-size: clamp(2.1rem, 3.6vw, 3.2rem);
+  line-height: 1.12; color: #fff; font-weight: 700; letter-spacing: -0.02em;
+}
+.glide-slide-inner p {
+  font-size: 1.12rem; color: #dcebee; margin-bottom: 2.2rem;
+  max-width: 38ch; line-height: 1.6;
+}
+.glide-slide-cta { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+
+/* индикатор-полосы */
+.glide-dots {
+  position: absolute; bottom: 30px; left: 0; right: 0; display: flex;
+  gap: 10px; justify-content: center; z-index: 3;
+}
+.glide-dots button {
+  width: 140px; height: 3px; border-radius: 2px; border: none;
+  background: rgba(255, 255, 255, 0.28); cursor: pointer; padding: 0;
+}
+.glide-dots button.is-on { background: #fff; }
+
+.glide-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 3;
+  width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(0, 0, 0, 0.15); color: #fff; cursor: pointer; font-size: 1.2rem;
+  transition: background 0.15s; backdrop-filter: blur(2px); display: grid; place-items: center;
+}
+.glide-arrow:hover { background: rgba(0, 0, 0, 0.4); }
+.glide-arrow--prev { left: 22px; }
+.glide-arrow--next { right: 22px; }
+
+/* ============================================================
+   HERO — мобильный (<=768px): тач-карусель
+   SPEC разделы 3 и 6. Каждый слайд: своя вертикальная картинка --img-m,
+   картинка сверху + тёмная панель снизу, свайп «за пальцем».
+   ============================================================ */
+@media (max-width: 768px) {
+  .glide-hero { overflow: hidden; touch-action: pan-y; background: var(--g-ink); }
+  .glide-slides {
+    display: flex; align-items: flex-start; height: auto;
+    transition: transform 0.34s ease; will-change: transform;
+  }
+  .glide-slides.is-noanim { transition: none; }
+  .glide-slide {
+    position: relative; inset: auto; display: block; opacity: 1;
+    pointer-events: auto; flex: 0 0 100%; width: 100%;
+  }
+  /* бокс = пропорции картинки (3:4) — cover ничего не режет */
+  .glide-slide-bg {
+    position: relative; inset: auto; width: 100%; aspect-ratio: 3 / 4; height: auto;
+    background-image: var(--img-m, var(--img));
+    background-position: var(--pos-m, center);
+  }
+  .glide-slide-bg::after { display: none; } /* никаких тёмных градиентов на картинке */
+
+  .glide-slide-inner {
+    width: auto; max-width: none; margin: 0; text-align: left;
+    background: var(--g-ink); color: #fff; padding: 22px 22px 26px;
+  }
+  .glide-slide-inner .glide-eyebrow { color: #8fe6f0; font-size: 0.72rem; }
+  .glide-slide-inner h2 { font-size: 1.5rem; line-height: 1.22; margin: 0.45rem 0 1rem; }
+  .glide-slide-inner p { display: none; }
+  .glide-slide-cta { gap: 0.6rem; }
+  .glide-slide-cta .glide-btn { width: 100%; justify-content: center; }
+  .glide-slide-cta .glide-btn--on-dark { display: none; } /* одна основная кнопка */
+
+  .glide-arrow { display: none; }
+  .glide-dots {
+    position: absolute; left: 0; right: 0; z-index: 3; background: none;
+    bottom: calc(100% - (100vw * 4 / 3) + 13px);
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.45));
+  }
+  .glide-dots button { width: 34px; background: rgba(255, 255, 255, 0.55); }
+  .glide-dots button.is-on { background: #fff; }
+}
+
+/* ============================================================
+   КАТЕГОРИИ — плитки. Фото 4:3 сверху + текст в панели снизу.
+   Текст никогда не наложен на изображение.
+   ============================================================ */
+.glide-cats-section { padding: 84px 0; background: var(--g-bg); }
+.glide-cats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.glide-cat {
+  border-radius: var(--g-radius-lg); overflow: hidden; background: var(--g-surface);
+  border: 1px solid var(--g-line); display: flex; flex-direction: column;
+  transition: transform 0.18s, box-shadow 0.18s; text-decoration: none; color: inherit;
+}
+.glide-cat:hover { transform: translateY(-6px); box-shadow: var(--g-shadow-lg); }
+.glide-cat-art {
+  aspect-ratio: 4 / 3; background-size: cover; background-position: center;
+  background-color: var(--g-surface-2);
+}
+.glide-cat-body { padding: 20px 22px 22px; display: flex; flex-direction: column; flex: 1; }
+.glide-cat-body h3 {
+  font-size: 1.2rem; margin: 0 0 0.25rem; font-weight: 700;
+  letter-spacing: -0.02em; color: var(--g-ink);
+}
+.glide-cat-body > span { display: block; color: var(--g-ink-soft); font-size: 0.9rem; line-height: 1.45; }
+.glide-cat-go { margin-top: 14px; font-weight: 600; color: var(--g-accent-deep); font-size: 0.88rem; }
+
+@media (max-width: 990px) { .glide-cats { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 768px) {
+  .glide-cats-section { padding-top: 16px; }
+  .glide-cats { grid-template-columns: 1fr; gap: 16px; }
+}

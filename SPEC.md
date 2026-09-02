@@ -146,3 +146,40 @@
 - Порядок работ: сначала главная (`index`) целиком и вылизать, потом `line` / `product` /
   `support` / `about`.
 - Правило репо №3: одноразовый/неиспользуемый код удалять в том же коммите.
+
+### Что уже в теме `GlideHome REDESIGN` (2026-09-02, unpublished)
+
+Копии всех файлов — `store-redesign-prototype/shopify/`. Инструменты (gitignored):
+`shopify-tools/theme_asset.py` (get/put/list/del ассетов темы), `shopify-tools/file_upload.py`
+(картинки в Shopify Files через staged upload).
+
+- `assets/glide-home.css` — порт `styles.css`, классы `.glide-*`, hero (десктоп кроссфейд +
+  мобильная тач-карусель) + категории. `.glide-hero` full-bleed через `margin-left: calc(50% - 50vw)`.
+- `assets/glide-home.js` — порт `app.js` hero-логики, self-init по `[data-glide-hero]`,
+  переинициализация на `shopify:section:load`.
+- `sections/glide-hero.liquid` — секция «GlideHome Hero», блоки `slide` (до 8), поля:
+  image / image_mobile / pos_mobile / eyebrow / headline / text / cta_label / cta_url /
+  cta2_label / cta2_url. Настройка секции: `autoplay_ms`.
+- `sections/glide-categories.liquid` — секция «GlideHome Categories», блоки `tile` (до 6):
+  image / title / subtitle / link / link_label.
+- `templates/index.json` — переписан: `order = [glide_hero, glide_categories, in1..in4]`.
+  glide_hero: 5 слайдов с текстами из прототипа, картинки — из Files
+  (`shopify://shop_images/{vacstation,vac,windowpro,stickvac,antimite}{,-m}.jpg`).
+  glide_categories: 3 плитки (`window.jpg` / `vacuum.jpg` / `handheld.jpg`). CTA-ссылки —
+  временно `/collections/all`, Гена поправит в Theme Editor.
+  Прежний `slideshow_main` + `product_grid` из index.json убраны (тема неопубликована, обратимо).
+- Картинки: 13 шт залиты и в `assets/glide-*.jpg`, и в Shopify Files (CDN). Секции берут из Files.
+- НЕ тронуто: `layout/theme.liquid` (там висит `glidehome-slides.css` от старой попытки на
+  штатном слайдере — безвредно, целится по `[class*="slide"]`, наши классы `.glide-*` не задевает;
+  подчистить позже).
+
+### Не проверено (нет браузера в окружении + домен `glidehomerobots.com` не резолвится с сервера)
+
+Визуально главную не смотрел. Проверить на превью (`?preview_theme_id=151785668785`, залогиненным
+через AdsPower «store 1» либо кнопкой Preview в админке):
+- hero full-bleed (не зажат `page_width: narrow`);
+- десктоп: кроссфейд, полосы-индикатор, стрелки;
+- мобильный: своя вертикальная картинка на слайд, тёмная панель под ней, свайп «за пальцем»,
+  страница при свайпе не едет, точки на низу картинки без тёмного скрима;
+- плитки категорий: фото 4:3 + текст под ним, без наложения.
+Грабли для перепроверки — раздел 6 этого файла.

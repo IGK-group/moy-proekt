@@ -1,0 +1,101 @@
+{% comment %}
+  GlideHome Hero — кастомная секция (порт из store-redesign-prototype).
+  Десктоп: кроссфейд слайдов + полосы-индикатор.
+  Мобильный (<=768px): тач-карусель «за пальцем», у каждого слайда своя
+  вертикальная картинка + тёмная панель с текстом. См. SPEC.md разделы 2, 3, 6.
+{% endcomment %}
+
+{{ 'glide-home.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'glide-home.js' | asset_url }}" defer></script>
+
+<section
+  class="glide glide-hero"
+  data-glide-hero
+  data-autoplay-ms="{{ section.settings.autoplay_ms }}"
+  {{ section.shopify_attributes }}
+>
+  <div class="glide-slides" data-glide-track>
+    {%- for block in section.blocks -%}
+      {%- assign s = block.settings -%}
+      {%- assign img_d = '' -%}
+      {%- assign img_m = '' -%}
+      {%- if s.image != blank -%}{%- assign img_d = s.image | image_url: width: 2000 -%}{%- endif -%}
+      {%- if s.image_mobile != blank -%}{%- assign img_m = s.image_mobile | image_url: width: 1200 -%}{%- endif -%}
+      <div
+        class="glide-slide{% if forloop.first %} is-active{% endif %}"
+        data-glide-slide
+        {{ block.shopify_attributes }}
+        style="
+          {%- if img_d != blank %}--img:url('{{ img_d }}');{% endif -%}
+          {%- if img_m != blank %}--img-m:url('{{ img_m }}');{% endif -%}
+          {%- if s.pos_mobile != blank %}--pos-m:{{ s.pos_mobile }};{% endif -%}
+        "
+      >
+        <div class="glide-slide-bg"></div>
+        <div class="glide-wrap">
+          <div class="glide-slide-inner">
+            {%- if s.eyebrow != blank -%}<span class="glide-eyebrow">{{ s.eyebrow }}</span>{%- endif -%}
+            {%- if s.headline != blank -%}<h2>{{ s.headline }}</h2>{%- endif -%}
+            {%- if s.text != blank -%}<p>{{ s.text }}</p>{%- endif -%}
+            <div class="glide-slide-cta">
+              {%- if s.cta_label != blank -%}
+                <a class="glide-btn glide-btn--primary glide-btn--lg" href="{{ s.cta_url | default: '#' }}">{{ s.cta_label }}</a>
+              {%- endif -%}
+              {%- if s.cta2_label != blank -%}
+                <a class="glide-btn glide-btn--on-dark" href="{{ s.cta2_url | default: '#' }}">{{ s.cta2_label }}</a>
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+
+  <button class="glide-arrow glide-arrow--prev" type="button" data-glide-prev aria-label="Previous slide">&#8249;</button>
+  <button class="glide-arrow glide-arrow--next" type="button" data-glide-next aria-label="Next slide">&#8250;</button>
+  <div class="glide-dots" data-glide-dots></div>
+</section>
+
+{% schema %}
+{
+  "name": "GlideHome Hero",
+  "tag": "section",
+  "class": "glide-hero-section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "autoplay_ms",
+      "label": "Autoplay interval (ms)",
+      "min": 3000,
+      "max": 9000,
+      "step": 500,
+      "default": 6000
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image — desktop (landscape)" },
+        { "type": "image_picker", "id": "image_mobile", "label": "Image — mobile (portrait 3:4)" },
+        { "type": "text", "id": "pos_mobile", "label": "Mobile crop focus", "info": "e.g. center or 30% center", "default": "center" },
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+        { "type": "text", "id": "headline", "label": "Headline" },
+        { "type": "text", "id": "text", "label": "Subtext (desktop only)" },
+        { "type": "text", "id": "cta_label", "label": "Button label" },
+        { "type": "url", "id": "cta_url", "label": "Button link" },
+        { "type": "text", "id": "cta2_label", "label": "Secondary link label (desktop only)" },
+        { "type": "url", "id": "cta2_url", "label": "Secondary link" }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "GlideHome Hero",
+      "blocks": [{ "type": "slide" }, { "type": "slide" }, { "type": "slide" }]
+    }
+  ]
+}
+{% endschema %}

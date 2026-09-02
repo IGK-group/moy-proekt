@@ -1,0 +1,55 @@
+{% comment %}
+  GlideHome Categories — плитки товарных линий (порт из store-redesign-prototype).
+  Фото 4:3 сверху + текст в панели снизу. Текст никогда не наложен на изображение.
+{% endcomment %}
+
+{{ 'glide-home.css' | asset_url | stylesheet_tag }}
+
+<section class="glide glide-cats-section" {{ section.shopify_attributes }}>
+  <div class="glide-wrap">
+    <div class="glide-cats">
+      {%- for block in section.blocks -%}
+        {%- assign s = block.settings -%}
+        {%- assign art = '' -%}
+        {%- if s.image != blank -%}{%- assign art = s.image | image_url: width: 1400 -%}{%- endif -%}
+        <a class="glide-cat" href="{{ s.link | default: '#' }}" {{ block.shopify_attributes }}>
+          <div class="glide-cat-art"{% if art != blank %} style="background-image:url('{{ art }}')"{% endif %}></div>
+          <div class="glide-cat-body">
+            {%- if s.title != blank -%}<h3>{{ s.title }}</h3>{%- endif -%}
+            {%- if s.subtitle != blank -%}<span>{{ s.subtitle }}</span>{%- endif -%}
+            {%- if s.link_label != blank -%}<span class="glide-cat-go">{{ s.link_label }}</span>{%- endif -%}
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "GlideHome Categories",
+  "tag": "section",
+  "class": "glide-categories-section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Category tile",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image (4:3, clean studio shot)" },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "text", "id": "subtitle", "label": "Subtitle" },
+        { "type": "url", "id": "link", "label": "Link" },
+        { "type": "text", "id": "link_label", "label": "Link label", "default": "Shop →" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "GlideHome Categories",
+      "blocks": [{ "type": "tile" }, { "type": "tile" }, { "type": "tile" }]
+    }
+  ]
+}
+{% endschema %}
