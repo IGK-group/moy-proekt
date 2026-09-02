@@ -300,13 +300,17 @@ footer{background:var(--surface-2);padding:60px 0 30px;font-size:.9rem}
   section{padding:60px 0}
 }
 
-/* ---------- HERO на мобильном: вертикальный стек ----------
-   Картинка сверху (своя вертикальная версия --img-m), под ней тёмная
-   панель с текстом. Наложения текста на изображение нет. */
+/* ---------- HERO на мобильном: тач-карусель ----------
+   Слайды в ряд (flex), трек двигается за пальцем, на отпускании — плавный
+   доводчик к ближайшему слайду. Каждый слайд: картинка 3:4 сверху,
+   тёмная панель с текстом снизу. Наложения текста на изображение нет. */
 @media(max-width:768px){
-  .hero .slides{height:auto}
-  .hero .slide{position:relative;inset:auto;display:none;opacity:1;pointer-events:auto}
-  .hero .slide.active{display:block}
+  .hero{background:var(--ink)}
+  .hero .slides{display:flex;align-items:flex-start;height:auto;
+    transition:transform .34s ease;will-change:transform}
+  .hero .slides.no-anim{transition:none}
+  .hero .slide{position:relative;inset:auto;display:block!important;
+    flex:0 0 100%;width:100%;opacity:1;pointer-events:auto}
 
   /* коробка = пропорции самой картинки (3:4), поэтому cover ничего не режет */
   .hero .slide-bg{position:relative;inset:auto;width:100%;aspect-ratio:3/4;height:auto;
@@ -317,7 +321,7 @@ footer{background:var(--surface-2);padding:60px 0 30px;font-size:.9rem}
   .hero .slide .wrap{padding:0;max-width:none}
   .hero .slide-inner,.hero .slide.text-right .slide-inner{
     width:auto;max-width:none;margin:0;text-align:left;
-    background:var(--ink);color:#fff;padding:26px 22px 30px}
+    background:var(--ink);color:#fff;padding:26px 22px 32px}
   .hero .slide-inner .eyebrow{color:#8fe6f0;font-size:.72rem}
   .hero .slide h1{font-size:1.55rem;line-height:1.2;margin:.5rem 0 .6rem}
   .hero .slide p{font-size:1rem;color:#cfe0e2;max-width:none;margin-bottom:1.3rem}

@@ -50,13 +50,35 @@
     });
     var dots = [].slice.call(dotsBox.children);
 
+    var mq = window.matchMedia('(max-width:768px)');
+    var isCarousel = function () { return mq.matches; };
+
+    /* сдвиг трека на мобильном (px по реальной ширине слайда) */
+    function setTrack(extraPx) {
+      if (isCarousel()) {
+        var w = hero.offsetWidth || 0;
+        hero.style.transform = 'translateX(' + (-idx * w + (extraPx || 0)) + 'px)';
+      } else {
+        hero.style.transform = '';
+      }
+    }
+
     function go(n) {
+      var prev = idx;
       idx = (n + slides.length) % slides.length;
       slides.forEach(function (s, i) { s.classList.toggle('active', i === idx); });
       dots.forEach(function (d, i) {
         d.classList.remove('on');
         if (i === idx) { void d.offsetWidth; d.classList.add('on'); } // рестарт анимации заливки
       });
+      if (isCarousel()) {
+        var jump = Math.abs(idx - prev) > 1; // перескок через край — без анимации
+        if (jump) hero.classList.add('no-anim');
+        setTrack(0);
+        if (jump) requestAnimationFrame(function () {
+          requestAnimationFrame(function () { hero.classList.remove('no-anim'); });
+        });
+      }
     }
     function nextSlide() { go(idx + 1); }
     function reset() { clearInterval(timer); timer = setInterval(nextSlide, SLIDE_MS); }
@@ -68,59 +90,77 @@
 
     hero.addEventListener('mouseenter', function () { clearInterval(timer); });
     hero.addEventListener('mouseleave', reset);
+    addEventListener('resize', function () { hero.classList.add('no-anim'); setTrack(0);
+      requestAnimationFrame(function () { hero.classList.remove('no-anim'); }); });
 
-    /* свайп по слайдам: pointer events (основное) + touch (запас) */
+    /* тач-драг: трек цепляется за палец, на отпускании — доводчик */
     var swArea = hero.closest('.hero') || hero;
-    var startX = 0, startY = 0, curX = 0, curY = 0, tracking = false, swLock = false;
+    var sx = 0, sy = 0, cx = 0, cy = 0, tracking = false, dragging = false, pLock = false;
 
-    function swStart(x, y) {
-      startX = curX = x; startY = curY = y;
-      tracking = true;
+    function dragStart(x, y) {
+      sx = cx = x; sy = cy = y; tracking = true; dragging = false;
       clearInterval(timer);
     }
-    function swMove(x, y) {
+    function dragMove(x, y) {
       if (!tracking) return;
-      curX = x; curY = y;
+      cx = x; cy = y;
+      var dx = cx - sx, dy = cy - sy;
+      if (!dragging && Math.abs(dx) > 6 && Math.abs(dx) > Math.abs(dy)) {
+        dragging = true;
+        hero.classList.add('no-anim');
+      }
+      if (dragging && isCarousel()) {
+        // сопротивление на краях
+        if ((idx === 0 && dx > 0) || (idx === slides.length - 1 && dx < 0)) dx *= 0.35;
+        setTrack(dx);
+      }
     }
-    function swEnd() {
+    function dragEnd() {
       if (!tracking) return;
       tracking = false;
-      var dx = curX - startX, dy = curY - startY;
-      if (Math.abs(dx) > 38 && Math.abs(dx) > Math.abs(dy)) {
+      var dx = cx - sx, dy = cy - sy;
+      hero.classList.remove('no-anim');
+      if (isCarousel()) {
+        if (dragging) {
+          dragging = false;
+          var w = hero.offsetWidth || 1;
+          var far = Math.abs(dx) > w * 0.16 && Math.abs(dx) > Math.abs(dy);
+          if (far && dx < 0 && idx < slides.length - 1) go(idx + 1);
+          else if (far && dx > 0 && idx > 0) go(idx - 1);
+          else setTrack(0); // доводчик назад
+        }
+      } else if (Math.abs(dx) > 38 && Math.abs(dx) > Math.abs(dy)) {
         go(dx < 0 ? idx + 1 : idx - 1);
       }
       reset();
     }
 
-    // Pointer Events
     if (window.PointerEvent) {
       swArea.addEventListener('pointerdown', function (e) {
         if (e.pointerType === 'mouse') return;
-        swLock = true;
-        swStart(e.clientX, e.clientY);
+        pLock = true; dragStart(e.clientX, e.clientY);
       });
-      swArea.addEventListener('pointermove', function (e) { swMove(e.clientX, e.clientY); }, { passive: true });
-      swArea.addEventListener('pointerup', function () { if (swLock) { swLock = false; swEnd(); } });
-      swArea.addEventListener('pointercancel', function () { if (swLock) { swLock = false; swEnd(); } });
-      swArea.addEventListener('pointerleave', function () { if (swLock) { swLock = false; swEnd(); } });
+      swArea.addEventListener('pointermove', function (e) { if (pLock) dragMove(e.clientX, e.clientY); }, { passive: true });
+      swArea.addEventListener('pointerup', function () { if (pLock) { pLock = false; dragEnd(); } });
+      swArea.addEventListener('pointercancel', function () { if (pLock) { pLock = false; dragEnd(); } });
     }
-    // Touch Events (fallback / WebView без Pointer Events)
     swArea.addEventListener('touchstart', function (e) {
-      if (swLock) return;
-      var t = e.changedTouches[0]; swStart(t.clientX, t.clientY);
+      if (pLock) return;
+      var t = e.changedTouches[0]; dragStart(t.clientX, t.clientY);
     }, { passive: true });
     swArea.addEventListener('touchmove', function (e) {
-      if (swLock) return;
-      var t = e.changedTouches[0]; swMove(t.clientX, t.clientY);
+      if (pLock) return;
+      var t = e.changedTouches[0]; dragMove(t.clientX, t.clientY);
     }, { passive: true });
     swArea.addEventListener('touchend', function (e) {
-      if (swLock) return;
-      if (e.changedTouches[0]) { var t = e.changedTouches[0]; curX = t.clientX; curY = t.clientY; }
-      swEnd();
+      if (pLock) return;
+      if (e.changedTouches[0]) { cx = e.changedTouches[0].clientX; cy = e.changedTouches[0].clientY; }
+      dragEnd();
     }, { passive: true });
-    swArea.addEventListener('touchcancel', function () { if (!swLock) swEnd(); }, { passive: true });
+    swArea.addEventListener('touchcancel', function () { if (!pLock) dragEnd(); }, { passive: true });
 
     go(0);
+    setTrack(0);
     reset();
   }
 
