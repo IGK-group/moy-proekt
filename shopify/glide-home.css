@@ -48,7 +48,7 @@
    ============================================================ */
 .glide-hero {
   position: relative; overflow: hidden; background: #0b1418; padding: 0;
-  min-height: clamp(560px, 82vh, 760px);
+  min-height: 0;
 }
 /* full-bleed для темы Shopify: снять max-width с обёртки секции */
 .glide-hero-section, .shopify-section.glide-hero-section { max-width: none; }
@@ -58,19 +58,15 @@
   display: grid; align-items: center; pointer-events: none;
 }
 .glide-slide.is-active { opacity: 1; pointer-events: auto; }
-/* картинка — всегда реальный <img>, без зависимости от aspect-ratio / var() */
-.glide-slide-img {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; object-position: center; display: block; z-index: 0;
+/* десктоп: фон-картинка как в прототипе (background-size:cover) */
+.glide-slide-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background-image: var(--img); background-size: cover; background-position: center;
+  background-color: #0b1418;
 }
-.glide-slide-img--m { display: none; }   /* десктоп: мобильную картинку не показываем */
-.glide-slide > .glide-wrap { position: relative; z-index: 1; width: 100%; }
-/* тёмный градиент для читаемости текста справа */
-.glide-slide::after {
-  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  background: linear-gradient(270deg, rgba(8, 18, 22, 0.8) 0%, rgba(8, 18, 22, 0.5) 38%, rgba(8, 18, 22, 0.12) 62%, rgba(8, 18, 22, 0) 100%);
-}
-/* мягкая растяжка тёмного к стороне текста (текст справа) */
+img.glide-slide-img { display: none; }   /* <img> — только для мобильного; спецификой бьём .glide img */
+.glide-slide > .glide-wrap { position: relative; z-index: 2; width: 100%; }
+/* тёмный градиент к стороне текста (текст справа) — один, как в прототипе */
 .glide-slide-bg::after {
   content: ""; position: absolute; inset: 0;
   background: linear-gradient(270deg, rgba(8, 18, 22, 0.8) 0%, rgba(8, 18, 22, 0.52) 38%, rgba(8, 18, 22, 0.12) 62%, rgba(8, 18, 22, 0) 100%);
@@ -132,10 +128,10 @@
     display: flex; flex-direction: column;
   }
   .glide-slide::after { display: none; }        /* градиент только на десктопе */
-  .glide-slide-img--d { display: none; }        /* мобильный: десктопную картинку прячем */
-  .glide-slide-img--m {
+  .glide-slide-bg { display: none; }            /* мобильный: фон-картинку прячем */
+  img.glide-slide-img--m {
     display: block; position: relative; inset: auto;
-    width: 100%; height: auto;                  /* реальный <img> — высота из картинки */
+    width: 100%; height: auto;                  /* реальный <img> 3:4 — высота из картинки */
   }
 
   .glide-slide-inner {

@@ -32,11 +32,9 @@
           {%- if s.pos_mobile != blank %}--pos-m:{{ s.pos_mobile }};{% endif -%}
         "
       >
-        {%- if img_d != blank -%}
-          <img class="glide-slide-img glide-slide-img--d" src="{{ img_d }}" alt="{{ s.headline | escape }}" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" fetchpriority="{% if forloop.first %}high{% else %}auto{% endif %}">
-        {%- endif -%}
+        <div class="glide-slide-bg" style="{%- if img_d != blank %}--img:url('{{ img_d }}');{% endif -%}{%- if img_m != blank %}--img-m:url('{{ img_m }}');{% endif -%}"></div>
         {%- if img_m != blank -%}
-          <img class="glide-slide-img glide-slide-img--m" src="{{ img_m }}" alt="" loading="lazy">
+          <img class="glide-slide-img glide-slide-img--m" src="{{ img_m }}" alt="{{ s.headline | escape }}" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}">
         {%- endif -%}
         <div class="glide-wrap">
           <div class="glide-slide-inner">
