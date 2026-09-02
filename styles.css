@@ -308,8 +308,9 @@ footer{background:var(--surface-2);padding:60px 0 30px;font-size:.9rem}
   .hero .slide{position:relative;inset:auto;display:none;opacity:1;pointer-events:auto}
   .hero .slide.active{display:block}
 
-  .hero .slide-bg{position:relative;inset:auto;height:auto;aspect-ratio:3/4;max-height:62vh;
-    background-image:var(--img-m,var(--img));background-position:var(--pos-m,center)}
+  .hero .slide-bg{position:relative;inset:auto;width:100%;height:clamp(380px,60vh,540px);
+    background-image:var(--img-m,var(--img));background-size:cover;
+    background-position:var(--pos-m,center)}
   .hero .slide-bg::after{display:none}
 
   .hero .slide .wrap{padding:0;max-width:none}
