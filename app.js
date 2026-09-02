@@ -151,7 +151,9 @@
     swArea.addEventListener('touchmove', function (e) {
       if (pLock) return;
       var t = e.changedTouches[0]; dragMove(t.clientX, t.clientY);
-    }, { passive: true });
+      // как только жест распознан как горизонтальный — гасим прокрутку страницы
+      if (dragging && e.cancelable) e.preventDefault();
+    }, { passive: false });
     swArea.addEventListener('touchend', function (e) {
       if (pLock) return;
       if (e.changedTouches[0]) { cx = e.changedTouches[0].clientX; cy = e.changedTouches[0].clientY; }
