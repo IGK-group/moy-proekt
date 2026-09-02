@@ -151,8 +151,10 @@
    КАТЕГОРИИ — плитки. Фото 4:3 сверху + текст в панели снизу.
    Текст никогда не наложен на изображение.
    ============================================================ */
-.glide-cats-section { padding: 84px 0; background: var(--g-bg); }
-.glide-cats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.glide-cats-section { padding: 72px 0; background: var(--g-bg); }
+/* плитки шире стандартного .glide-wrap — иначе на широких экранах много воздуха по бокам */
+.glide-cats-section .glide-wrap { max-width: 1560px; padding-inline: clamp(20px, 4vw, 56px); }
+.glide-cats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 .glide-cat {
   border-radius: var(--g-radius-lg); overflow: hidden; background: var(--g-surface);
   border: 1px solid var(--g-line); display: flex; flex-direction: column;
