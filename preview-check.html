@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GlideHome — проверка</title>
+<style>
+  body { margin: 0; font: 15px/1.5 -apple-system, "Segoe UI", Roboto, Arial, sans-serif; color: #111; background: #fff; }
+  h2 { margin: 24px 16px 6px; font-size: 16px; }
+  .row { padding: 8px 0; border-top: 4px solid #eee; }
+  .row img { width: 100%; display: block; }
+  .cap { padding: 8px 16px 4px; font-weight: 700; }
+  .sub { padding: 0 16px 12px; color: #555; }
+  #jsflag { margin: 16px; padding: 10px 14px; background: #ffe9a8; border-radius: 8px; font-weight: 700; }
+  #jsflag.ok { background: #b8f0c8; }
+</style>
+</head>
+<body>
+<div id="jsflag">JS не запустился</div>
+<p style="margin:16px">Простая проверка: если картинки ниже видны — туннель и файлы в порядке, проблема была в карусели. Если пусто — не доходит сеть/браузер.</p>
+
+<h2>Hero — картинки для ПК (широкие)</h2>
+<div class="row"><div class="cap">1. Vac Station</div><img src="slides/vacstation.jpg" alt=""></div>
+<div class="row"><div class="cap">2. Vac Slim</div><img src="slides/vac.jpg" alt=""></div>
+<div class="row"><div class="cap">3. Window Pro</div><img src="slides/windowpro.jpg" alt=""></div>
+<div class="row"><div class="cap">4. Stick V400</div><img src="slides/stickvac.jpg" alt=""></div>
+<div class="row"><div class="cap">5. Mite Pro</div><img src="slides/antimite.jpg" alt=""></div>
+
+<h2>Hero — картинки для телефона (вертикальные)</h2>
+<div class="row"><div class="cap">1. Vac Station</div><img src="slides/vacstation-m.jpg" alt=""></div>
+<div class="row"><div class="cap">2. Vac Slim</div><img src="slides/vac-m.jpg" alt=""></div>
+<div class="row"><div class="cap">3. Window Pro</div><img src="slides/windowpro-m.jpg" alt=""></div>
+<div class="row"><div class="cap">4. Stick V400</div><img src="slides/stickvac-m.jpg" alt=""></div>
+<div class="row"><div class="cap">5. Mite Pro</div><img src="slides/antimite-m.jpg" alt=""></div>
+
+<h2>Плитки категорий</h2>
+<div class="row"><div class="cap">Window Robots</div><img src="cats/window.jpg" alt=""></div>
+<div class="row"><div class="cap">Robot Vacuums</div><img src="cats/vacuum.jpg" alt=""></div>
+<div class="row"><div class="cap">Anti-Mite &amp; Handheld</div><img src="cats/handheld.jpg" alt=""></div>
+
+<script>
+  var f = document.getElementById('jsflag');
+  f.textContent = 'JS работает';
+  f.className = 'ok';
+</script>
+</body>
+</html>
