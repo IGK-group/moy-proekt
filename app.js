@@ -69,6 +69,25 @@
     hero.addEventListener('mouseenter', function () { clearInterval(timer); });
     hero.addEventListener('mouseleave', reset);
 
+    /* свайп по слайдам на тач-устройствах */
+    var tsX = 0, tsY = 0, swiping = false;
+    hero.addEventListener('touchstart', function (e) {
+      var t = e.changedTouches[0];
+      tsX = t.clientX; tsY = t.clientY; swiping = true;
+      clearInterval(timer);
+    }, { passive: true });
+    hero.addEventListener('touchend', function (e) {
+      if (!swiping) return;
+      swiping = false;
+      var t = e.changedTouches[0];
+      var dx = t.clientX - tsX, dy = t.clientY - tsY;
+      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.6) {
+        go(dx < 0 ? idx + 1 : idx - 1);
+      }
+      reset();
+    }, { passive: true });
+    hero.addEventListener('touchcancel', function () { swiping = false; reset(); }, { passive: true });
+
     go(0);
     reset();
   }

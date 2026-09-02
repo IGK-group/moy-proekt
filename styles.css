@@ -309,6 +309,7 @@ footer{background:var(--surface-2);padding:60px 0 30px;font-size:.9rem}
   .hero .slide.active{display:block}
 
   /* коробка = пропорции самой картинки (3:4), поэтому cover ничего не режет */
+  .hero .slides{touch-action:pan-y}
   .hero .slide-bg{position:relative;inset:auto;width:100%;aspect-ratio:3/4;height:auto;
     background-image:var(--img-m,var(--img));background-size:cover;
     background-position:var(--pos-m,center)}
