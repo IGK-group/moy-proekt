@@ -1,77 +1,87 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>GlideHome — Shopify preview</title>
+<link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="shopify/glide-home.css">
-<style>body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:#f6f9fa}
-.note{background:#0f2831;color:#8fe6f0;font-size:12px;padding:8px 16px;text-align:center}</style>
+<style>.gh-note{background:#0f2831;color:#8fe6f0;font-size:12px;padding:7px 16px;text-align:center}</style>
 </head><body>
-<div class="note">Зеркало Shopify-секций glide-hero + glide-categories (тема GlideHome REDESIGN). Тот же CSS/JS/картинки, что в теме.</div>
+<div class="gh-note">Зеркало темы Shopify: шапка + секции glide-hero и glide-categories (те же CSS/JS/картинки, что в теме GlideHome REDESIGN)</div>
 
+<header id="hdr">
+  <div class="wrap nav">
+    <a class="logo" href="index.html">
+      <svg class="mark" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="9" height="9" rx="2"/><rect x="13" y="2" width="9" height="9" rx="2"/><rect x="2" y="13" width="9" height="9" rx="2"/><rect x="13" y="13" width="9" height="9" rx="2"/></svg>
+      GlideHome
+    </a>
+    <nav class="menu">
+      <div class="has-sub">
+        <a href="line.html">Window Cleaning Robot</a>
+        <div class="submenu">
+          <a href="line.html#lineup">GlideHome W17S</a>
+          <a href="line.html#lineup">GlideHome DYP</a>
+          <a href="line.html#explore">Accessories</a>
+        </div>
+      </div>
+      <div class="has-sub">
+        <a href="line.html">Robot Vacuum</a>
+        <div class="submenu">
+          <a href="product.html">GlideHome Vac Slim</a>
+          <a href="line.html#explore">Accessories</a>
+        </div>
+      </div>
+      <div class="has-sub">
+        <a href="support.html">Support</a>
+        <div class="submenu">
+          <a href="support.html#faq">FAQ</a>
+          <a href="support.html#setup">Setup guides</a>
+          <a href="support.html#warranty">Warranty &amp; returns</a>
+        </div>
+      </div>
+      <a href="about.html">About</a>
+    </nav>
+    <div class="icons">
+      <button aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+      <a href="#" aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3-6 7-6s7 2 7 6"/></svg></a>
+      <a href="#" aria-label="Cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-2 10H8L6 6Z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg></a>
+      <button class="menu-toggle" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    </div>
+  </div>
+</header>
 <section class="glide glide-hero" data-glide-hero data-autoplay-ms="6000">
   <div class="glide-slides" data-glide-track>
-      <div class="glide-slide is-active" data-glide-slide
-        style="--img:url('https://cdn.shopify.com/s/files/1/0740/1878/3409/files/vacstation.jpg?v=1788360405');--img-m:url('https://cdn.shopify.com/s/files/1/0740/1878/3409/files/vacstation-m.jpg?v=1788360408');--pos-m:center;">
+      <div class="glide-slide is-active" data-glide-slide style="--img:url('slides/vacstation.jpg');--img-m:url('slides/vacstation-m.jpg');--pos-m:center;">
         <div class="glide-slide-bg"></div>
         <div class="glide-wrap"><div class="glide-slide-inner">
-          <span class="glide-eyebrow">GlideHome Vac Station</span>
-          <h2>It empties itself — and washes its own mops in hot water</h2>
-          <p>The flagship robot vacuum docks into an all-in-one station: auto-empty, hot-water mop wash and dry. Weeks of hands-off cleaning.</p>
-          <div class="glide-slide-cta">
-            <a class="glide-btn glide-btn--primary glide-btn--lg" href="#">Shop Vac Station</a>
-            <a class="glide-btn glide-btn--on-dark" href="#">See the station</a>
-          </div>
+          <span class="glide-eyebrow">GlideHome Vac Station</span><h2>It empties itself — and washes its own mops in hot water</h2><p>The flagship robot vacuum docks into an all-in-one station: auto-empty, hot-water mop wash and dry. Weeks of hands-off cleaning.</p>
+          <div class="glide-slide-cta"><a class="glide-btn glide-btn--primary glide-btn--lg" href="#">Shop Vac Station</a><a class="glide-btn glide-btn--on-dark" href="#">See the station</a></div>
         </div></div>
       </div>
-      <div class="glide-slide" data-glide-slide
-        style="--img:url('https://cdn.shopify.com/s/files/1/0740/1878/3409/files/vac.jpg?v=1788360412');--img-m:url('https://cdn.shopify.com/s/files/1/0740/1878/3409/files/vac-m.jpg?v=1788360414');--pos-m:center;">
+      <div class="glide-slide" data-glide-slide style="--img:url('slides/vac.jpg');--img-m:url('slides/vac-m.jpg');--pos-m:center;">
         <div class="glide-slide-bg"></div>
         <div class="glide-wrap"><div class="glide-slide-inner">
-          <span class="glide-eyebrow">GlideHome Vac Slim</span>
-          <h2>Now GlideHome does your floors too</h2>
-          <p>A slim robot vacuum that sweeps, vacuums and mops in one pass. Maps the room, avoids obstacles.</p>
-          <div class="glide-slide-cta">
-            <a class="glide-btn glide-btn--primary glide-btn--lg" href="#">Shop the vacuum</a>
-            
-          </div>
+          <span class="glide-eyebrow">GlideHome Vac Slim</span><h2>Now GlideHome does your floors too</h2><p>A slim robot vacuum that sweeps, vacuums and mops in one pass. Maps the room, avoids obstacles.</p>
+          <div class="glide-slide-cta"><a class="glide-btn glide-btn--primary glide-btn--lg" href="#">Shop the vacuum</a></div>
         </div></div>
       </div>
-      <div class="glide-slide" data-glide-slide
-        style="--img:url('https://cdn.shopify.com/s/files/1/0740/1878/3409/files/windowpro.jpg?v=1788360417');--img-m:url('https://cdn.shopify.com/s/files/1/0740/1878/3409/files/windowpro-m.jpg?v=1788360421');--pos-m:center;">
+      <div class="glide-slide" data-glide-slide style="--img:url('slides/windowpro.jpg');--img-m:url('slides/windowpro-m.jpg');--pos-m:center;">
         <div class="glide-slide-bg"></div>
         <div class="glide-wrap"><div class="glide-slide-inner">
-          <span class="glide-eyebrow">GlideHome Window Pro</span>
-          <h2>Full-height glass, cleaned on a planned path</h2>
-          <p>AI route mapping, edge detection and a climbing-grade safety line. It holds the pane and never misses a spot.</p>
-          <div class="glide-slide-cta">
-            <a class="glide-btn glide-btn--primary glide-btn--lg" href="#">Explore window robots</a>
-            
-          </div>
+          <span class="glide-eyebrow">GlideHome Window Pro</span><h2>Full-height glass, cleaned on a planned path</h2><p>AI route mapping, edge detection and a climbing-grade safety line. It holds the pane and never misses a spot.</p>
+          <div class="glide-slide-cta"><a class="glide-btn glide-btn--primary glide-btn--lg" href="#">Explore window robots</a></div>
         </div></div>
       </div>
-      <div class="glide-slide" data-glide-slide
-        style="--img:url('https://cdn.shopify.com/s/files/1/0740/1878/3409/files/stickvac.jpg?v=1788360424');--img-m:url('https://cdn.shopify.com/s/files/1/0740/1878/3409/files/stickvac-m.jpg?v=1788360427');--pos-m:center;">
+      <div class="glide-slide" data-glide-slide style="--img:url('slides/stickvac.jpg');--img-m:url('slides/stickvac-m.jpg');--pos-m:center;">
         <div class="glide-slide-bg"></div>
         <div class="glide-wrap"><div class="glide-slide-inner">
-          <span class="glide-eyebrow">GlideHome Stick V400</span>
-          <h2>Cordless power that empties itself</h2>
-          <p>190 AW suction, 50 minutes of runtime and a self-emptying dock. Grab it and go, put it back clean.</p>
-          <div class="glide-slide-cta">
-            <a class="glide-btn glide-btn--primary glide-btn--lg" href="#">Shop Stick V400</a>
-            
-          </div>
+          <span class="glide-eyebrow">GlideHome Stick V400</span><h2>Cordless power that empties itself</h2><p>190 AW suction, 50 minutes of runtime and a self-emptying dock. Grab it and go, put it back clean.</p>
+          <div class="glide-slide-cta"><a class="glide-btn glide-btn--primary glide-btn--lg" href="#">Shop Stick V400</a></div>
         </div></div>
       </div>
-      <div class="glide-slide" data-glide-slide
-        style="--img:url('https://cdn.shopify.com/s/files/1/0740/1878/3409/files/antimite.jpg?v=1788360430');--img-m:url('https://cdn.shopify.com/s/files/1/0740/1878/3409/files/antimite-m.jpg?v=1788360434');--pos-m:center;">
+      <div class="glide-slide" data-glide-slide style="--img:url('slides/antimite.jpg');--img-m:url('slides/antimite-m.jpg');--pos-m:center;">
         <div class="glide-slide-bg"></div>
         <div class="glide-wrap"><div class="glide-slide-inner">
-          <span class="glide-eyebrow">GlideHome Mite Pro</span>
-          <h2>A deeper clean for the bed you spend a third of your life in</h2>
-          <p>Tapping, UV, 15,500 Pa suction and warm-air drying, with a live dust-mite readout on the display.</p>
-          <div class="glide-slide-cta">
-            <a class="glide-btn glide-btn--primary glide-btn--lg" href="#">Shop Mite Pro</a>
-            
-          </div>
+          <span class="glide-eyebrow">GlideHome Mite Pro</span><h2>A deeper clean for the bed you spend a third of your life in</h2><p>Tapping, UV, 15,500 Pa suction and warm-air drying, with a live dust-mite readout on the display.</p>
+          <div class="glide-slide-cta"><a class="glide-btn glide-btn--primary glide-btn--lg" href="#">Shop Mite Pro</a></div>
         </div></div>
       </div>
   </div>
@@ -79,23 +89,14 @@
   <button class="glide-arrow glide-arrow--next" type="button" data-glide-next aria-label="Next">&#8250;</button>
   <div class="glide-dots" data-glide-dots></div>
 </section>
-
-<section class="glide glide-cats-section">
-  <div class="glide-wrap"><div class="glide-cats">
-      <a class="glide-cat" href="#">
-        <div class="glide-cat-art" style="background-image:url('https://cdn.shopify.com/s/files/1/0740/1878/3409/files/window.jpg?v=1788360437')"></div>
-        <div class="glide-cat-body"><h3>Window Robots</h3><span>Climbs the glass, cleans corner to corner</span><span class="glide-cat-go">Shop window robots →</span></div>
-      </a>
-      <a class="glide-cat" href="#">
-        <div class="glide-cat-art" style="background-image:url('https://cdn.shopify.com/s/files/1/0740/1878/3409/files/vacuum.jpg?v=1788360439')"></div>
-        <div class="glide-cat-body"><h3>Robot Vacuums</h3><span>Sweeps, vacuums and mops in one pass</span><span class="glide-cat-go">Shop robot vacuums →</span></div>
-      </a>
-      <a class="glide-cat" href="#">
-        <div class="glide-cat-art" style="background-image:url('https://cdn.shopify.com/s/files/1/0740/1878/3409/files/handheld.jpg?v=1788360443')"></div>
-        <div class="glide-cat-body"><h3>Anti-Mite & Handheld</h3><span>Deep-clean beds, sofas and floors</span><span class="glide-cat-go">Shop handheld →</span></div>
-      </a>
-  </div></div>
-</section>
-
+<section class="glide glide-cats-section"><div class="glide-wrap"><div class="glide-cats">
+      <a class="glide-cat" href="#"><div class="glide-cat-art" style="background-image:url('cats/window.jpg')"></div>
+      <div class="glide-cat-body"><h3>Window Robots</h3><span>Climbs the glass, cleans corner to corner</span><span class="glide-cat-go">Shop window robots →</span></div></a>
+      <a class="glide-cat" href="#"><div class="glide-cat-art" style="background-image:url('cats/vacuum.jpg')"></div>
+      <div class="glide-cat-body"><h3>Robot Vacuums</h3><span>Sweeps, vacuums and mops in one pass</span><span class="glide-cat-go">Shop robot vacuums →</span></div></a>
+      <a class="glide-cat" href="#"><div class="glide-cat-art" style="background-image:url('cats/handheld.jpg')"></div>
+      <div class="glide-cat-body"><h3>Anti-Mite & Handheld</h3><span>Deep-clean beds, sofas and floors</span><span class="glide-cat-go">Shop handheld →</span></div></a>
+</div></div></section>
+<script src="app.js" defer></script>
 <script src="shopify/glide-home.js" defer></script>
 </body></html>
