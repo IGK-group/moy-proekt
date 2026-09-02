@@ -308,7 +308,7 @@ footer{background:var(--surface-2);padding:60px 0 30px;font-size:.9rem}
   .hero .slide{position:relative;inset:auto;display:none;opacity:1;pointer-events:auto}
   .hero .slide.active{display:block}
 
-  .hero .slide-bg{position:relative;inset:auto;width:100%;height:clamp(380px,60vh,540px);
+  .hero .slide-bg{position:relative;inset:auto;width:100%;height:clamp(340px,48vh,460px);
     background-image:var(--img-m,var(--img));background-size:cover;
     background-position:var(--pos-m,center)}
   .hero .slide-bg::after{display:none}
