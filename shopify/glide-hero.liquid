@@ -12,6 +12,7 @@
   class="glide glide-hero"
   data-glide-hero
   data-autoplay-ms="{{ section.settings.autoplay_ms }}"
+  style="min-height:clamp(520px,78vh,720px);background:#0b1418"
   {{ section.shopify_attributes }}
 >
   <div class="glide-slides" data-glide-track>
@@ -31,6 +32,9 @@
           {%- if s.pos_mobile != blank %}--pos-m:{{ s.pos_mobile }};{% endif -%}
         "
       >
+        {%- if img_d != blank -%}
+          <img class="glide-slide-img" src="{{ img_d }}" alt="{{ s.headline | escape }}" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" fetchpriority="{% if forloop.first %}high{% else %}auto{% endif %}">
+        {%- endif -%}
         <div class="glide-slide-bg"></div>
         <div class="glide-wrap">
           <div class="glide-slide-inner">
