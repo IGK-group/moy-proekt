@@ -126,16 +126,18 @@ header.condensed .nav{height:60px}
 .hero-static .shot img{width:100%;height:100%;object-fit:cover}
 .hero-static .shot svg{width:44%;opacity:.5}
 
-/* ---------- КАТЕГОРИИ (плитки товарных линий) ---------- */
+/* ---------- КАТЕГОРИИ (плитки товарных линий) ----------
+   Фото сверху в своей области (4:3), текст — в отдельной панели снизу.
+   Текст никогда не наложен на изображение. */
 .cats{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
-.cat{position:relative;border-radius:var(--radius-lg);overflow:hidden;background:var(--surface);border:1px solid var(--line);min-height:280px;display:flex;flex-direction:column;justify-content:flex-end;padding:26px;transition:transform .18s,box-shadow .18s}
+.cat{border-radius:var(--radius-lg);overflow:hidden;background:var(--surface);border:1px solid var(--line);
+  display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s}
 .cat:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
-.cat .cat-art{position:absolute;inset:0;background:linear-gradient(160deg,var(--surface-2),#dbe6e8);display:grid;place-items:center}
-.cat .cat-art svg{width:120px;opacity:.5}
-.cat .cat-txt{position:relative;z-index:1}
-.cat h3{font-size:1.3rem;margin-bottom:.2rem}
-.cat span{color:var(--ink-soft);font-size:.92rem}
-.cat .go{position:relative;z-index:1;margin-top:14px;font-weight:600;color:var(--accent-deep);font-size:.9rem}
+.cat .cat-art{aspect-ratio:4/3;background-size:cover;background-position:center;background-color:var(--surface-2)}
+.cat .cat-body{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
+.cat h3{font-size:1.2rem;margin-bottom:.25rem}
+.cat .cat-body>span{display:block;color:var(--ink-soft);font-size:.9rem;line-height:1.45}
+.cat .go{margin-top:14px;font-weight:600;color:var(--accent-deep);font-size:.88rem}
 
 /* ---------- ЛИНЕЙКА МОДЕЛЕЙ (горизонтальная карусель) ---------- */
 .lineup{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 24px 20px;scrollbar-width:thin}
@@ -337,4 +339,8 @@ footer{background:var(--surface-2);padding:60px 0 30px;font-size:.9rem}
     filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}
   .hero-dots button{width:34px;background:rgba(255,255,255,.55)}
   .hero-dots button.on{background:#fff}
+
+  /* категории — сразу под слайдами, без большого отступа */
+  .cats-section{padding-top:16px}
+  .cats{gap:16px}
 }
