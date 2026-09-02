@@ -1,0 +1,31 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T1 — hero без JS</title>
+<link rel="stylesheet" href="shopify/glide-home.css">
+<style>body{margin:0}.n{background:#0f2831;color:#8fe6f0;font:12px sans-serif;padding:7px 16px;text-align:center}</style>
+</head><body>
+<div class="n">T1: только hero-секция + glide-home.css, БЕЗ JS. Слайд 1 должен быть виден.</div>
+<section class="glide glide-hero" data-glide-hero data-autoplay-ms="6000">
+  <div class="glide-slides" data-glide-track>
+    <div class="glide-slide is-active" data-glide-slide style="--img:url('slides/vacstation.jpg');--img-m:url('slides/vacstation-m.jpg');--pos-m:center;">
+      <div class="glide-slide-bg"></div>
+      <div class="glide-wrap"><div class="glide-slide-inner">
+        <span class="glide-eyebrow">GlideHome Vac Station</span>
+        <h2>It empties itself — and washes its own mops in hot water</h2>
+        <p>Auto-empty, hot-water mop wash and dry.</p>
+        <div class="glide-slide-cta"><a class="glide-btn glide-btn--primary glide-btn--lg" href="#">Shop Vac Station</a></div>
+      </div></div>
+    </div>
+    <div class="glide-slide" data-glide-slide style="--img:url('slides/vac.jpg');--img-m:url('slides/vac-m.jpg');">
+      <div class="glide-slide-bg"></div>
+      <div class="glide-wrap"><div class="glide-slide-inner"><span class="glide-eyebrow">GlideHome Vac Slim</span><h2>Now GlideHome does your floors too</h2>
+      <div class="glide-slide-cta"><a class="glide-btn glide-btn--primary glide-btn--lg" href="#">Shop</a></div></div></div>
+    </div>
+  </div>
+  <div class="glide-dots" data-glide-dots></div>
+</section>
+<section class="glide glide-cats-section"><div class="glide-wrap"><div class="glide-cats">
+  <a class="glide-cat" href="#"><div class="glide-cat-art" style="background-image:url('cats/window.jpg')"></div>
+  <div class="glide-cat-body"><h3>Window Robots</h3><span>Climbs the glass</span><span class="glide-cat-go">Shop →</span></div></a>
+</div></div></section>
+</body></html>
