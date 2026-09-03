@@ -191,7 +191,8 @@
             "icon": "safety",
             "eyebrow": "Triple fall-safety",
             "title": "Stays on the glass even if the power drops",
-            "text": "A suction turbine, a built-in UPS battery and a safety rope in the box. Pull the plug and the DYP keeps its grip and lowers gently instead of falling."
+            "text": "A suction turbine, a built-in UPS battery and a safety rope in the box. Pull the plug and the DYP keeps its grip and lowers gently instead of falling.",
+            "image": "shopify://shop_images/innov-safety.jpg"
           }
         },
         "f2": {
@@ -200,7 +201,8 @@
             "icon": "edge",
             "eyebrow": "Edge detection",
             "title": "Cleans right up to the frame",
-            "text": "Perimeter sensors map the window's edges. The robot turns before the frame and leaves no dirty strip along the border."
+            "text": "Perimeter sensors map the window's edges. The robot turns before the frame and leaves no dirty strip along the border.",
+            "image": "shopify://shop_images/innov-edge.jpg"
           }
         },
         "f3": {
@@ -209,7 +211,8 @@
             "icon": "route",
             "eyebrow": "Smart path planning",
             "title": "Full coverage, not random circles",
-            "text": "Robot vacuums map the room and clean in an efficient pattern; window robots run three cleaning patterns plus a finishing pass along the edges."
+            "text": "Robot vacuums map the room and clean in an efficient pattern; window robots run three cleaning patterns plus a finishing pass along the edges.",
+            "image": "shopify://shop_images/innov-route.jpg"
           }
         },
         "f4": {
@@ -218,7 +221,8 @@
             "icon": "three",
             "eyebrow": "3-in-1 in one pass",
             "title": "Sweeps, vacuums and mops together",
-            "text": "One automatic cycle does all three. Auto water refill keeps the mop pad wet from start to finish, up to 150 m² per charge."
+            "text": "One automatic cycle does all three. Auto water refill keeps the mop pad wet from start to finish, up to 150 m² per charge.",
+            "image": "shopify://shop_images/innov-three.jpg"
           }
         }
       },
