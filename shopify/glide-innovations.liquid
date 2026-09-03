@@ -13,7 +13,20 @@
       {%- if section.settings.heading != blank -%}<h2>{{ section.settings.heading }}</h2>{%- endif -%}
     </div>
 
+    {%- assign stat_blocks = section.blocks | where: 'type', 'stat' -%}
+    {%- if stat_blocks.size > 0 -%}
+      <div class="glide-innov-stats glide-reveal">
+        {%- for block in stat_blocks -%}
+          <div class="glide-innov-stat" {{ block.shopify_attributes }}>
+            <strong>{{ block.settings.value }}</strong>
+            <span>{{ block.settings.label }}</span>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
     {%- for block in section.blocks -%}
+      {%- if block.type != 'feature' -%}{%- continue -%}{%- endif -%}
       {%- assign s = block.settings -%}
       <div class="glide-feature glide-reveal" {{ block.shopify_attributes }}>
         <div class="glide-feature-media">
@@ -22,6 +35,10 @@
           {%- else -%}
             <span class="glide-feature-ico" aria-hidden="true">
               {%- case s.icon -%}
+                {%- when 'app' -%}
+                  <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="20" y="6" width="24" height="52" rx="5"/><path d="M20 46h24"/><circle cx="32" cy="52" r="1.5"/><path d="M26 22h12M26 30h12M26 38h7"/></svg>
+                {%- when 'sparkle' -%}
+                  <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M32 10v14M32 40v14M10 32h14M40 32h14"/><path d="m18 18 8 8M38 38l8 8M46 18l-8 8M26 38l-8 8"/></svg>
                 {%- when 'safety' -%}
                   <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M32 6 12 14v14c0 14 8 22 20 28 12-6 20-14 20-28V14Z"/><path d="m24 32 6 6 12-12"/></svg>
                 {%- when 'edge' -%}
@@ -52,18 +69,28 @@
   "tag": "section",
   "class": "glide-innov-section",
   "settings": [
-    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "GlideHome technology" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "What makes the clean reliable" }
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "How it actually performs" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "You run it from your phone. It does the rest." }
   ],
   "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        { "type": "text", "id": "value", "label": "Value", "default": "150 m²" },
+        { "type": "text", "id": "label", "label": "Label", "default": "per charge" }
+      ]
+    },
     {
       "type": "feature",
       "name": "Feature",
       "settings": [
         { "type": "select", "id": "icon", "label": "Icon (if no image)", "options": [
+          { "value": "app", "label": "App / phone" },
+          { "value": "route", "label": "Route / path" },
+          { "value": "sparkle", "label": "Results / sparkle" },
           { "value": "safety", "label": "Shield / safety" },
           { "value": "edge", "label": "Edge / frame" },
-          { "value": "route", "label": "Route / path" },
           { "value": "three", "label": "3-in-1" },
           { "value": "check", "label": "Check" }
         ], "default": "check" },
@@ -74,14 +101,18 @@
       ]
     }
   ],
-  "max_blocks": 6,
+  "max_blocks": 10,
   "presets": [{
     "name": "GlideHome Innovations",
     "blocks": [
-      { "type": "feature", "settings": { "icon": "safety", "eyebrow": "Triple fall-safety", "title": "Stays on the glass even if the power drops", "text": "A suction turbine, a built-in UPS battery and a safety rope in the box. Pull the plug and the DYP keeps its grip and lowers gently instead of falling." } },
-      { "type": "feature", "settings": { "icon": "edge", "eyebrow": "Edge detection", "title": "Cleans right up to the frame", "text": "Perimeter sensors map the window's edges. The robot turns before the frame and leaves no dirty strip along the border." } },
-      { "type": "feature", "settings": { "icon": "route", "eyebrow": "Smart path planning", "title": "Full coverage, not random circles", "text": "Robot vacuums map the room and clean in an efficient pattern; window robots run three cleaning patterns plus a finishing pass along the edges." } },
-      { "type": "feature", "settings": { "icon": "three", "eyebrow": "3-in-1 in one pass", "title": "Sweeps, vacuums and mops together", "text": "One automatic cycle does all three. Auto water refill keeps the mop pad wet from start to finish, up to 150 m² per charge." } }
+      { "type": "stat", "settings": { "value": "150 m²", "label": "cleaned per charge" } },
+      { "type": "stat", "settings": { "value": "0.23 m²/min", "label": "window cleaning speed" } },
+      { "type": "stat", "settings": { "value": "3 + 1", "label": "patterns, then an edge pass" } },
+      { "type": "stat", "settings": { "value": "5-11 days", "label": "free delivery" } },
+      { "type": "feature", "settings": { "icon": "app", "eyebrow": "GlideHome app", "title": "Watch it work from your phone", "text": "Live map with the robot's position and path, a fill-in progress bar, schedules and no-go zones. Start it from the office, come home to it done." } },
+      { "type": "feature", "settings": { "icon": "route", "eyebrow": "Proven coverage", "title": "A planned path into every corner", "text": "It maps the room first, then cleans in tight even rows that reach the walls, wrap the furniture legs and go under the sofa - not random circles that miss half the floor." } },
+      { "type": "feature", "settings": { "icon": "sparkle", "eyebrow": "Real results", "title": "Glass without streaks, floors you'd walk barefoot on", "text": "Microfibre and a measured water flow lift grease and grime in one pass. The difference between the cleaned strip and the rest is the whole point." } },
+      { "type": "feature", "settings": { "icon": "safety", "eyebrow": "Triple fall-safety", "title": "Stays on the glass even if the power drops", "text": "A suction turbine, a built-in UPS battery and a safety rope in the box. Pull the plug and the DYP keeps its grip and lowers gently instead of falling." } }
     ]
   }]
 }

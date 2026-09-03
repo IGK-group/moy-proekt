@@ -470,3 +470,19 @@ img.glide-slide-img { display: none; }   /* <img> — только для моб
   .glide-cutaway-stage { display: flex; flex-direction: column; }
   .glide-cutaway-img { order: -1; margin-bottom: 6px; }
 }
+
+/* ---------- INNOVATIONS: строка цифр ---------- */
+.glide-innov-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+  max-width: 1080px; margin: 0 auto 46px; background: var(--g-line);
+  border: 1px solid var(--g-line); border-radius: 16px; overflow: hidden;
+}
+.glide-innov-stat { background: var(--g-surface); padding: 22px 18px; text-align: center; }
+.glide-innov-stat strong {
+  display: block; font-size: clamp(1.4rem, 2.4vw, 1.9rem); font-weight: 700;
+  letter-spacing: -0.02em; color: var(--g-ink); line-height: 1.1;
+}
+.glide-innov-stat span { display: block; margin-top: 5px; font-size: 0.82rem; color: var(--g-ink-soft); line-height: 1.35; }
+@media (max-width: 760px) {
+  .glide-innov-stats { grid-template-columns: 1fr 1fr; margin-bottom: 32px; }
+}
