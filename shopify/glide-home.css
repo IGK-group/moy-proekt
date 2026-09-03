@@ -357,3 +357,46 @@ img.glide-slide-img { display: none; }   /* <img> — только для моб
 .glide-foot-legal { display: flex; gap: 18px; flex-wrap: wrap; color: var(--g-on-forest-dim); font-size: 0.82rem; }
 @media (max-width: 900px) { .glide-foot-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .glide-foot-grid { grid-template-columns: 1fr; } .glide-foot-main { padding: 40px 0 24px; } }
+
+/* ---------- LINEUP (реальные товары) ---------- */
+.glide-lineup { padding: 76px 0; background: var(--g-bg); }
+.glide-sec-head--row {
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 20px;
+  text-align: left; max-width: var(--g-maxw); margin: 0 auto 34px;
+}
+.glide-sec-head--row h2 { margin: 0.4rem 0 0; }
+.glide-lineup-all { flex: none; color: var(--g-forest); font-weight: 700; font-size: 0.9rem; text-decoration: none; white-space: nowrap; }
+.glide-lineup-all:hover { color: var(--g-forest-2); }
+.glide-lineup-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.glide-pcard {
+  display: flex; flex-direction: column; background: var(--g-surface);
+  border: 1px solid var(--g-line); border-radius: var(--g-radius-lg); overflow: hidden;
+  text-decoration: none; color: inherit; transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+}
+.glide-pcard:hover { transform: translateY(-6px); box-shadow: var(--g-shadow-lg); border-color: var(--g-forest); }
+.glide-pcard-art {
+  aspect-ratio: 1 / 1; background: var(--g-surface-2); display: grid; place-items: center; padding: 14px;
+}
+.glide-pcard-art img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
+.glide-pcard-body { padding: 16px 18px 20px; display: flex; flex-direction: column; flex: 1; }
+.glide-pcard-body h3 {
+  font-size: 0.98rem; line-height: 1.35; margin: 0 0 8px; font-weight: 700;
+  color: var(--g-ink); letter-spacing: -0.01em;
+}
+.glide-pcard-meta { display: flex; align-items: baseline; gap: 8px; margin-bottom: 14px; }
+.glide-pcard-price { font-size: 1.08rem; font-weight: 700; color: var(--g-ink); }
+.glide-pcard-was { font-size: 0.85rem; color: var(--g-ink-soft); text-decoration: line-through; }
+.glide-pcard-cta {
+  margin-top: auto; align-self: flex-start; font-size: 0.82rem; font-weight: 700;
+  color: #fff; background: var(--g-forest); padding: 0.55rem 1rem; border-radius: 999px;
+  transition: background 0.15s;
+}
+.glide-pcard:hover .glide-pcard-cta { background: var(--g-accent-deep); }
+.glide-lineup-empty { color: var(--g-ink-soft); grid-column: 1 / -1; text-align: center; padding: 40px 0; }
+@media (max-width: 1000px) { .glide-lineup-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) {
+  .glide-lineup { padding: 52px 0; }
+  .glide-lineup-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .glide-pcard-body { padding: 12px 12px 16px; }
+  .glide-sec-head--row { flex-direction: column; align-items: flex-start; gap: 6px; }
+}

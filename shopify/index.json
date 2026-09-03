@@ -91,7 +91,7 @@
             "image": "shopify://shop_images/window.jpg",
             "title": "Window Cleaning Robots",
             "subtitle": "W17S for indoor glass, DYP for tall & outdoor windows. From $129.99",
-            "link": "/collections/all",
+            "link": "/collections/window-cleaning-robots",
             "link_label": "Shop window robots →"
           }
         },
@@ -101,7 +101,7 @@
             "image": "shopify://shop_images/vacuum.jpg",
             "title": "Robot Vacuums & Mops",
             "subtitle": "Sweep, vacuum and mop in one pass. 3-in-1 and Ultra-Thin. From $149.99",
-            "link": "/collections/all",
+            "link": "/collections/robot-vacuums",
             "link_label": "Shop robot vacuums →"
           }
         },
@@ -437,11 +437,24 @@
         "soc2",
         "soc3"
       ]
+    },
+    "glide_lineup": {
+      "type": "glide-lineup",
+      "settings": {
+        "eyebrow": "Available now",
+        "heading": "Shop the GlideHome lineup",
+        "collection": "frontpage",
+        "count": 4,
+        "card_cta": "View details",
+        "view_all_label": "See all products",
+        "view_all_url": "/collections/all"
+      }
     }
   },
   "order": [
     "glide_hero",
     "glide_value_strip",
+    "glide_lineup",
     "glide_categories",
     "glide_innovations",
     "glide_steps",

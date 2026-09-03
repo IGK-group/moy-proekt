@@ -1,0 +1,70 @@
+{% comment %}
+  GlideHome Lineup — карточки реальных товаров из коллекции.
+  Роль в скелете ECOVACS: «линейка моделей» (секция 2). Тянет товары из выбранной
+  коллекции: фото + название + цена + кнопка на страницу товара.
+{% endcomment %}
+
+{{ 'glide-home.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'glide-home.js' | asset_url }}" defer></script>
+
+{%- assign col = section.settings.collection -%}
+<section class="glide glide-lineup" {{ section.shopify_attributes }}>
+  <div class="glide-wrap">
+    <div class="glide-sec-head glide-sec-head--row">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}<span class="glide-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+        {%- if section.settings.heading != blank -%}<h2>{{ section.settings.heading }}</h2>{%- endif -%}
+      </div>
+      {%- if section.settings.view_all_url != blank -%}
+        <a class="glide-lineup-all" href="{{ section.settings.view_all_url }}">{{ section.settings.view_all_label }} &rarr;</a>
+      {%- endif -%}
+    </div>
+
+    <div class="glide-lineup-grid">
+      {%- if col != blank and col.products.size > 0 -%}
+        {%- assign lim = section.settings.count -%}
+        {%- for product in col.products limit: lim -%}
+          <a class="glide-pcard glide-reveal" href="{{ product.url }}">
+            <div class="glide-pcard-art">
+              {%- if product.featured_image -%}
+                <img src="{{ product.featured_image | image_url: width: 900 }}" alt="{{ product.title | escape }}" loading="lazy">
+              {%- endif -%}
+            </div>
+            <div class="glide-pcard-body">
+              <h3>{{ product.title }}</h3>
+              <div class="glide-pcard-meta">
+                <span class="glide-pcard-price">
+                  {%- if product.price_varies -%}From {% endif -%}{{ product.price | money }}
+                </span>
+                {%- if product.compare_at_price > product.price -%}
+                  <span class="glide-pcard-was">{{ product.compare_at_price | money }}</span>
+                {%- endif -%}
+              </div>
+              <span class="glide-pcard-cta">{{ section.settings.card_cta }}</span>
+            </div>
+          </a>
+        {%- endfor -%}
+      {%- else -%}
+        <p class="glide-lineup-empty">Pick a collection in the theme editor to show products here.</p>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "GlideHome Lineup",
+  "tag": "section",
+  "class": "glide-lineup-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Available now" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Shop the GlideHome lineup" },
+    { "type": "collection", "id": "collection", "label": "Collection" },
+    { "type": "range", "id": "count", "label": "Max products", "min": 2, "max": 8, "step": 1, "default": 4 },
+    { "type": "text", "id": "card_cta", "label": "Card CTA text", "default": "View details" },
+    { "type": "text", "id": "view_all_label", "label": "View-all label", "default": "See all products" },
+    { "type": "url", "id": "view_all_url", "label": "View-all link" }
+  ],
+  "presets": [{ "name": "GlideHome Lineup" }]
+}
+{% endschema %}
