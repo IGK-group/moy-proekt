@@ -506,3 +506,18 @@ img.glide-slide-img { display: none; }   /* <img> — только для моб
   .glide-feature-media { aspect-ratio: 16 / 10; max-height: none; }
   .glide-feature-list { margin-top: 12px; }
 }
+
+/* Футер: строка «Secure checkout» + иконки оплаты (из shop.enabled_payment_types) */
+.glide-foot-pay {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  padding: 18px 0 4px; margin-top: 26px; border-top: 1px solid var(--g-forest-line);
+  color: var(--g-on-forest-dim); font-size: 0.82rem;
+}
+.glide-foot-pay-lock svg { width: 15px; height: 15px; display: block; }
+.glide-foot-pay-icons { display: inline-flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-left: 4px; }
+.glide-foot-pay-icons .glide-pay-ico,
+.glide-foot-pay-icons svg { height: 22px; width: auto; border-radius: 4px; background: #fff; }
+.glide-pay-pill {
+  display: inline-block; background: #fff; color: #0f2831; font-size: 0.68rem;
+  font-weight: 700; letter-spacing: 0.02em; padding: 3px 7px; border-radius: 4px;
+}
