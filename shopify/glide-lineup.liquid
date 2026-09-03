@@ -26,6 +26,10 @@
         {%- for product in col.products limit: lim -%}
           <a class="glide-pcard glide-reveal" href="{{ product.url }}">
             <div class="glide-pcard-art">
+              {%- if product.compare_at_price > product.price -%}
+                {%- assign save_pct = product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round -%}
+                <span class="glide-pcard-badge">&minus;{{ save_pct }}%</span>
+              {%- endif -%}
               {%- if product.featured_image -%}
                 <img src="{{ product.featured_image | image_url: width: 900 }}" alt="{{ product.title | escape }}" loading="lazy">
               {%- endif -%}

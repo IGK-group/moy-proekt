@@ -568,3 +568,11 @@ img.glide-slide-img { display: none; }   /* <img> — только для моб
   font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
   background: var(--g-line); color: var(--g-ink-soft); padding: 1px 5px; border-radius: 4px; vertical-align: middle;
 }
+/* Скидочный бейдж на карточке товара */
+.glide-pcard-art { position: relative; }
+.glide-pcard-badge {
+  position: absolute; top: 10px; left: 10px; z-index: 2;
+  background: #d5372b; color: #fff; font-size: 0.72rem; font-weight: 800;
+  letter-spacing: 0.02em; padding: 3px 8px; border-radius: 6px;
+}
+.glide-pcard-was { font-size: 0.85rem; color: var(--g-ink-soft); text-decoration: line-through; }
