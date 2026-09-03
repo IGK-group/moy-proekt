@@ -14,8 +14,8 @@
             "text": "Auto-empty, hot-water mop wash and dry — weeks of hands-off cleaning.",
             "cta_label": "Shop Vac Station",
             "cta_url": "/collections/all",
-            "cta2_label": "See the station",
-            "cta2_url": "/collections/all"
+            "cta2_label": "",
+            "cta2_url": ""
           }
         },
         "s2": {
@@ -27,8 +27,10 @@
             "eyebrow": "GlideHome Vac Slim",
             "headline": "Now GlideHome does your floors too",
             "text": "A slim robot vacuum that sweeps, vacuums and mops in one pass. Maps the room, avoids obstacles.",
-            "cta_label": "Shop the vacuum",
-            "cta_url": "/collections/all"
+            "cta_label": "Shop Vac Slim",
+            "cta_url": "/collections/robot-vacuums",
+            "cta2_label": "",
+            "cta2_url": ""
           }
         },
         "s3": {
@@ -40,8 +42,10 @@
             "eyebrow": "GlideHome Window Pro",
             "headline": "Full-height glass, cleaned on a planned path",
             "text": "AI route mapping, edge detection and a climbing-grade safety line — it holds the pane and never misses a spot.",
-            "cta_label": "Explore window robots",
-            "cta_url": "/collections/all"
+            "cta_label": "Shop Window Pro",
+            "cta_url": "/collections/window-cleaning-robots",
+            "cta2_label": "",
+            "cta2_url": ""
           }
         },
         "s4": {
@@ -54,7 +58,9 @@
             "headline": "Cordless power that empties itself",
             "text": "190 AW suction, 50 minutes of runtime and a self-emptying dock — grab it and go, put it back clean.",
             "cta_label": "Shop Stick V400",
-            "cta_url": "/collections/all"
+            "cta_url": "/collections/all",
+            "cta2_label": "",
+            "cta2_url": ""
           }
         },
         "s5": {
@@ -67,7 +73,9 @@
             "headline": "A deeper clean for the bed you spend a third of your life in",
             "text": "Tapping, UV, 15,500 Pa suction and warm-air drying — with a live dust-mite readout on the display.",
             "cta_label": "Shop Mite Pro",
-            "cta_url": "/collections/all"
+            "cta_url": "/collections/all",
+            "cta2_label": "",
+            "cta2_url": ""
           }
         }
       },
