@@ -1,0 +1,84 @@
+{% comment %}
+  GlideHome Value Strip — тёмно-зелёная полоса ценности сразу под hero.
+  Держит внимание и снимает риск покупки до первой прокрутки.
+  Порт-секция: правится в теме через блоки. См. SPEC.md.
+{% endcomment %}
+
+{{ 'glide-home.css' | asset_url | stylesheet_tag }}
+
+<section class="glide glide-value" {{ section.shopify_attributes }}>
+  <div class="glide-wrap">
+    <div class="glide-value-grid">
+      {%- for block in section.blocks -%}
+        {%- assign s = block.settings -%}
+        <div class="glide-value-item" {{ block.shopify_attributes }}>
+          <span class="glide-value-ico" aria-hidden="true">
+            {%- case s.icon -%}
+              {%- when 'auto-empty' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v9"/><path d="m8 9 4 4 4-4"/><path d="M5 15v3a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-3"/></svg>
+              {%- when 'map' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7v13l5-2 6 2 5-2V5l-5 2-6-2-5 2Z"/><path d="M9 5v13"/><path d="M15 7v13"/><circle cx="12" cy="11" r="1.6"/></svg>
+              {%- when 'shipping' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg>
+              {%- when 'returns' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9a9 9 0 0 1 15-4l3 3"/><path d="M21 3v6h-6"/><path d="M21 15a9 9 0 0 1-15 4l-3-3"/><path d="M3 21v-6h6"/></svg>
+              {%- when 'warranty' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 9 4-1.5 7-4.5 7-9V6Z"/><path d="m9 12 2 2 4-4"/></svg>
+              {%- else -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m9 12 2 2 4-4"/></svg>
+            {%- endcase -%}
+          </span>
+          <div class="glide-value-txt">
+            {%- if s.title != blank -%}<h4>{{ s.title }}</h4>{%- endif -%}
+            {%- if s.text != blank -%}<p>{{ s.text }}</p>{%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "GlideHome Value Strip",
+  "tag": "section",
+  "class": "glide-value-section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "value",
+      "name": "Value item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "auto-empty", "label": "Auto-empty" },
+            { "value": "map", "label": "Map / navigation" },
+            { "value": "shipping", "label": "Shipping" },
+            { "value": "returns", "label": "Returns" },
+            { "value": "warranty", "label": "Warranty" },
+            { "value": "check", "label": "Check" }
+          ],
+          "default": "check"
+        },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "text", "id": "text", "label": "Subtext" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "GlideHome Value Strip",
+      "blocks": [
+        { "type": "value", "settings": { "icon": "auto-empty", "title": "Empties itself", "text": "Weeks of hands-off cleaning between touch-ups" } },
+        { "type": "value", "settings": { "icon": "map", "title": "Cleans on a plan", "text": "AI mapping and obstacle avoidance, every run" } },
+        { "type": "value", "settings": { "icon": "shipping", "title": "Free shipping", "text": "Fast and tracked on every order" } },
+        { "type": "value", "settings": { "icon": "warranty", "title": "2-year warranty", "text": "Plus 30-day returns, no questions asked" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
