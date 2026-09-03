@@ -441,24 +441,11 @@
         "soc2",
         "soc3"
       ]
-    },
-    "glide_lineup": {
-      "type": "glide-lineup",
-      "settings": {
-        "eyebrow": "Available now",
-        "heading": "Shop the GlideHome lineup",
-        "collection": "frontpage",
-        "count": 4,
-        "card_cta": "View details",
-        "view_all_label": "See all products",
-        "view_all_url": "/collections/all"
-      }
     }
   },
   "order": [
     "glide_hero",
     "glide_value_strip",
-    "glide_lineup",
     "glide_categories",
     "glide_innovations",
     "glide_steps",
