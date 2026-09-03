@@ -128,3 +128,42 @@
   else document.addEventListener('DOMContentLoaded', boot);
   document.addEventListener('shopify:section:load', boot);
 })();
+
+/* GlideHome scroll-memory: вернуться ровно туда, откуда ушёл (любая страница). */
+(function () {
+  'use strict';
+  var ss;
+  try { ss = window.sessionStorage; } catch (e) { return; }
+  if (!ss) return;
+  var KEY = 'glide:sy:' + location.pathname + location.search;
+
+  function save() {
+    try { ss.setItem(KEY, String(window.scrollY || window.pageYOffset || 0)); } catch (e) {}
+  }
+  // сохраняем при любом уходе со страницы
+  window.addEventListener('pagehide', save);
+  window.addEventListener('beforeunload', save);
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a) return;
+    try {
+      var u = new URL(a.href, location.href);
+      if (u.origin === location.origin && (u.pathname !== location.pathname || u.search !== location.search)) save();
+    } catch (err) {}
+  }, true);
+
+  // восстанавливаем при заходе, если для этого адреса есть сохранённая позиция
+  var saved = ss.getItem(KEY);
+  if (saved === null) return;
+  var y = parseInt(saved, 10) || 0;
+  if (y <= 0) return;
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  var tries = 0;
+  function restore() {
+    window.scrollTo(0, y);
+    if (++tries < 12 && Math.abs((window.scrollY || 0) - y) > 2) setTimeout(restore, 80);
+  }
+  restore();
+  requestAnimationFrame(restore);
+  window.addEventListener('load', function () { setTimeout(restore, 30); });
+})();
