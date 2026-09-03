@@ -27,6 +27,25 @@
   {%- endif -%}
 
   <div class="glide-wrap glide-foot-main">
+    {%- comment -%} Пункты ценности — видны только на мобильном (на ПК есть отдельная полоса под hero). {%- endcomment -%}
+    <ul class="glide-foot-assure">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v9"/><path d="m8 9 4 4 4-4"/><path d="M5 15v3a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-3"/></svg>
+        <div><h5>Empties itself</h5><p>Weeks of hands-off cleaning</p></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7v13l5-2 6 2 5-2V5l-5 2-6-2-5 2Z"/><path d="M9 5v13"/><path d="M15 7v13"/><circle cx="12" cy="11" r="1.6"/></svg>
+        <div><h5>Cleans on a plan</h5><p>AI mapping, obstacle avoidance</p></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg>
+        <div><h5>Free shipping</h5><p>Fast and tracked, every order</p></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 9 4-1.5 7-4.5 7-9V6Z"/><path d="m9 12 2 2 4-4"/></svg>
+        <div><h5>2-year warranty</h5><p>Plus 30-day returns</p></div>
+      </li>
+    </ul>
     <div class="glide-foot-grid">
       {%- for block in section.blocks -%}
         {%- if block.type == 'group' -%}

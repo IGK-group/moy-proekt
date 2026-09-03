@@ -15,8 +15,8 @@
   --g-accent-deep: #0b8078;
   --g-line: #e0e8ea;
   /* тёмно-зелёный бренд-цвет (как на мобильном), для полос/футера/акцентов */
-  --g-forest: #14342b;
-  --g-forest-2: #1c4a3b;
+  --g-forest: #0f2831;   /* единый бренд-тёмный, как панель hero на мобильном */
+  --g-forest-2: #17323c;
   --g-forest-line: rgba(255, 255, 255, 0.14);
   --g-on-forest: #eef5f1;
   --g-on-forest-dim: #a7c4b7;
@@ -119,6 +119,7 @@ img.glide-slide-img { display: none; }   /* <img> — только для моб
    картинка сверху + тёмная панель снизу, свайп «за пальцем».
    ============================================================ */
 @media (max-width: 768px) {
+  .glide-value { display: none; }   /* на мобильном пункты уезжают в футер */
   .glide-hero { overflow: visible; background: var(--g-ink); min-height: 0; width: auto; margin: 0; }
   /* нативный scroll-snap: свайп работает без JS, слайд всегда встаёт ровно */
   .glide-slides {
@@ -341,6 +342,18 @@ img.glide-slide-img { display: none; }   /* <img> — только для моб
 }
 .glide-foot-news-form input::placeholder { color: var(--g-on-forest-dim); }
 .glide-foot-news-ok { flex-basis: 100%; margin: 8px 0 0; color: #8fe6c6; font-size: 0.9rem; }
+.glide-foot-assure { display: none; }
+@media (max-width: 768px) {
+  .glide-foot-assure {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px 14px;
+    padding: 26px 0 4px; border-bottom: 1px solid var(--g-forest-line); margin-bottom: 24px;
+  }
+  .glide-foot-assure li { display: flex; gap: 10px; align-items: flex-start; list-style: none; }
+  .glide-foot-assure svg { flex: none; width: 22px; height: 22px; color: var(--g-accent); }
+  .glide-foot-assure h5 { margin: 1px 0 2px; font-size: 0.85rem; font-weight: 700; color: var(--g-on-forest); }
+  .glide-foot-assure p { margin: 0; font-size: 0.76rem; line-height: 1.35; color: var(--g-on-forest-dim); }
+}
+.glide-foot-assure ul, .glide-foot-assure { margin: 0; padding-left: 0; }
 .glide-foot-main { padding: 52px 0 28px; }
 .glide-foot-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
 .glide-foot-col h4 { margin: 0 0 14px; font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--g-on-forest); }
