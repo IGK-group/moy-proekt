@@ -1,0 +1,6 @@
+{
+  "sections": {
+    "main": { "type": "glide-product", "settings": {} }
+  },
+  "order": ["main"]
+}

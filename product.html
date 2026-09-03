@@ -1,14 +1,19 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GlideHome — storefront prototype (product page)</title>
-<link rel="stylesheet" href="styles.css">
-</head>
-<body>
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-cache"><meta name="viewport" content="width=device-width, initial-scale=1"><title>GlideHome preview</title>
+<link rel="stylesheet" href="shopify/glide-home.css?v=1788457007"><style>
+  *{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:#0f2831}
+  .gh-note{background:#0f2831;color:#8fe6f0;font-size:12px;padding:7px 16px;text-align:center}
+  #hdr{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid #e0e8ea}
+  #hdr .nav{max-width:1180px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:2rem;height:64px}
+  #hdr .logo{font-weight:800;font-size:1.2rem;display:flex;align-items:center;gap:.5rem;text-decoration:none;color:#0f2831}
+  #hdr .logo .mark{width:20px;height:20px;color:#12b1a6}
+  #hdr .menu{display:flex;gap:1.4rem;flex:1} #hdr .menu a{font-size:.92rem;color:#0f2831;text-decoration:none}
+  #hdr .submenu{display:none} #hdr .icons{display:flex;gap:1rem} #hdr .icons svg{width:20px;height:20px}
+  #hdr .icons button,#hdr .icons a{background:none;border:none;color:#0f2831;cursor:pointer} #hdr .menu-toggle{display:none}
+  @media(max-width:900px){ #hdr .menu{display:none} #hdr .menu-toggle{display:block} }
+</style></head><body>
+<div class="gh-note">Зеркало темы Shopify — страница товара (PDP)</div>
 
-<!-- ============ HEADER ============ -->
 <header id="hdr">
   <div class="wrap nav">
     <a class="logo" href="index.html">
@@ -17,184 +22,79 @@
     </a>
     <nav class="menu">
       <div class="has-sub">
-        <a href="line.html">Window Cleaning Robot</a>
+        <a href="collection-window.html">Window Cleaning Robots</a>
         <div class="submenu">
-          <a href="line.html#lineup">GlideHome W17S</a>
-          <a href="line.html#lineup">GlideHome DYP</a>
-          <a href="line.html#explore">Accessories</a>
+          <a href="collection-window.html">GlideHome W17S — $129.99</a>
+          <a href="collection-window.html">GlideHome DYP — $269.99</a>
         </div>
       </div>
-      <a href="line.html">Robot Vacuum</a>
       <div class="has-sub">
-        <a href="support.html">Support</a>
+        <a href="collection-vacuums.html">Robot Vacuums</a>
         <div class="submenu">
-          <a href="support.html#faq">FAQ</a>
-          <a href="support.html#setup">Setup guides</a>
-          <a href="support.html#warranty">Warranty &amp; returns</a>
+          <a href="collection-vacuums.html">3-in-1 with Remote — from $149.99</a>
+          <a href="collection-vacuums.html">Ultra-Thin 3-in-1 — $199.99</a>
         </div>
       </div>
-      <a href="about.html">About</a>
+      <a href="#" class="glide-nav-soon">Anti-Mite &amp; Handheld <span>soon</span></a>
+      <a href="#" class="glide-nav-soon">Floor Scrubbers <span>soon</span></a>
+      <a href="/pages/contact">Support</a>
+      <a href="/pages/about-us">About</a>
     </nav>
     <div class="icons">
-      <button aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
-      <a href="#" aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3-6 7-6s7 2 7 6"/></svg></a>
-      <a href="#" aria-label="Cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-2 10H8L6 6Z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg></a>
+      <a href="/search" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></a>
+      <a href="/account" aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3-6 7-6s7 2 7 6"/></svg></a>
+      <a href="/cart" aria-label="Cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-2 10H8L6 6Z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg></a>
       <button class="menu-toggle" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
     </div>
   </div>
 </header>
-
-<!-- ============ PDP ============ -->
-<section class="pdp wrap">
-  <!-- Gallery -->
-  <div class="gallery">
-    <div class="main"><img src="slides/w17s.jpg" alt="GlideHome W17S"></div>
-    <div class="thumbs">
-      <button class="on" data-src="slides/w17s.jpg" aria-label="Photo 1"></button>
-      <button data-src="slides/vac.jpg" aria-label="Photo 2"></button>
-      <button data-src="slides/w17s.jpg" aria-label="Photo 3"></button>
-      <button data-src="slides/vac.jpg" aria-label="Photo 4"></button>
-    </div>
-  </div>
-
-  <!-- Buy box -->
-  <div class="buybox">
-    <h1>GlideHome W17S</h1>
-    <div class="rating">★★★★★ <a href="#reviews">128 reviews</a></div>
-    <div class="price">$129.99 <small>or from $22/mo</small></div>
-    <p style="color:var(--ink-soft)">Auto-spray window cleaning robot for apartment windows. Holds the glass, plans a route, covers it corner to corner.</p>
-
-    <div class="variants">
-      <div class="lbl">Color</div>
-      <div class="swatches">
-        <button class="on" style="background:#ffffff" aria-label="White"></button>
-        <button style="background:#101418" aria-label="Black"></button>
-        <button style="background:#c9d3d5" aria-label="Gray"></button>
+<section class="glide glide-pdp" data-glide-pdp>
+  <div class="glide-wrap glide-pdp-top">
+    <div class="glide-pdp-gallery">
+      <div class="glide-pdp-main"><img data-glide-pdp-main src="https://cdn.shopify.com/s/files/1/0740/1878/3409/files/window-budget-hero-unified.png?v=1786793349" alt="W17S"></div>
+      <div class="glide-pdp-thumbs">
+        <button class="glide-pdp-thumb is-on" data-glide-pdp-thumb data-full="https://cdn.shopify.com/s/files/1/0740/1878/3409/files/window-budget-hero-unified.png?v=1786793349"><img src="https://cdn.shopify.com/s/files/1/0740/1878/3409/files/window-budget-hero-unified.png?v=1786793349" alt=""></button>
+        <button class="glide-pdp-thumb" data-glide-pdp-thumb data-full="https://cdn.shopify.com/s/files/1/0740/1878/3409/files/1_hero_windowscene.jpg?v=1786783245"><img src="https://cdn.shopify.com/s/files/1/0740/1878/3409/files/1_hero_windowscene.jpg?v=1786783245" alt=""></button>
+        <button class="glide-pdp-thumb" data-glide-pdp-thumb data-full="https://cdn.shopify.com/s/files/1/0740/1878/3409/files/2_higgsfield_branded_logofix.png?v=1786783249"><img src="https://cdn.shopify.com/s/files/1/0740/1878/3409/files/2_higgsfield_branded_logofix.png?v=1786783249" alt=""></button>
+        <button class="glide-pdp-thumb" data-glide-pdp-thumb data-full="https://cdn.shopify.com/s/files/1/0740/1878/3409/files/3_whatsinbox_final.png?v=1786783252"><img src="https://cdn.shopify.com/s/files/1/0740/1878/3409/files/3_whatsinbox_final.png?v=1786783252" alt=""></button>
+        <button class="glide-pdp-thumb" data-glide-pdp-thumb data-full="https://cdn.shopify.com/s/files/1/0740/1878/3409/files/5_pads_final.png?v=1786783256"><img src="https://cdn.shopify.com/s/files/1/0740/1878/3409/files/5_pads_final.png?v=1786783256" alt=""></button>
+        <button class="glide-pdp-thumb" data-glide-pdp-thumb data-full="https://cdn.shopify.com/s/files/1/0740/1878/3409/files/6_specs_final.png?v=1786783260"><img src="https://cdn.shopify.com/s/files/1/0740/1878/3409/files/6_specs_final.png?v=1786783260" alt=""></button>
       </div>
     </div>
-
-    <div class="add">
-      <a class="btn btn-primary btn-lg" href="#">Add to cart</a>
-      <a class="btn btn-ghost btn-lg" href="#">Buy now</a>
+    <div class="glide-pdp-info">
+      <span class="glide-eyebrow">Window Cleaning Robot</span>
+      <h1 class="glide-pdp-title">Window Cleaning Robot — Automatic Glass Cleaner W17S</h1>
+      <div class="glide-pdp-rating"><span class="glide-pdp-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="glide-pdp-rating-txt">Be the first to review</span></div>
+      <div class="glide-pdp-price"><span class="glide-pdp-now">$129.99</span><span class="glide-pdp-was">$179.99</span><span class="glide-pdp-save">&minus;28%</span></div>
+      <p class="glide-pdp-intro">Window cleaning is dangerous, exhausting, and never looks as good as you want. The W17S attaches to any glass surface and cleans it automatically — while you stay safely on the ground.</p>
+      <form class="glide-pdp-form" onsubmit="return false">
+        <button type="submit" class="glide-btn glide-btn--primary glide-btn--lg glide-pdp-atc"><span>Add to cart</span></button>
+      </form>
+      <div class="glide-pdp-trust">
+        <span class="glide-trust-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5 7V5a3 3 0 0 1 6 0v2"/></svg> Secure checkout</span>
+        <span class="glide-trust-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 4h9v7H1z"/><path d="M10 6h3l2 2v3h-5z"/><circle cx="4" cy="12.5" r="1.3"/><circle cx="12" cy="12.5" r="1.3"/></svg> Free shipping</span>
+        <span class="glide-trust-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8a5 5 0 0 1 8-4l2 2M13 8a5 5 0 0 1-8 4l-2-2"/><path d="M13 2v4h-4M3 14v-4h4"/></svg> 30-day returns</span>
+        <span class="glide-pdp-pay"><span class="glide-pay-pill">VISA</span><span class="glide-pay-pill">Mastercard</span><span class="glide-pay-pill">Amex</span><span class="glide-pay-pill">Discover</span><span class="glide-pay-pill">Shop&nbsp;Pay</span><span class="glide-pay-pill">Apple&nbsp;Pay</span><span class="glide-pay-pill">Google&nbsp;Pay</span></span>
+      </div>
     </div>
-
-    <div class="assurance">
-      <div class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 5v6c0 6 4 9 8 11 4-2 8-5 8-11V5z"/></svg> Extended 2-year warranty — +$19</div>
-      <div class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M12 3v18"/></svg> Price Match Guarantee — we refund the difference within 30 days</div>
-      <div class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg> Free shipping · 30-day returns</div>
-    </div>
+  </div>
+  <div class="glide-wrap glide-wrap--narrow glide-pdp-body rte">
+    <h2>Stop risking your safety on a ladder. Let the robot do it.</h2>
+    <p>Window cleaning is dangerous, exhausting, and never looks as good as you want. The W17S Window Cleaning Robot attaches to any glass surface and cleans it automatically — while you stay safely on the ground.</p>
+    <h3>Why people love it</h3>
+    <ul>
+      <li><strong>Hands-free cleaning</strong> — press start and walk away. The robot navigates the glass on its own</li>
+      <li><strong>Streak-free results</strong> — microfiber pad removes dirt, grease, and grime without leaving marks</li>
+      <li><strong>Works on any glass</strong> — windows, mirrors, shower doors, glass tables</li>
+      <li><strong>Built-in safety</strong> — strong suction holds the robot firmly even on vertical surfaces</li>
+      <li><strong>No buckets, no squeegees</strong> — just attach, press start, and get perfect windows</li>
+    </ul>
+    <h3>Specs</h3>
+    <ul><li>Color: White</li><li>Water tank: 30ml</li><li>Power: US standard plug (W17S)</li><li>Surface compatibility: flat glass windows and mirrors</li></ul>
+    <h3>What's in the box</h3>
+    <ul><li>Window Cleaning Robot × 1</li><li>Power adapter × 1</li><li>Cleaning pads × included</li></ul>
+    <p><strong>Free shipping. Delivered to your door in 5–11 business days.</strong></p>
   </div>
 </section>
-
-<!-- ============ SPEC BLOCK ============ -->
-<section class="specs" style="background:var(--surface)">
-  <div class="section-head"><span class="eyebrow">Specs</span><h2>W17S at a glance</h2></div>
-  <div class="wrap"><div class="spec-grid">
-    <div class="s"><b>3.5 lb</b><span>Weight</span></div>
-    <div class="s"><b>50 W</b><span>Power</span></div>
-    <div class="s"><b>~60 dB</b><span>Noise — like a conversation</span></div>
-    <div class="s"><b>3–5 min</b><span>Per apartment window</span></div>
-  </div></div>
-</section>
-
-<!-- ============ INNOVATIONS (short on PDP) ============ -->
-<div id="innovations">
-  <div class="feature reveal">
-    <div class="feature-media"><svg viewBox="0 0 120 120" fill="none" stroke="#12b1a6" stroke-width="4"><rect x="24" y="24" width="72" height="72" rx="16"/><path d="M60 40v40M40 60h40"/></svg></div>
-    <div class="feature-text">
-      <span class="eyebrow">Auto-spray</span>
-      <h3>Sprays and wipes in a single pass</h3>
-      <p>A nozzle applies the solution right in front of the pad — no pre-wetting the glass by hand.</p>
-    </div>
-  </div>
-  <div class="feature reveal">
-    <div class="feature-media"><svg viewBox="0 0 120 120" fill="none" stroke="#12b1a6" stroke-width="4"><rect x="20" y="20" width="80" height="80" rx="10"/><path d="M20 44h80M44 20v80" stroke-dasharray="6 6"/></svg></div>
-    <div class="feature-text">
-      <span class="eyebrow">3 modes</span>
-      <h3>The robot picks the best route itself</h3>
-      <p>Quick pass, thorough pass and spot zone. The algorithm matches the path to the window shape.</p>
-    </div>
-  </div>
-</div>
-
-<!-- ============ REVIEWS (summary) ============ -->
-<section id="reviews" class="reviews">
-  <div class="section-head"><span class="eyebrow">Reviews · 4.8 out of 5</span><h2>What W17S owners say</h2></div>
-  <div class="rev-viewport">
-    <div class="rev-track">
-      <div class="rev"><div class="stars">★★★★★</div><p>“Sets up in a minute — clip the rope to the handle and hit start. No streaks, for real.”</p><div class="who">Marta K. · verified purchase</div></div>
-      <div class="rev"><div class="stars">★★★★★</div><p>“Bought it for my parents, they figured it out from the video guide without me.”</p><div class="who">Ivan P. · verified purchase</div></div>
-      <div class="rev"><div class="stars">★★★★☆</div><p>“On a large two-panel window you have to reposition it — but that's expected for this model.”</p><div class="who">Sam R. · verified purchase</div></div>
-    </div>
-  </div>
-  <div class="rev-nav">
-    <button data-rev-prev aria-label="Previous review">&#8249;</button>
-    <button data-rev-next aria-label="Next review">&#8250;</button>
-  </div>
-</section>
-
-<!-- ============ FAQ ============ -->
-<section id="faq" style="background:var(--surface)">
-  <div class="section-head"><span class="eyebrow">FAQ</span><h2>W17S questions</h2></div>
-  <div class="wrap faq">
-    <details class="qa" open><summary>Will the robot fall off the window?<span class="plus">+</span></summary><div class="a">No. Suction holds the body, there's a backup battery and a safety rope to the frame or handle.</div></details>
-    <details class="qa"><summary>Will it work on a two-panel window?<span class="plus">+</span></summary><div class="a">Yes, but the robot cleans one plane per run — on a large split window you reposition it. For floor-to-ceiling glass the DYP is a better fit.</div></details>
-    <details class="qa"><summary>What's in the box?<span class="plus">+</span></summary><div class="a">Robot, power supply with cable, safety rope, a set of microfiber pads, a bottle of concentrate, remote.</div></details>
-  </div>
-</section>
-
-<!-- ============ FOOTER ============ -->
-<footer>
-  <div class="wrap">
-    <div class="fgrid">
-      <div>
-        <h4>Products</h4>
-        <a href="line.html">Window Robot W17S</a>
-        <a href="line.html">Window Robot DYP</a>
-        <a href="product.html">Robot Vacuum</a>
-        <a href="#">Accessories</a>
-      </div>
-      <div>
-        <h4>Support</h4>
-        <a href="support.html#contact">Contact us</a>
-        <a href="support.html#shipping">Shipping &amp; payment</a>
-        <a href="support.html#warranty">Returns &amp; warranty</a>
-        <a href="support.html#setup">Guides</a>
-      </div>
-      <div>
-        <h4>About</h4>
-        <a href="about.html">Company</a>
-        <a href="about.html#story">Our story</a>
-        <a href="#">Press</a>
-      </div>
-      <div>
-        <h4>App</h4>
-        <div class="qr"></div>
-        <a href="#" style="margin-top:.6rem">App Store</a>
-        <a href="#">Google Play</a>
-      </div>
-      <div>
-        <h4>Region</h4>
-        <a href="#">United States (USD $)</a>
-        <a href="#">Cookie settings</a>
-      </div>
-    </div>
-    <div class="legal">
-      <span>© 2026 GlideHome. Layout prototype — not for publication.</span>
-      <span>Privacy · Terms · Accessibility</span>
-    </div>
-  </div>
-</footer>
-
-<!-- ============ STICKY MOBILE BUY BAR ============ -->
-<div class="buybar" id="buybar">
-  <div>
-    <div class="bb-name">GlideHome W17S · White</div>
-    <div class="bb-price">$129.99</div>
-  </div>
-  <a class="btn btn-primary" href="#">Add to cart</a>
-</div>
-
-<script src="app.js"></script>
-</body>
-</html>
+<script src="shopify/glide-home.js?v=1788457220"></script>
+</body></html>

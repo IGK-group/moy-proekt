@@ -198,3 +198,56 @@
   else document.addEventListener('DOMContentLoaded', boot);
   document.addEventListener('shopify:section:load', boot);
 })();
+
+/* GlideHome PDP: галерея-миниатюры + смена варианта. */
+(function () {
+  'use strict';
+  function initPdp(root) {
+    if (root.dataset.bound) return;
+    root.dataset.bound = '1';
+    var main = root.querySelector('[data-glide-pdp-main]');
+    // миниатюры
+    root.querySelectorAll('[data-glide-pdp-thumb]').forEach(function (t) {
+      t.addEventListener('click', function () {
+        if (main) main.src = t.getAttribute('data-full');
+        root.querySelectorAll('[data-glide-pdp-thumb]').forEach(function (x) { x.classList.remove('is-on'); });
+        t.classList.add('is-on');
+      });
+    });
+    // варианты
+    var raw = root.querySelector('[data-glide-pdp-variants]');
+    if (!raw) return;
+    var variants;
+    try { variants = JSON.parse(raw.textContent); } catch (e) { return; }
+    var selects = [].slice.call(root.querySelectorAll('[data-glide-pdp-opt]'));
+    var idField = root.querySelector('[data-glide-pdp-id]');
+    var priceEl = root.querySelector('[data-glide-pdp-price]');
+    var compareEl = root.querySelector('[data-glide-pdp-compare]');
+    var atc = root.querySelector('[data-glide-pdp-atc]');
+    function money(cents) {
+      if (cents == null) return '';
+      return '$' + (cents / 100).toFixed(2).replace(/\.00$/, '.00');
+    }
+    function pick() {
+      var chosen = selects.map(function (s) { return s.value; });
+      var v = variants.find(function (vv) {
+        return vv.options.length === chosen.length && vv.options.every(function (o, i) { return o === chosen[i]; });
+      });
+      if (!v) return;
+      if (idField) idField.value = v.id;
+      if (priceEl) priceEl.textContent = money(v.price);
+      if (compareEl) compareEl.textContent = v.compare ? money(v.compare) : '';
+      if (main && v.img) main.src = v.img.replace(/(\.[a-z]+)(\?|$)/i, '_1200x$1$2');
+      if (atc) {
+        atc.disabled = !v.available;
+        var sp = atc.querySelector('span');
+        if (sp) sp.textContent = v.available ? 'Add to cart' : 'Sold out';
+      }
+    }
+    selects.forEach(function (s) { s.addEventListener('change', pick); });
+  }
+  function boot() { document.querySelectorAll('[data-glide-pdp]').forEach(initPdp); }
+  if (document.readyState !== 'loading') boot();
+  else document.addEventListener('DOMContentLoaded', boot);
+  document.addEventListener('shopify:section:load', boot);
+})();

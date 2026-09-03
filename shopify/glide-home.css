@@ -576,3 +576,74 @@ img.glide-slide-img { display: none; }   /* <img> — только для моб
   letter-spacing: 0.02em; padding: 3px 8px; border-radius: 6px;
 }
 .glide-pcard-was { font-size: 0.85rem; color: var(--g-ink-soft); text-decoration: line-through; }
+
+/* ============================================================
+   PDP — страница товара
+   ============================================================ */
+.glide-pdp { padding: 40px 0 72px; background: var(--g-surface); }
+.glide-pdp-top {
+  display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(24px, 4vw, 56px);
+  align-items: start;
+}
+/* галерея */
+.glide-pdp-main {
+  background: var(--g-surface-2); border-radius: var(--g-radius-lg); overflow: hidden;
+  aspect-ratio: 1 / 1; display: grid; place-items: center;
+}
+.glide-pdp-main img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
+.glide-pdp-thumbs { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+.glide-pdp-thumb {
+  width: 66px; height: 66px; border-radius: 10px; overflow: hidden; padding: 4px;
+  background: var(--g-surface-2); border: 2px solid transparent; cursor: pointer;
+}
+.glide-pdp-thumb.is-on { border-color: var(--g-forest); }
+.glide-pdp-thumb img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
+/* инфо */
+.glide-pdp-info .glide-eyebrow { color: var(--g-accent-deep); }
+.glide-pdp-title {
+  font-size: clamp(1.5rem, 3vw, 2.1rem); line-height: 1.15; margin: 0.5rem 0 0.6rem;
+  letter-spacing: -0.02em; color: var(--g-ink); font-weight: 700;
+}
+.glide-pdp-rating { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+.glide-pdp-stars { color: #f0a35a; letter-spacing: 2px; font-size: 0.95rem; }
+.glide-pdp-rating-txt { font-size: 0.82rem; color: var(--g-ink-soft); }
+.glide-pdp-price { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+.glide-pdp-now { font-size: 1.6rem; font-weight: 800; color: var(--g-ink); letter-spacing: -0.02em; }
+.glide-pdp-was { font-size: 1rem; color: var(--g-ink-soft); text-decoration: line-through; }
+.glide-pdp-save { background: #d5372b; color: #fff; font-size: 0.78rem; font-weight: 800; padding: 3px 9px; border-radius: 6px; }
+.glide-pdp-intro { color: var(--g-ink-soft); font-size: 1rem; line-height: 1.6; margin: 0 0 20px; }
+.glide-pdp-options { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 18px; }
+.glide-pdp-opt { display: flex; flex-direction: column; gap: 5px; }
+.glide-pdp-opt-name { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--g-ink-soft); }
+.glide-pdp-opt select {
+  padding: 0.7rem 2rem 0.7rem 0.9rem; border-radius: 10px; border: 1.5px solid var(--g-line);
+  background: var(--g-surface); font-size: 0.95rem; color: var(--g-ink); min-width: 150px;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='%234c626a' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 0.8rem center; background-size: 11px;
+}
+.glide-pdp-atc { width: 100%; justify-content: center; margin-bottom: 8px; }
+.glide-pdp-atc[disabled] { opacity: 0.5; cursor: not-allowed; }
+.glide-pdp-trust {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px;
+  margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--g-line);
+  font-size: 0.84rem; color: var(--g-ink-soft);
+}
+.glide-pdp-trust .glide-trust-item { display: inline-flex; align-items: center; gap: 7px; font-weight: 600; }
+.glide-pdp-trust .glide-trust-item svg { width: 16px; height: 16px; color: var(--g-forest); }
+.glide-pdp-pay { display: inline-flex; gap: 6px; flex-wrap: wrap; align-items: center; width: 100%; }
+.glide-pdp-pay .glide-pay-ico, .glide-pdp-pay svg { height: 22px; width: auto; border-radius: 4px; background: #fff; }
+/* описание */
+.glide-pdp-body { margin: 56px auto 0; }
+.glide-pdp-body.rte h2 { font-size: clamp(1.3rem, 2.2vw, 1.7rem); color: var(--g-ink); margin: 1.6rem 0 0.6rem; letter-spacing: -0.02em; }
+.glide-pdp-body.rte h3 { font-size: 1.1rem; color: var(--g-ink); margin: 1.6rem 0 0.5rem; }
+.glide-pdp-body.rte p { color: var(--g-ink-soft); line-height: 1.65; margin: 0 0 1rem; }
+.glide-pdp-body.rte ul { margin: 0 0 1.2rem; padding-left: 1.2rem; color: var(--g-ink-soft); line-height: 1.6; }
+.glide-pdp-body.rte li { margin-bottom: 0.4rem; }
+.glide-pdp-body.rte strong { color: var(--g-ink); }
+.glide-pdp-body.rte img { border-radius: var(--g-radius-lg); margin: 1rem 0; }
+.glide-pdp-related { margin-top: 64px; }
+@media (max-width: 860px) {
+  .glide-pdp-top { grid-template-columns: 1fr; }
+  .glide-pdp-body { margin-top: 40px; }
+}
