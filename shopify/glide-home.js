@@ -13,6 +13,7 @@
     if (slides.length < 2) return;
 
     var SLIDE_MS = parseInt(root.getAttribute('data-autoplay-ms') || '6000', 10);
+    var AUTOPLAY = root.getAttribute('data-autoplay') === 'true';
     var idx = 0, timer = null;
     var mq = window.matchMedia('(max-width: 768px)');
     var isMobile = function () { return mq.matches; };
@@ -41,6 +42,7 @@
     }
     function next() { go(idx + 1, true); }
     function restart() {
+      if (!AUTOPLAY) return;
       if (timer) clearInterval(timer);
       timer = setInterval(next, SLIDE_MS);
     }
@@ -71,8 +73,10 @@
     if (prev) prev.addEventListener('click', function () { go(idx - 1, true); restart(); });
     if (nextBtn) nextBtn.addEventListener('click', function () { go(idx + 1, true); restart(); });
 
-    root.addEventListener('mouseenter', stop);
-    root.addEventListener('mouseleave', restart);
+    if (AUTOPLAY) {
+      root.addEventListener('mouseenter', stop);
+      root.addEventListener('mouseleave', restart);
+    }
 
     // при смене вида (десктоп<->мобайл) выставить позицию
     var onMode = function () { go(idx, false); };

@@ -12,6 +12,7 @@
   class="glide glide-hero"
   data-glide-hero
   data-autoplay-ms="{{ section.settings.autoplay_ms }}"
+  data-autoplay="{{ section.settings.autoplay }}"
   style="min-height:clamp(520px,78vh,720px);background:#0b1418"
   {{ section.shopify_attributes }}
 >
@@ -66,6 +67,12 @@
   "tag": "section",
   "class": "glide-hero-section",
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Auto-rotate slides",
+      "default": false
+    },
     {
       "type": "range",
       "id": "autoplay_ms",

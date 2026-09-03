@@ -79,7 +79,8 @@
         "s5"
       ],
       "settings": {
-        "autoplay_ms": 6000
+        "autoplay_ms": 6000,
+        "autoplay": false
       }
     },
     "glide_categories": {
@@ -180,10 +181,6 @@
     },
     "glide_innovations": {
       "type": "glide-innovations",
-      "settings": {
-        "eyebrow": "How it actually performs",
-        "heading": "You run it from your phone. It does the rest."
-      },
       "blocks": {
         "st1": {
           "type": "stat",
@@ -220,8 +217,7 @@
             "image": "shopify://shop_images/innov-app.jpg",
             "eyebrow": "GlideHome app",
             "title": "Watch it work from your phone",
-            "text": "Live map with the robot's position and path, a fill-in progress bar, schedules and no-go zones. Start it from the office, come home to it done.",
-            "bullets": "Live map — see the robot's position and the path it has cleaned\nSet and forget — schedules, plus no-go zones for rugs and cables\nStart anywhere — kick it off from work, come home to it done"
+            "text": "Live map with the robot's position and path, a fill-in progress bar, schedules and no-go zones. Start it from the office, come home to it done."
           }
         },
         "f2": {
@@ -231,8 +227,7 @@
             "image": "shopify://shop_images/innov-coverage.jpg",
             "eyebrow": "Proven coverage",
             "title": "A planned path into every corner",
-            "text": "It maps the room first, then cleans in tight even rows that reach the walls, wrap the furniture legs and go under the sofa — not random circles that miss half the floor.",
-            "bullets": "Maps first — builds the room layout before it starts\nTight rows — reaches the skirting, wraps furniture legs, goes under the sofa\nFinishing lap — a pass along the edges so nothing is missed"
+            "text": "It maps the room first, then cleans in tight even rows that reach the walls, wrap the furniture legs and go under the sofa — not random circles that miss half the floor."
           }
         },
         "f3": {
@@ -242,8 +237,7 @@
             "image": "shopify://shop_images/innov-results.jpg",
             "eyebrow": "Real results",
             "title": "Glass without streaks, floors you'd walk barefoot on",
-            "text": "Microfibre and a measured water flow lift grease and grime in one pass. The line between the cleaned strip and the rest is the whole point.",
-            "bullets": "One pass — microfibre and a measured water flow lift grease and grime\nNo drips, no buckets — nothing to set up, nothing to clean after\nSee the line — the cleaned strip next to the rest is the whole demo"
+            "text": "Microfibre and a measured water flow lift grease and grime in one pass. The line between the cleaned strip and the rest is the whole point."
           }
         },
         "f4": {
@@ -253,8 +247,7 @@
             "image": "shopify://shop_images/innov-safety.jpg",
             "eyebrow": "Triple fall-safety",
             "title": "Stays on the glass even if the power drops",
-            "text": "A suction turbine, a built-in UPS battery and a safety rope in the box. Pull the plug and the DYP keeps its grip and lowers gently instead of falling.",
-            "bullets": "Suction turbine — holds the pane even on smooth glass\nUPS battery — keeps gripping right through a power cut\nSafety rope — in the box, clips on for tall or exterior windows"
+            "text": "A suction turbine, a built-in UPS battery and a safety rope in the box. Pull the plug and the DYP keeps its grip and lowers gently instead of falling."
           }
         }
       },
@@ -267,14 +260,14 @@
         "f2",
         "f3",
         "f4"
-      ]
+      ],
+      "settings": {
+        "eyebrow": "How it actually performs",
+        "heading": "You run it from your phone. It does the rest."
+      }
     },
     "glide_steps": {
       "type": "glide-steps",
-      "settings": {
-        "eyebrow": "Setup",
-        "heading": "Up and running in minutes"
-      },
       "blocks": {
         "s1": {
           "type": "step",
@@ -302,17 +295,14 @@
         "s1",
         "s2",
         "s3"
-      ]
+      ],
+      "settings": {
+        "eyebrow": "Setup",
+        "heading": "Up and running in minutes"
+      }
     },
     "glide_faq": {
       "type": "glide-faq",
-      "settings": {
-        "eyebrow": "Good to know",
-        "heading": "Questions people ask before buying",
-        "visible_count": 5,
-        "more_label": "View all questions",
-        "less_label": "Show less"
-      },
       "blocks": {
         "q1": {
           "type": "qa",
@@ -380,15 +370,17 @@
         "q6",
         "q7",
         "q8"
-      ]
+      ],
+      "settings": {
+        "eyebrow": "Good to know",
+        "heading": "Questions people ask before buying",
+        "visible_count": 5,
+        "more_label": "View all questions",
+        "less_label": "Show less"
+      }
     },
     "glide_footer": {
       "type": "glide-footer",
-      "settings": {
-        "news_heading": "Stay in the loop",
-        "news_text": "New models, guides and offers. No spam.",
-        "legal_links": "Privacy · Terms · Refund policy · Accessibility"
-      },
       "blocks": {
         "g1": {
           "type": "group",
@@ -476,16 +468,15 @@
         "soc1",
         "soc2",
         "soc3"
-      ]
+      ],
+      "settings": {
+        "news_heading": "Stay in the loop",
+        "news_text": "New models, guides and offers. No spam.",
+        "legal_links": "Privacy · Terms · Refund policy · Accessibility"
+      }
     },
     "glide_cutaway": {
       "type": "glide-cutaway",
-      "settings": {
-        "eyebrow": "Inside the machine",
-        "heading": "Engineered to move air, not just push dust",
-        "text": "A sealed path takes air from the floor, spins the dust out in the cyclone, traps the fine stuff in the filter and pushes clean air back into the room.",
-        "image": "shopify://shop_images/cutaway.jpg"
-      },
       "blocks": {
         "co1": {
           "type": "callout",
@@ -555,7 +546,13 @@
         "co4",
         "co5",
         "co6"
-      ]
+      ],
+      "settings": {
+        "eyebrow": "Inside the machine",
+        "heading": "Engineered to move air, not just push dust",
+        "text": "A sealed path takes air from the floor, spins the dust out in the cyclone, traps the fine stuff in the filter and pushes clean air back into the room.",
+        "image": "shopify://shop_images/cutaway.jpg"
+      }
     },
     "glide_lineup": {
       "type": "glide-lineup",
