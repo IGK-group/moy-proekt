@@ -90,3 +90,41 @@
     e.target.querySelectorAll('[data-glide-hero]').forEach(initHero);
   });
 })();
+
+/* GlideHome content sections: scroll-reveal + FAQ view-all toggle. */
+(function () {
+  'use strict';
+  function reveal() {
+    var els = document.querySelectorAll('.glide-reveal:not(.is-in)');
+    if (!els.length) return;
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(function (e) { e.classList.add('is-in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+    els.forEach(function (e) { io.observe(e); });
+    setTimeout(function () {
+      document.querySelectorAll('.glide-reveal:not(.is-in)').forEach(function (e) { e.classList.add('is-in'); });
+    }, 2500);
+  }
+  function faq() {
+    document.querySelectorAll('[data-glide-faq-toggle]').forEach(function (btn) {
+      if (btn.dataset.bound) return;
+      btn.dataset.bound = '1';
+      btn.addEventListener('click', function () {
+        var sec = btn.closest('[data-glide-faq]');
+        var open = sec.classList.toggle('is-open');
+        btn.textContent = open ? btn.getAttribute('data-less') : btn.getAttribute('data-more');
+        if (!open) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  }
+  function boot() { reveal(); faq(); }
+  if (document.readyState !== 'loading') boot();
+  else document.addEventListener('DOMContentLoaded', boot);
+  document.addEventListener('shopify:section:load', boot);
+})();

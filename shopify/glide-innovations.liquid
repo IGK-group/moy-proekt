@@ -1,0 +1,88 @@
+{% comment %}
+  GlideHome Innovations — чередующиеся блоки фич с появлением на скролле.
+  Роль в скелете ECOVACS: раздел Innovations. Контент — реальные фичи товаров.
+{% endcomment %}
+
+{{ 'glide-home.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'glide-home.js' | asset_url }}" defer></script>
+
+<section class="glide glide-innov" {{ section.shopify_attributes }}>
+  <div class="glide-wrap">
+    <div class="glide-sec-head">
+      {%- if section.settings.eyebrow != blank -%}<span class="glide-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2>{{ section.settings.heading }}</h2>{%- endif -%}
+    </div>
+
+    {%- for block in section.blocks -%}
+      {%- assign s = block.settings -%}
+      <div class="glide-feature glide-reveal" {{ block.shopify_attributes }}>
+        <div class="glide-feature-media">
+          {%- if s.image != blank -%}
+            <img src="{{ s.image | image_url: width: 1200 }}" alt="{{ s.title | escape }}" loading="lazy">
+          {%- else -%}
+            <span class="glide-feature-ico" aria-hidden="true">
+              {%- case s.icon -%}
+                {%- when 'safety' -%}
+                  <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M32 6 12 14v14c0 14 8 22 20 28 12-6 20-14 20-28V14Z"/><path d="m24 32 6 6 12-12"/></svg>
+                {%- when 'edge' -%}
+                  <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="10" width="44" height="44" rx="6"/><path d="M10 24h44M24 10v44" stroke-dasharray="4 5"/><circle cx="32" cy="32" r="4"/></svg>
+                {%- when 'route' -%}
+                  <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M14 16h36M50 16c0 9-36 5-36 16s36 7 36 16M14 48h36"/></svg>
+                {%- when 'three' -%}
+                  <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="22" cy="24" r="10"/><circle cx="42" cy="24" r="10"/><circle cx="32" cy="42" r="10"/></svg>
+                {%- else -%}
+                  <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="24"/><path d="m22 32 7 7 14-14"/></svg>
+              {%- endcase -%}
+            </span>
+          {%- endif -%}
+        </div>
+        <div class="glide-feature-text">
+          {%- if s.eyebrow != blank -%}<span class="glide-eyebrow">{{ s.eyebrow }}</span>{%- endif -%}
+          {%- if s.title != blank -%}<h3>{{ s.title }}</h3>{%- endif -%}
+          {%- if s.text != blank -%}<p>{{ s.text }}</p>{%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "GlideHome Innovations",
+  "tag": "section",
+  "class": "glide-innov-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "GlideHome technology" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What makes the clean reliable" }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon (if no image)", "options": [
+          { "value": "safety", "label": "Shield / safety" },
+          { "value": "edge", "label": "Edge / frame" },
+          { "value": "route", "label": "Route / path" },
+          { "value": "three", "label": "3-in-1" },
+          { "value": "check", "label": "Check" }
+        ], "default": "check" },
+        { "type": "image_picker", "id": "image", "label": "Image (optional, overrides icon)" },
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "textarea", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [{
+    "name": "GlideHome Innovations",
+    "blocks": [
+      { "type": "feature", "settings": { "icon": "safety", "eyebrow": "Triple fall-safety", "title": "Stays on the glass even if the power drops", "text": "A suction turbine, a built-in UPS battery and a safety rope in the box. Pull the plug and the DYP keeps its grip and lowers gently instead of falling." } },
+      { "type": "feature", "settings": { "icon": "edge", "eyebrow": "Edge detection", "title": "Cleans right up to the frame", "text": "Perimeter sensors map the window's edges. The robot turns before the frame and leaves no dirty strip along the border." } },
+      { "type": "feature", "settings": { "icon": "route", "eyebrow": "Smart path planning", "title": "Full coverage, not random circles", "text": "Robot vacuums map the room and clean in an efficient pattern; window robots run three cleaning patterns plus a finishing pass along the edges." } },
+      { "type": "feature", "settings": { "icon": "three", "eyebrow": "3-in-1 in one pass", "title": "Sweeps, vacuums and mops together", "text": "One automatic cycle does all three. Auto water refill keeps the mop pad wet from start to finish, up to 150 m² per charge." } }
+    ]
+  }]
+}
+{% endschema %}

@@ -1,0 +1,429 @@
+{
+  "sections": {
+    "glide_hero": {
+      "type": "glide-hero",
+      "blocks": {
+        "s1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/vacstation.jpg",
+            "image_mobile": "shopify://shop_images/vacstation-m.jpg",
+            "pos_mobile": "center",
+            "eyebrow": "GlideHome Vac Station",
+            "headline": "It empties itself. And washes its own mops",
+            "text": "Auto-empty, hot-water mop wash and dry — weeks of hands-off cleaning.",
+            "cta_label": "Shop Vac Station",
+            "cta_url": "/collections/all",
+            "cta2_label": "See the station",
+            "cta2_url": "/collections/all"
+          }
+        },
+        "s2": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/vac.jpg",
+            "image_mobile": "shopify://shop_images/vac-m.jpg",
+            "pos_mobile": "center",
+            "eyebrow": "GlideHome Vac Slim",
+            "headline": "Now GlideHome does your floors too",
+            "text": "A slim robot vacuum that sweeps, vacuums and mops in one pass. Maps the room, avoids obstacles.",
+            "cta_label": "Shop the vacuum",
+            "cta_url": "/collections/all"
+          }
+        },
+        "s3": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/windowpro.jpg",
+            "image_mobile": "shopify://shop_images/windowpro-m.jpg",
+            "pos_mobile": "center",
+            "eyebrow": "GlideHome Window Pro",
+            "headline": "Full-height glass, cleaned on a planned path",
+            "text": "AI route mapping, edge detection and a climbing-grade safety line — it holds the pane and never misses a spot.",
+            "cta_label": "Explore window robots",
+            "cta_url": "/collections/all"
+          }
+        },
+        "s4": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/stickvac.jpg",
+            "image_mobile": "shopify://shop_images/stickvac-m.jpg",
+            "pos_mobile": "center",
+            "eyebrow": "GlideHome Stick V400",
+            "headline": "Cordless power that empties itself",
+            "text": "190 AW suction, 50 minutes of runtime and a self-emptying dock — grab it and go, put it back clean.",
+            "cta_label": "Shop Stick V400",
+            "cta_url": "/collections/all"
+          }
+        },
+        "s5": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/antimite.jpg",
+            "image_mobile": "shopify://shop_images/antimite-m.jpg",
+            "pos_mobile": "center",
+            "eyebrow": "GlideHome Mite Pro",
+            "headline": "A deeper clean for the bed you spend a third of your life in",
+            "text": "Tapping, UV, 15,500 Pa suction and warm-air drying — with a live dust-mite readout on the display.",
+            "cta_label": "Shop Mite Pro",
+            "cta_url": "/collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5"
+      ],
+      "settings": {
+        "autoplay_ms": 6000
+      }
+    },
+    "glide_categories": {
+      "type": "glide-categories",
+      "blocks": {
+        "c1": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/window.jpg",
+            "title": "Window Cleaning Robots",
+            "subtitle": "W17S for indoor glass, DYP for tall & outdoor windows. From $129.99",
+            "link": "/collections/all",
+            "link_label": "Shop window robots →"
+          }
+        },
+        "c2": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/vacuum.jpg",
+            "title": "Robot Vacuums & Mops",
+            "subtitle": "Sweep, vacuum and mop in one pass. 3-in-1 and Ultra-Thin. From $149.99",
+            "link": "/collections/all",
+            "link_label": "Shop robot vacuums →"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2"
+      ],
+      "settings": {}
+    },
+    "glide_value_strip": {
+      "type": "glide-value-strip",
+      "blocks": {
+        "v1": {
+          "type": "value",
+          "settings": {
+            "icon": "auto-empty",
+            "title": "Empties itself",
+            "text": "Weeks of hands-off cleaning between touch-ups"
+          }
+        },
+        "v2": {
+          "type": "value",
+          "settings": {
+            "icon": "map",
+            "title": "Cleans on a plan",
+            "text": "AI mapping and obstacle avoidance, every run"
+          }
+        },
+        "v3": {
+          "type": "value",
+          "settings": {
+            "icon": "shipping",
+            "title": "Free shipping",
+            "text": "Fast and tracked on every order"
+          }
+        },
+        "v4": {
+          "type": "value",
+          "settings": {
+            "icon": "warranty",
+            "title": "2-year warranty",
+            "text": "Plus 30-day returns, no questions asked"
+          }
+        }
+      },
+      "block_order": [
+        "v1",
+        "v2",
+        "v3",
+        "v4"
+      ],
+      "settings": {}
+    },
+    "glide_innovations": {
+      "type": "glide-innovations",
+      "settings": {
+        "eyebrow": "GlideHome technology",
+        "heading": "What makes the clean reliable"
+      },
+      "blocks": {
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "icon": "safety",
+            "eyebrow": "Triple fall-safety",
+            "title": "Stays on the glass even if the power drops",
+            "text": "A suction turbine, a built-in UPS battery and a safety rope in the box. Pull the plug and the DYP keeps its grip and lowers gently instead of falling."
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "icon": "edge",
+            "eyebrow": "Edge detection",
+            "title": "Cleans right up to the frame",
+            "text": "Perimeter sensors map the window's edges. The robot turns before the frame and leaves no dirty strip along the border."
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "icon": "route",
+            "eyebrow": "Smart path planning",
+            "title": "Full coverage, not random circles",
+            "text": "Robot vacuums map the room and clean in an efficient pattern; window robots run three cleaning patterns plus a finishing pass along the edges."
+          }
+        },
+        "f4": {
+          "type": "feature",
+          "settings": {
+            "icon": "three",
+            "eyebrow": "3-in-1 in one pass",
+            "title": "Sweeps, vacuums and mops together",
+            "text": "One automatic cycle does all three. Auto water refill keeps the mop pad wet from start to finish, up to 150 m² per charge."
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4"
+      ]
+    },
+    "glide_steps": {
+      "type": "glide-steps",
+      "settings": {
+        "eyebrow": "Setup",
+        "heading": "Up and running in minutes"
+      },
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Attach it",
+            "text": "Press the window robot onto the glass, or set the floor robot down anywhere in the room."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Press start",
+            "text": "One button on the unit or the included remote. Pick a pattern or let it choose."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "Walk away",
+            "text": "It maps the surface and cleans on its own. Come back to streak-free glass or clean floors."
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ]
+    },
+    "glide_faq": {
+      "type": "glide-faq",
+      "settings": {
+        "eyebrow": "Good to know",
+        "heading": "Questions people ask before buying",
+        "visible_count": 5,
+        "more_label": "View all questions",
+        "less_label": "Show less"
+      },
+      "blocks": {
+        "q1": {
+          "type": "qa",
+          "settings": {
+            "q": "Which window robot should I get?",
+            "a": "<p>The <strong>W17S</strong> ($129.99) is for flat indoor glass — windows, mirrors, shower doors, glass tables. The <strong>DYP</strong> ($269.99) adds a UPS backup battery and a safety rope, so it's the one for tall, floor-to-ceiling or exterior windows.</p>"
+          }
+        },
+        "q2": {
+          "type": "qa",
+          "settings": {
+            "q": "Will it fall off the glass?",
+            "a": "<p>Strong suction holds the robot on vertical glass, and edge sensors make it turn before the frame. The DYP goes further: a built-in UPS keeps suction alive through a power cut, and a safety rope is included.</p>"
+          }
+        },
+        "q3": {
+          "type": "qa",
+          "settings": {
+            "q": "What surfaces do the window robots work on?",
+            "a": "<p>Flat glass: windows, mirrors, shower doors and glass tabletops. Minimum window size for the DYP is 35 × 35 cm.</p>"
+          }
+        },
+        "q4": {
+          "type": "qa",
+          "settings": {
+            "q": "How long does a window take?",
+            "a": "<p>The DYP cleans at about 0.23 m²/min — a standard window is done in a few minutes. Press start and walk away.</p>"
+          }
+        },
+        "q5": {
+          "type": "qa",
+          "settings": {
+            "q": "Do the robot vacuums really mop?",
+            "a": "<p>Yes. Both vacuums sweep, suction and mop in one automatic pass. The 3-in-1 has a 300 ml tank; the Ultra-Thin has an auto-refill reservoir that keeps the pad wet for the whole cycle.</p>"
+          }
+        },
+        "q6": {
+          "type": "qa",
+          "settings": {
+            "q": "Will the vacuum fit under my furniture?",
+            "a": "<p>The Ultra-Thin model is built low on purpose — it slides under sofas, beds and cabinets where dust collects. It covers up to 150 m² on one 4,400 mAh charge.</p>"
+          }
+        },
+        "q7": {
+          "type": "qa",
+          "settings": {
+            "q": "How are they powered?",
+            "a": "<p>Window robots run on mains power (the DYP is 100–240V and works worldwide). Robot vacuums charge over USB or a dock and run 60–120 minutes per charge.</p>"
+          }
+        },
+        "q8": {
+          "type": "qa",
+          "settings": {
+            "q": "Shipping, returns and warranty?",
+            "a": "<p>Free shipping on every order, delivered in 5–11 business days. 30-day returns, no questions asked, plus a 2-year warranty on every GlideHome device.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6",
+        "q7",
+        "q8"
+      ]
+    },
+    "glide_footer": {
+      "type": "glide-footer",
+      "settings": {
+        "news_heading": "Stay in the loop",
+        "news_text": "New models, guides and offers. No spam.",
+        "legal_links": "Privacy · Terms · Refund policy · Accessibility"
+      },
+      "blocks": {
+        "g1": {
+          "type": "group",
+          "settings": {
+            "title": "Products",
+            "label_1": "Window Robot W17S",
+            "link_1": "/collections/all",
+            "label_2": "Window Robot DYP",
+            "link_2": "/collections/all",
+            "label_3": "3-in-1 Robot Vacuum",
+            "link_3": "/collections/all",
+            "label_4": "Ultra-Thin Robot Vacuum",
+            "link_4": "/collections/all",
+            "label_5": "All products",
+            "link_5": "/collections/all"
+          }
+        },
+        "g2": {
+          "type": "group",
+          "settings": {
+            "title": "Support",
+            "label_1": "Contact us",
+            "link_1": "/pages/contact",
+            "label_2": "Shipping & delivery",
+            "link_2": "/pages/shipping",
+            "label_3": "Returns & warranty",
+            "link_3": "/pages/returns",
+            "label_4": "Setup guides",
+            "link_4": "/pages/guides",
+            "label_5": "Track my order",
+            "link_5": "/pages/track"
+          }
+        },
+        "g3": {
+          "type": "group",
+          "settings": {
+            "title": "Company",
+            "label_1": "About GlideHome",
+            "link_1": "/pages/about",
+            "label_2": "Reviews",
+            "link_2": "/pages/reviews",
+            "label_3": "Blog",
+            "link_3": "/blogs/news"
+          }
+        },
+        "g4": {
+          "type": "group",
+          "settings": {
+            "title": "Legal",
+            "label_1": "Privacy policy",
+            "link_1": "/policies/privacy-policy",
+            "label_2": "Terms of service",
+            "link_2": "/policies/terms-of-service",
+            "label_3": "Refund policy",
+            "link_3": "/policies/refund-policy"
+          }
+        },
+        "soc1": {
+          "type": "social",
+          "settings": {
+            "network": "Instagram",
+            "url": "#"
+          }
+        },
+        "soc2": {
+          "type": "social",
+          "settings": {
+            "network": "YouTube",
+            "url": "#"
+          }
+        },
+        "soc3": {
+          "type": "social",
+          "settings": {
+            "network": "TikTok",
+            "url": "#"
+          }
+        }
+      },
+      "block_order": [
+        "g1",
+        "g2",
+        "g3",
+        "g4",
+        "soc1",
+        "soc2",
+        "soc3"
+      ]
+    }
+  },
+  "order": [
+    "glide_hero",
+    "glide_value_strip",
+    "glide_categories",
+    "glide_innovations",
+    "glide_steps",
+    "glide_faq",
+    "glide_footer"
+  ]
+}

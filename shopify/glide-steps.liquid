@@ -1,0 +1,51 @@
+{% comment %}
+  GlideHome Steps — «как это работает» в 3 шага. Роль в скелете: доверие/онбординг.
+{% endcomment %}
+
+{{ 'glide-home.css' | asset_url | stylesheet_tag }}
+
+<section class="glide glide-steps" {{ section.shopify_attributes }}>
+  <div class="glide-wrap">
+    <div class="glide-sec-head">
+      {%- if section.settings.eyebrow != blank -%}<span class="glide-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2>{{ section.settings.heading }}</h2>{%- endif -%}
+    </div>
+    <ol class="glide-steps-row">
+      {%- for block in section.blocks -%}
+        {%- assign s = block.settings -%}
+        <li class="glide-step glide-reveal" {{ block.shopify_attributes }}>
+          <span class="glide-step-n">{{ forloop.index }}</span>
+          {%- if s.title != blank -%}<h4>{{ s.title }}</h4>{%- endif -%}
+          {%- if s.text != blank -%}<p>{{ s.text }}</p>{%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ol>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "GlideHome Steps",
+  "tag": "section",
+  "class": "glide-steps-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Setup" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Up and running in minutes" }
+  ],
+  "blocks": [
+    { "type": "step", "name": "Step", "settings": [
+      { "type": "text", "id": "title", "label": "Title" },
+      { "type": "textarea", "id": "text", "label": "Text" }
+    ] }
+  ],
+  "max_blocks": 4,
+  "presets": [{
+    "name": "GlideHome Steps",
+    "blocks": [
+      { "type": "step", "settings": { "title": "Attach it", "text": "Press the window robot onto the glass, or set the floor robot down anywhere in the room." } },
+      { "type": "step", "settings": { "title": "Press start", "text": "One button on the unit or the included remote. Pick a pattern or let it choose." } },
+      { "type": "step", "settings": { "title": "Walk away", "text": "It maps the surface and cleans on its own. Come back to streak-free glass or clean floors." } }
+    ]
+  }]
+}
+{% endschema %}

@@ -1,0 +1,111 @@
+{% comment %}
+  GlideHome Footer — 5 групп ссылок + newsletter + соцсети + legal.
+  Роль в скелете ECOVACS: newsletter, social row, footer (5 групп).
+  Пока как homepage-секция; позже можно перенести в footer-group темы.
+{% endcomment %}
+
+{{ 'glide-home.css' | asset_url | stylesheet_tag }}
+
+<section class="glide glide-foot" {{ section.shopify_attributes }}>
+  {%- if section.settings.news_heading != blank -%}
+  <div class="glide-foot-news">
+    <div class="glide-wrap">
+      <div class="glide-foot-news-txt">
+        <h3>{{ section.settings.news_heading }}</h3>
+        {%- if section.settings.news_text != blank -%}<p>{{ section.settings.news_text }}</p>{%- endif -%}
+      </div>
+      {%- form 'customer' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <div class="glide-foot-news-form">
+          <input type="email" name="contact[email]" placeholder="Your email" aria-label="Email" required>
+          <button class="glide-btn glide-btn--primary" type="submit">Subscribe</button>
+        </div>
+        {%- if form.posted_successfully? -%}<p class="glide-foot-news-ok">Thanks — you're on the list.</p>{%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+  {%- endif -%}
+
+  <div class="glide-wrap glide-foot-main">
+    <div class="glide-foot-grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'group' -%}
+          {%- assign s = block.settings -%}
+          <div class="glide-foot-col" {{ block.shopify_attributes }}>
+            {%- if s.title != blank -%}<h4>{{ s.title }}</h4>{%- endif -%}
+            {%- for i in (1..5) -%}
+              {%- assign lk = 'link_' | append: i -%}
+              {%- assign lb = 'label_' | append: i -%}
+              {%- if s[lb] != blank -%}<a href="{{ s[lk] | default: '#' }}">{{ s[lb] }}</a>{%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <div class="glide-foot-bottom">
+      <div class="glide-foot-social">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'social' and block.settings.url != blank -%}
+            <a href="{{ block.settings.url }}" aria-label="{{ block.settings.network }}" {{ block.shopify_attributes }}>
+              {%- case block.settings.network -%}
+                {%- when 'Instagram' -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1" fill="currentColor"/></svg>
+                {%- when 'YouTube' -%}<svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12s0-3-.4-4.4a3 3 0 0 0-2.1-2.1C18 5 12 5 12 5s-6 0-7.5.5A3 3 0 0 0 2.4 7.6C2 9 2 12 2 12s0 3 .4 4.4a3 3 0 0 0 2.1 2.1C6 19 12 19 12 19s6 0 7.5-.5a3 3 0 0 0 2.1-2.1C22 15 22 12 22 12ZM10 15V9l5 3-5 3Z"/></svg>
+                {%- when 'TikTok' -%}<svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 3c.5 3 2.5 4.5 5 5v3c-2 0-3.7-.6-5-1.6V16a6 6 0 1 1-6-6c.3 0 .7 0 1 .1v3.2A3 3 0 1 0 13 16V3h3Z"/></svg>
+                {%- when 'Facebook' -%}<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V7c0-1 .5-2 2-2h2V1h-3c-3 0-5 2-5 5v4H7v4h3v8h3Z"/></svg>
+                {%- else -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg>
+              {%- endcase -%}
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+      <div class="glide-foot-legal">
+        <span>© {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</span>
+        <span>{{ section.settings.legal_links }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "GlideHome Footer",
+  "tag": "section",
+  "class": "glide-footer-section",
+  "settings": [
+    { "type": "text", "id": "news_heading", "label": "Newsletter heading", "default": "Stay in the loop" },
+    { "type": "text", "id": "news_text", "label": "Newsletter text", "default": "New models, guides and offers. No spam." },
+    { "type": "text", "id": "legal_links", "label": "Legal line", "default": "Privacy · Terms · Refund policy · Accessibility" }
+  ],
+  "blocks": [
+    { "type": "group", "name": "Link group", "settings": [
+      { "type": "text", "id": "title", "label": "Title" },
+      { "type": "text", "id": "label_1", "label": "Link 1 label" }, { "type": "url", "id": "link_1", "label": "Link 1 url" },
+      { "type": "text", "id": "label_2", "label": "Link 2 label" }, { "type": "url", "id": "link_2", "label": "Link 2 url" },
+      { "type": "text", "id": "label_3", "label": "Link 3 label" }, { "type": "url", "id": "link_3", "label": "Link 3 url" },
+      { "type": "text", "id": "label_4", "label": "Link 4 label" }, { "type": "url", "id": "link_4", "label": "Link 4 url" },
+      { "type": "text", "id": "label_5", "label": "Link 5 label" }, { "type": "url", "id": "link_5", "label": "Link 5 url" }
+    ] },
+    { "type": "social", "name": "Social link", "settings": [
+      { "type": "select", "id": "network", "label": "Network", "options": [
+        { "value": "Instagram", "label": "Instagram" }, { "value": "YouTube", "label": "YouTube" },
+        { "value": "TikTok", "label": "TikTok" }, { "value": "Facebook", "label": "Facebook" }
+      ], "default": "Instagram" },
+      { "type": "url", "id": "url", "label": "URL" }
+    ] }
+  ],
+  "max_blocks": 12,
+  "presets": [{
+    "name": "GlideHome Footer",
+    "blocks": [
+      { "type": "group", "settings": { "title": "Products", "label_1": "Window Robot W17S", "label_2": "Window Robot DYP", "label_3": "3-in-1 Robot Vacuum", "label_4": "Ultra-Thin Robot Vacuum", "label_5": "All products" } },
+      { "type": "group", "settings": { "title": "Support", "label_1": "Contact us", "label_2": "Shipping & delivery", "label_3": "Returns & warranty", "label_4": "Setup guides", "label_5": "Track my order" } },
+      { "type": "group", "settings": { "title": "Company", "label_1": "About GlideHome", "label_2": "Reviews", "label_3": "Blog" } },
+      { "type": "group", "settings": { "title": "Legal", "label_1": "Privacy policy", "label_2": "Terms of service", "label_3": "Refund policy" } },
+      { "type": "social", "settings": { "network": "Instagram" } },
+      { "type": "social", "settings": { "network": "YouTube" } },
+      { "type": "social", "settings": { "network": "TikTok" } }
+    ]
+  }]
+}
+{% endschema %}
