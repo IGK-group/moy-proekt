@@ -57,6 +57,15 @@
           {%- if s.eyebrow != blank -%}<span class="glide-eyebrow">{{ s.eyebrow }}</span>{%- endif -%}
           {%- if s.title != blank -%}<h3>{{ s.title }}</h3>{%- endif -%}
           {%- if s.text != blank -%}<p>{{ s.text }}</p>{%- endif -%}
+          {%- if s.bullets != blank -%}
+            <ul class="glide-feature-list">
+              {%- assign rows = s.bullets | newline_to_br | split: '<br />' -%}
+              {%- for row in rows -%}{%- assign r = row | strip -%}{%- if r != '' -%}
+                {%- assign parts = r | split: ' — ' -%}
+                {%- if parts.size > 1 -%}<li><b>{{ parts[0] }}</b> — {{ parts | slice: 1, 10 | join: ' — ' }}</li>{%- else -%}<li>{{ r }}</li>{%- endif -%}
+              {%- endif -%}{%- endfor -%}
+            </ul>
+          {%- endif -%}
         </div>
       </div>
     {%- endfor -%}
@@ -97,7 +106,8 @@
         { "type": "image_picker", "id": "image", "label": "Image (optional, overrides icon)" },
         { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
         { "type": "text", "id": "title", "label": "Title" },
-        { "type": "textarea", "id": "text", "label": "Text" }
+        { "type": "textarea", "id": "text", "label": "Text" },
+        { "type": "textarea", "id": "bullets", "label": "Bullets — one per line (lead word before an em-dash is bolded)" }
       ]
     }
   ],
