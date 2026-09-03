@@ -395,13 +395,13 @@
           "settings": {
             "title": "Products",
             "label_1": "Window Robot W17S",
-            "link_1": "/collections/all",
+            "link_1": "/collections/window-cleaning-robots",
             "label_2": "Window Robot DYP",
-            "link_2": "/collections/all",
+            "link_2": "/collections/window-cleaning-robots",
             "label_3": "3-in-1 Robot Vacuum",
-            "link_3": "/collections/all",
+            "link_3": "/collections/robot-vacuums",
             "label_4": "Ultra-Thin Robot Vacuum",
-            "link_4": "/collections/all",
+            "link_4": "/collections/robot-vacuums",
             "label_5": "All products",
             "link_5": "/collections/all"
           }
@@ -413,13 +413,13 @@
             "label_1": "Contact us",
             "link_1": "/pages/contact",
             "label_2": "Shipping & delivery",
-            "link_2": "/pages/shipping",
-            "label_3": "Returns & warranty",
-            "link_3": "/pages/returns",
-            "label_4": "Setup guides",
-            "link_4": "/pages/guides",
-            "label_5": "Track my order",
-            "link_5": "/pages/track"
+            "link_2": "/pages/shipping-policy",
+            "label_3": "Returns & refunds",
+            "link_3": "/pages/refund-policy",
+            "label_4": "Guides & news",
+            "link_4": "/blogs/news",
+            "label_5": "",
+            "link_5": ""
           }
         },
         "g3": {
@@ -427,11 +427,11 @@
           "settings": {
             "title": "Company",
             "label_1": "About GlideHome",
-            "link_1": "/pages/about",
-            "label_2": "Reviews",
-            "link_2": "/pages/reviews",
-            "label_3": "Blog",
-            "link_3": "/blogs/news"
+            "link_1": "/pages/about-us",
+            "label_2": "Blog",
+            "link_2": "/blogs/news",
+            "label_3": "",
+            "link_3": ""
           }
         },
         "g4": {
@@ -443,7 +443,9 @@
             "label_2": "Terms of service",
             "link_2": "/policies/terms-of-service",
             "label_3": "Refund policy",
-            "link_3": "/policies/refund-policy"
+            "link_3": "/policies/refund-policy",
+            "label_4": "Your privacy choices",
+            "link_4": "/pages/data-sharing-opt-out"
           }
         },
         "soc1": {
@@ -480,7 +482,7 @@
       "settings": {
         "news_heading": "Stay in the loop",
         "news_text": "New models, guides and offers. No spam.",
-        "legal_links": "Privacy · Terms · Refund policy · Accessibility"
+        "legal_links": "Privacy · Terms · Refund policy · Shipping"
       }
     },
     "glide_cutaway": {
