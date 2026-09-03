@@ -533,3 +533,33 @@ img.glide-slide-img { display: none; }   /* <img> — только для моб
 .glide-trust-pay { display: inline-flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-left: auto; }
 .glide-trust-pay .glide-pay-ico, .glide-trust-pay svg { height: 22px; width: auto; border-radius: 4px; background: #fff; }
 @media (max-width: 640px) { .glide-trust-pay { margin-left: 0; width: 100%; } }
+
+/* ============================================================
+   BUY BAR — липкая панель снизу (аудит п.9)
+   ============================================================ */
+.glide-buybar {
+  box-sizing: border-box;
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
+  background: var(--g-ink); color: #fff;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 -8px 30px rgba(15,40,49,0.18);
+  transform: translateY(110%); transition: transform 0.28s ease;
+  padding: max(10px, env(safe-area-inset-bottom, 0px) + 8px) 16px 10px;
+}
+.glide-buybar.is-shown { transform: translateY(0); }
+.glide-buybar-inner {
+  box-sizing: border-box; width: 100%; max-width: var(--g-maxw); margin: 0 auto;
+  display: flex; align-items: center; gap: 14px; justify-content: space-between;
+}
+.glide-buybar-txt { min-width: 0; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.glide-buybar-txt strong {
+  font-size: 0.95rem; font-weight: 700; letter-spacing: -0.01em;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.glide-buybar-price { font-size: 1rem; font-weight: 700; color: #8fe6f0; }
+.glide-buybar-cta { flex: none; padding: 0.7rem 1.4rem; font-size: 0.92rem; }
+@media (max-width: 600px) {
+  .glide-buybar-txt { display: none; }   /* моб: только кнопка во всю ширину */
+  .glide-buybar-cta { flex: 1 1 auto; justify-content: center; padding: 0.85rem 1rem; }
+}
+@media (prefers-reduced-motion: reduce) { .glide-buybar { transition: none; } }

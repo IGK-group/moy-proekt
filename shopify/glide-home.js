@@ -171,3 +171,30 @@
   requestAnimationFrame(restore);
   window.addEventListener('load', function () { setTimeout(restore, 30); });
 })();
+
+/* GlideHome buy bar: показать после hero, скрыть у футера. */
+(function () {
+  'use strict';
+  function initBar(bar) {
+    if (bar.dataset.bound) return;
+    bar.dataset.bound = '1';
+    var after = parseInt(bar.getAttribute('data-show-after') || '600', 10);
+    var raf = null;
+    function update() {
+      raf = null;
+      var y = window.scrollY || window.pageYOffset || 0;
+      var docH = document.documentElement.scrollHeight;
+      var nearBottom = (y + window.innerHeight) > (docH - 420);
+      var show = y > after && !nearBottom;
+      bar.classList.toggle('is-shown', show);
+      bar.setAttribute('aria-hidden', show ? 'false' : 'true');
+    }
+    addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
+    addEventListener('resize', function () { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
+    update();
+  }
+  function boot() { document.querySelectorAll('[data-glide-buybar]').forEach(initBar); }
+  if (document.readyState !== 'loading') boot();
+  else document.addEventListener('DOMContentLoaded', boot);
+  document.addEventListener('shopify:section:load', boot);
+})();

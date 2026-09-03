@@ -1,0 +1,41 @@
+{% comment %}
+  GlideHome Buy Bar — липкая панель снизу, появляется при скролле после hero,
+  прячется у футера. На главной ведёт в витрину; на PDP можно переопределить
+  название/цену/кнопку под товар. Роль: постоянный путь к покупке (аудит п.9).
+{% endcomment %}
+
+{{ 'glide-home.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'glide-home.js' | asset_url }}" defer></script>
+
+<div class="glide glide-buybar" data-glide-buybar
+     data-show-after="{{ section.settings.show_after }}"
+     aria-hidden="true">
+  <div class="glide-buybar-inner">
+    <div class="glide-buybar-txt">
+      {%- if section.settings.label != blank -%}
+        {%- assign lp = section.settings.label | split: ' — ' -%}
+        <strong>{{ lp[0] }}</strong>{%- if lp.size > 1 -%}<span class="glide-buybar-tag">&nbsp;&mdash; {{ lp | slice: 1, 9 | join: ' — ' }}</span>{%- endif -%}
+      {%- endif -%}
+      {%- if section.settings.price != blank -%}<span class="glide-buybar-price">{{ section.settings.price }}</span>{%- endif -%}
+    </div>
+    <a class="glide-btn glide-btn--primary glide-buybar-cta" href="{{ section.settings.button_url | default: '#glide-lineup' }}">
+      {{ section.settings.button_label | default: 'Shop now' }}
+    </a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "GlideHome Buy Bar",
+  "tag": "section",
+  "class": "glide-buybar-section",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Label", "default": "GlideHome — cleaning on autopilot" },
+    { "type": "text", "id": "price", "label": "Price (optional)" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop the lineup" },
+    { "type": "url", "id": "button_url", "label": "Button link" },
+    { "type": "range", "id": "show_after", "label": "Show after scroll (px)", "min": 200, "max": 1200, "step": 50, "default": 600 }
+  ],
+  "presets": [{ "name": "GlideHome Buy Bar" }]
+}
+{% endschema %}

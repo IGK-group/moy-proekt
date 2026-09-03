@@ -573,6 +573,16 @@
         "view_all_label": "See all products",
         "view_all_url": "/collections/all"
       }
+    },
+    "glide_buybar": {
+      "type": "glide-buybar",
+      "settings": {
+        "label": "GlideHome — cleaning on autopilot",
+        "price": "",
+        "button_label": "Shop the lineup",
+        "button_url": "#glide-lineup",
+        "show_after": 600
+      }
     }
   },
   "order": [
@@ -584,6 +594,7 @@
     "glide_cutaway",
     "glide_steps",
     "glide_faq",
-    "glide_footer"
+    "glide_footer",
+    "glide_buybar"
   ]
 }
