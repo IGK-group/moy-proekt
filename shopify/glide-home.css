@@ -563,3 +563,8 @@ img.glide-slide-img { display: none; }   /* <img> — только для моб
   .glide-buybar-cta { flex: 1 1 auto; justify-content: center; padding: 0.85rem 1rem; }
 }
 @media (prefers-reduced-motion: reduce) { .glide-buybar { transition: none; } }
+.glide-nav-soon { opacity: 0.55; pointer-events: none; }
+.glide-nav-soon span {
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  background: var(--g-line); color: var(--g-ink-soft); padding: 1px 5px; border-radius: 4px; vertical-align: middle;
+}
