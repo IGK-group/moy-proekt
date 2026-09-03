@@ -80,7 +80,7 @@
       ],
       "settings": {
         "autoplay_ms": 6000,
-        "autoplay": false
+        "autoplay": true
       }
     },
     "glide_categories": {

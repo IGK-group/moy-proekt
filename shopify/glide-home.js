@@ -42,7 +42,7 @@
     }
     function next() { go(idx + 1, true); }
     function restart() {
-      if (!AUTOPLAY) return;
+      if (!AUTOPLAY || isMobile()) return;   // автосмена только на десктопе
       if (timer) clearInterval(timer);
       timer = setInterval(next, SLIDE_MS);
     }
@@ -79,7 +79,7 @@
     }
 
     // при смене вида (десктоп<->мобайл) выставить позицию
-    var onMode = function () { go(idx, false); };
+    var onMode = function () { go(idx, false); if (isMobile()) stop(); else restart(); };
     if (mq.addEventListener) mq.addEventListener('change', onMode);
     addEventListener('resize', function () { if (isMobile()) track.scrollLeft = idx * track.clientWidth; });
 
