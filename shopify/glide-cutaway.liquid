@@ -1,0 +1,81 @@
+{% comment %}
+  GlideHome Cutaway — разрезной инженерный вид робота с выносками узлов.
+  Роль в скелете: «технология внутри». Стиль референса — прозрачный корпус +
+  янтарный вихрь воздуха + синие каналы (см. фото-описания фабрик UWANT).
+  Картинка без текста; подписи — блоки, позиционируются в % по картинке.
+{% endcomment %}
+
+{{ 'glide-home.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'glide-home.js' | asset_url }}" defer></script>
+
+{%- assign img = section.settings.image -%}
+<section class="glide glide-cutaway" {{ section.shopify_attributes }}>
+  <div class="glide-cutaway-inner">
+    <div class="glide-cutaway-head glide-reveal">
+      {%- if section.settings.eyebrow != blank -%}<span class="glide-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2>{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.text != blank -%}<p>{{ section.settings.text }}</p>{%- endif -%}
+    </div>
+
+    <div class="glide-cutaway-stage glide-reveal">
+      {%- if img != blank -%}
+        <img class="glide-cutaway-img" src="{{ img | image_url: width: 2400 }}" alt="{{ section.settings.heading | escape }}">
+      {%- else -%}
+        <div class="glide-cutaway-img glide-cutaway-img--ph"></div>
+      {%- endif -%}
+
+      {%- for block in section.blocks -%}
+        {%- assign s = block.settings -%}
+        <div class="glide-callout glide-callout--{{ s.side }}"
+             style="left:{{ s.x }}%;top:{{ s.y }}%"
+             {{ block.shopify_attributes }}>
+          <span class="glide-callout-dot"></span>
+          <div class="glide-callout-card">
+            {%- if s.title != blank -%}<strong>{{ s.title }}</strong>{%- endif -%}
+            {%- if s.text != blank -%}<span>{{ s.text }}</span>{%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "GlideHome Cutaway",
+  "tag": "section",
+  "class": "glide-cutaway-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Inside the machine" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Engineered to move air, not just push dust" },
+    { "type": "textarea", "id": "text", "label": "Intro text", "default": "A sealed path takes air from the floor, spins the dust out in the cyclone, traps the fine stuff in the filter and pushes clean air back into the room." },
+    { "type": "image_picker", "id": "image", "label": "Cutaway image (wide, no text)" }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "name": "Callout",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "text", "id": "text", "label": "Text" },
+        { "type": "range", "id": "x", "label": "X position (%)", "min": 0, "max": 100, "step": 1, "default": 50 },
+        { "type": "range", "id": "y", "label": "Y position (%)", "min": 0, "max": 100, "step": 1, "default": 50 },
+        { "type": "select", "id": "side", "label": "Card side", "options": [
+          { "value": "left", "label": "Left" }, { "value": "right", "label": "Right" }
+        ], "default": "right" }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [{
+    "name": "GlideHome Cutaway",
+    "blocks": [
+      { "type": "callout", "settings": { "title": "Cyclone separation", "text": "Spins heavy dust out before it can clog the filter", "x": 62, "y": 40, "side": "right" } },
+      { "type": "callout", "settings": { "title": "Brushless motor", "text": "High static pressure, low noise, long life", "x": 74, "y": 20, "side": "right" } },
+      { "type": "callout", "settings": { "title": "Sealed HEPA filter", "text": "Traps the fine particles you can't see", "x": 82, "y": 52, "side": "right" } },
+      { "type": "callout", "settings": { "title": "Anti-tangle roller", "text": "Front intake lifts hair before it wraps", "x": 40, "y": 72, "side": "left" } },
+      { "type": "callout", "settings": { "title": "Li-ion battery", "text": "Up to 150 m² of cleaning per charge", "x": 55, "y": 62, "side": "left" } }
+    ]
+  }]
+}
+{% endschema %}

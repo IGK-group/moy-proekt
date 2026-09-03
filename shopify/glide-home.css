@@ -413,3 +413,60 @@ img.glide-slide-img { display: none; }   /* <img> — только для моб
   .glide-pcard-body { padding: 12px 12px 16px; }
   .glide-sec-head--row { flex-direction: column; align-items: flex-start; gap: 6px; }
 }
+
+/* ---------- CUTAWAY (разрезной вид + выноски) ---------- */
+.glide-cutaway {
+  background: #070c0e; color: #eef5f1;
+  background-image: radial-gradient(120% 90% at 50% 0%, #12232a 0%, #070c0e 62%);
+  padding: 78px 0 88px; overflow: hidden;
+}
+.glide-cutaway-inner { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+.glide-cutaway-head { text-align: center; max-width: 640px; margin: 0 auto 30px; }
+.glide-cutaway-head .glide-eyebrow { color: #f0a35a; }
+.glide-cutaway-head h2 {
+  font-size: clamp(1.7rem, 3vw, 2.5rem); line-height: 1.15; margin: 0.5rem 0 0.7rem;
+  letter-spacing: -0.02em; color: #fff; font-weight: 700;
+}
+.glide-cutaway-head p { margin: 0; color: #9fb6b0; font-size: 1.02rem; line-height: 1.6; }
+.glide-cutaway-stage { position: relative; margin-top: 12px; }
+.glide-cutaway-img {
+  width: 100%; display: block; border-radius: 18px;
+  aspect-ratio: 21 / 9; object-fit: cover;
+}
+.glide-cutaway-img--ph { background: linear-gradient(135deg, #123, #071012); }
+/* выноска: точка + карточка */
+.glide-callout { position: absolute; transform: translate(-50%, -50%); z-index: 2; }
+.glide-callout-dot {
+  display: block; width: 12px; height: 12px; border-radius: 50%;
+  background: #f0a35a; box-shadow: 0 0 0 4px rgba(240, 163, 90, 0.25), 0 0 14px rgba(240, 163, 90, 0.6);
+  position: relative;
+}
+.glide-callout-dot::after {
+  content: ""; position: absolute; top: 50%; width: 46px; height: 1px;
+  background: linear-gradient(90deg, rgba(240,163,90,0.9), rgba(240,163,90,0));
+}
+.glide-callout-card {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 210px; background: rgba(10, 20, 22, 0.82); backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 12px; padding: 11px 14px;
+}
+.glide-callout-card strong { display: block; font-size: 0.9rem; color: #fff; margin-bottom: 2px; letter-spacing: -0.01em; }
+.glide-callout-card span { display: block; font-size: 0.76rem; line-height: 1.4; color: #a9c1bb; }
+.glide-callout--right .glide-callout-dot::after { left: 100%; }
+.glide-callout--right .glide-callout-card { left: calc(100% + 46px); }
+.glide-callout--left .glide-callout-dot::after { right: 100%; background: linear-gradient(270deg, rgba(240,163,90,0.9), rgba(240,163,90,0)); }
+.glide-callout--left .glide-callout-card { right: calc(100% + 46px); text-align: right; }
+@media (max-width: 860px) {
+  .glide-cutaway { padding: 54px 0 40px; }
+  .glide-cutaway-img { aspect-ratio: 4 / 3; }
+  /* на мобильном выноски вниз списком, не поверх картинки */
+  .glide-callout { position: static; transform: none; display: flex; gap: 10px; align-items: flex-start; margin-top: 14px; }
+  .glide-callout-dot { margin-top: 5px; flex: none; }
+  .glide-callout-dot::after { display: none; }
+  .glide-callout-card {
+    position: static; transform: none; width: auto; flex: 1; background: rgba(255,255,255,0.04);
+    text-align: left !important;
+  }
+  .glide-cutaway-stage { display: flex; flex-direction: column; }
+  .glide-cutaway-img { order: -1; margin-bottom: 6px; }
+}

@@ -441,6 +441,85 @@
         "soc2",
         "soc3"
       ]
+    },
+    "glide_cutaway": {
+      "type": "glide-cutaway",
+      "settings": {
+        "eyebrow": "Inside the machine",
+        "heading": "Engineered to move air, not just push dust",
+        "text": "A sealed path takes air from the floor, spins the dust out in the cyclone, traps the fine stuff in the filter and pushes clean air back into the room.",
+        "image": "shopify://shop_images/cutaway.jpg"
+      },
+      "blocks": {
+        "co1": {
+          "type": "callout",
+          "settings": {
+            "title": "Brushless motor",
+            "text": "High static pressure, low noise, long life",
+            "x": 53,
+            "y": 30,
+            "side": "left"
+          }
+        },
+        "co2": {
+          "type": "callout",
+          "settings": {
+            "title": "Cyclone separation",
+            "text": "Spins heavy dust out before it clogs the filter",
+            "x": 55,
+            "y": 50,
+            "side": "left"
+          }
+        },
+        "co3": {
+          "type": "callout",
+          "settings": {
+            "title": "Sealed HEPA filter",
+            "text": "Traps the fine particles you can't see",
+            "x": 78,
+            "y": 46,
+            "side": "right"
+          }
+        },
+        "co4": {
+          "type": "callout",
+          "settings": {
+            "title": "Sealed airflow path",
+            "text": "No leaks between intake and exhaust",
+            "x": 65,
+            "y": 34,
+            "side": "right"
+          }
+        },
+        "co5": {
+          "type": "callout",
+          "settings": {
+            "title": "Anti-tangle roller",
+            "text": "Front intake lifts hair before it wraps",
+            "x": 47,
+            "y": 76,
+            "side": "left"
+          }
+        },
+        "co6": {
+          "type": "callout",
+          "settings": {
+            "title": "Drive + battery",
+            "text": "Up to 150 m² of cleaning per charge",
+            "x": 74,
+            "y": 66,
+            "side": "right"
+          }
+        }
+      },
+      "block_order": [
+        "co1",
+        "co2",
+        "co3",
+        "co4",
+        "co5",
+        "co6"
+      ]
     }
   },
   "order": [
@@ -448,6 +527,7 @@
     "glide_value_strip",
     "glide_categories",
     "glide_innovations",
+    "glide_cutaway",
     "glide_steps",
     "glide_faq",
     "glide_footer"
