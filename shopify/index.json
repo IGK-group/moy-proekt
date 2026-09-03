@@ -104,11 +104,33 @@
             "link": "/collections/all",
             "link_label": "Shop robot vacuums →"
           }
+        },
+        "c3": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/handheld.jpg",
+            "title": "Anti-Mite & Handheld",
+            "subtitle": "Deep-clean beds, sofas and upholstery",
+            "link": "/collections/all",
+            "link_label": "Shop handheld →"
+          }
+        },
+        "c4": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/scrubber.jpg",
+            "title": "Floor Scrubbers",
+            "subtitle": "Washes and dries hard floors in one pass",
+            "link": "/collections/all",
+            "link_label": "Shop scrubbers →"
+          }
         }
       },
       "block_order": [
         "c1",
-        "c2"
+        "c2",
+        "c3",
+        "c4"
       ],
       "settings": {}
     },
